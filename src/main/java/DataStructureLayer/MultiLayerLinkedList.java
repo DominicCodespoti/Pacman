@@ -1,8 +1,7 @@
-package MultiLayerLinkedList;
+package DataStructureLayer;
 
 import LogicLayer.Directions;
 import LogicLayer.IGameObject;
-import java.awt.Point;
 
 public class MultiLayerLinkedList {
 
@@ -27,9 +26,6 @@ public class MultiLayerLinkedList {
           }
         } else {
           if (J < Width - 1) {//if not end of column
-            if (J == 0) {//if first column
-              rowIteratorNode.Up = columnIterator; //Up is self reference
-            }
             rowIteratorNode.Right = new Node();
             rowIteratorNode.Up.Down = rowIteratorNode; //Up alters own down
             rowIteratorNode.Right.Left = rowIteratorNode;
@@ -41,8 +37,7 @@ public class MultiLayerLinkedList {
       if (I < Height - 1) {
         columnIterator.Down = new Node();
         columnIterator.Down.Up = columnIterator;
-        columnIterator = columnIterator.Down;
-        rowIteratorNode = columnIterator;
+        rowIteratorNode = columnIterator = columnIterator.Down;
       }
     }
 
@@ -56,8 +51,8 @@ public class MultiLayerLinkedList {
   }
 
   public void setValue(Point coordinate, IGameObject Value) {
-    int X = coordinate.x;
-    int Y = coordinate.y;
+    int X = coordinate.getX();
+    int Y = coordinate.getY();
     rowIteratorNode = referenceNode;
 
     for (int I = 0; I < Y; ++I) {
@@ -72,8 +67,8 @@ public class MultiLayerLinkedList {
   }
 
   public IGameObject getValue(Point coordinate) {
-    int X = coordinate.x;
-    int Y = coordinate.y;
+    int X = coordinate.getX();
+    int Y = coordinate.getY();
 
     rowIteratorNode = referenceNode;
 
@@ -89,8 +84,8 @@ public class MultiLayerLinkedList {
   }
 
   public Node getNeighbouringNode(Point coordinate, Directions currentDirection) {
-    int X = coordinate.x;
-    int Y = coordinate.y;
+    int X = coordinate.getX();
+    int Y = coordinate.getY();
 
     rowIteratorNode = referenceNode;
 
@@ -133,25 +128,25 @@ public class MultiLayerLinkedList {
     rowIteratorNode = getNode(I, J);
 
     if (I == 0) {
-      Node newNode = getNode(I, height - 1);
+      Node newNode = getNode(height - 1, J);
       rowIteratorNode = getNode(I, J);
       rowIteratorNode.Left = newNode;
     }
 
     if (J == 0) {
-      Node newNode = getNode(width - 1, I);
+      Node newNode = getNode(I, width - 1);
       rowIteratorNode = getNode(I, J);
       rowIteratorNode.Up = newNode;
     }
 
     if (I == width - 1) {
-      Node newNode = getNode(I, 0);
+      Node newNode = getNode(0, J);
       rowIteratorNode = getNode(I, J);
       rowIteratorNode.Right = newNode;
     }
 
     if (J == height - 1) {
-      Node newNode = getNode(0, J);
+      Node newNode = getNode(I, 0);
       rowIteratorNode = getNode(I, J);
       rowIteratorNode.Down = newNode;
     }

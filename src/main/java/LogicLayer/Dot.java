@@ -1,10 +1,11 @@
 package LogicLayer;
 
 public class Dot implements IGameObject {
+
   private boolean isEdible = true;
 
   @Override
-  public boolean isSolid(){
+  public boolean isSolid() {
     return false;
   }
 
@@ -16,10 +17,5 @@ public class Dot implements IGameObject {
   @Override
   public void effectWhenEaten() {
     this.isEdible = false;
-  }
-
-  @Override
-  public String toString() {
-    return ".";
   }
 }
