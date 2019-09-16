@@ -4,9 +4,7 @@ public interface IEntityObject extends IGameObject {
 
   void increaseScore();
 
-  int getCurrentScore();
-
-  boolean holdingDot();
+  boolean isHoldingDot();
 
   void updateCurrentDirection(Directions newDirection);
 
@@ -16,5 +14,5 @@ public interface IEntityObject extends IGameObject {
 
   boolean winCondition(int scoreCondition);
 
-  void pickUpDot();
+  void setHoldingDot(boolean isHolding);
 }

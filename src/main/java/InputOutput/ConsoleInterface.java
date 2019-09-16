@@ -8,29 +8,30 @@ import java.io.InputStreamReader;
 
 public class ConsoleInterface {
 
-  BoardController boardController;
-  ConsolePrinter consolePrinter;
+  private InputStreamReader fileInputStream = new InputStreamReader(System.in);
+  private BufferedReader bufferedReader = new BufferedReader(fileInputStream);
 
-  InputStreamReader fileInputStream = new InputStreamReader(System.in);
-  BufferedReader bufferedReader = new BufferedReader(fileInputStream);
+  public void enterCookedTerminalMode() throws IOException, InterruptedException {
+    String[] cmd1 = {"/bin/sh", "-c", "stty cooked </dev/tty"};
+    Runtime.getRuntime().exec(cmd1).waitFor();
+    System.exit(0);
+  }
 
   public void runGame() throws IOException, InterruptedException {
-    boardController = new BoardController(5, 5);
-    consolePrinter = new ConsolePrinter(boardController);
+    BoardController boardController = new BoardController(5, 5);
+    ConsolePrinter consolePrinter = new ConsolePrinter(boardController);
 
     int userInputAsByte = 0;
     String[] cmd = {"/bin/sh", "-c", "stty raw </dev/tty"};
     Runtime.getRuntime().exec(cmd).waitFor();
 
-    while (!boardController.getExistingEntityByName("Pacman").winCondition(5)) {
+    while (!boardController.getExistingEntityByName("Pacman").winCondition(24)) {
       if (bufferedReader.ready()) {
         userInputAsByte = bufferedReader.read();
       }
 
       if (userInputAsByte == 3) {
-        String[] cmd1 = {"/bin/sh", "-c", "stty cooked </dev/tty"};
-        Runtime.getRuntime().exec(cmd1).waitFor();
-        System.exit(0);
+        enterCookedTerminalMode();
       }
 
       if (userInputAsByte == 119) {
@@ -61,5 +62,6 @@ public class ConsoleInterface {
       consolePrinter.printBoard();
       Thread.sleep(1000);
     }
+    enterCookedTerminalMode();
   }
 }

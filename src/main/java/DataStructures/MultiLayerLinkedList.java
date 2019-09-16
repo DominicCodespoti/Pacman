@@ -16,8 +16,8 @@ public class MultiLayerLinkedList {
     referenceNode = new Node();
     rowIteratorNode = columnIterator = referenceNode;
 
-    for (int I = 0; I < Height; ++I) {
-      for (int J = 0; J < Width; ++J) {
+    for (int I = 0; I < Height; I++) {
+      for (int J = 0; J < Width; J++) {
         if (I == 0) {
           if (J < Width - 1) {
             rowIteratorNode.Right = new Node();
@@ -31,6 +31,9 @@ public class MultiLayerLinkedList {
             rowIteratorNode.Right.Left = rowIteratorNode;
             rowIteratorNode.Right.Up = rowIteratorNode.Up.Right;
             rowIteratorNode = rowIteratorNode.Right;
+          }
+          if (J == Width - 1) {
+            rowIteratorNode.Up.Down = rowIteratorNode;
           }
         }
       }

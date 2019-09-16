@@ -67,8 +67,9 @@ public class BoardController {
   private void attemptToEat(IEntityObject entityToMove){
     Point entityPosition = getExistingEntityPositionByName(entityToMove);
     Directions entityDirection = getExistingEntityByName(entityToMove.getName()).getCurrentDirection();
-    if (entityToMove.holdingDot()){
+    if (entityToMove.isHoldingDot()){
       entityToMove.increaseScore();
+      entityToMove.setHoldingDot(false);
       gameBoard.getPreviousNodeInDirection(entityPosition, entityDirection).Value = new Space();
     }
   }
@@ -78,7 +79,7 @@ public class BoardController {
     Directions entityDirection = getExistingEntityByName(entityToMove.getName()).getCurrentDirection();
     if (gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Value instanceof Dot)
     {
-      entityToMove.pickUpDot();
+      entityToMove.setHoldingDot(true);
     }
     gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Value = entityToMove;
     updateEntityPosition(entityToMove, gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Position);

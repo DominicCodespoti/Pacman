@@ -13,8 +13,8 @@ public class Pacman implements IEntityObject {
   }
 
   @Override
-  public String getString(){
-    switch (currentDirection){
+  public String getString() {
+    switch (currentDirection) {
       case Up:
         return "V";
       case Left:
@@ -28,7 +28,7 @@ public class Pacman implements IEntityObject {
   }
 
   @Override
-  public boolean holdingDot() {
+  public boolean isHoldingDot() {
     return holdingDot;
   }
 
@@ -53,11 +53,6 @@ public class Pacman implements IEntityObject {
   }
 
   @Override
-  public int getCurrentScore() {
-    return score;
-  }
-
-  @Override
   public void updateCurrentDirection(Directions newDirection) {
     this.currentDirection = newDirection;
   }
@@ -73,7 +68,7 @@ public class Pacman implements IEntityObject {
   }
 
   @Override
-  public void pickUpDot() {
-    holdingDot = true;
+  public void setHoldingDot(boolean isHolding) {
+    holdingDot = isHolding;
   }
 }
