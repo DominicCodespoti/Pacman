@@ -15,6 +15,8 @@ public class BoardController {
     gameBoard = new MultiLayerLinkedList(mapWidth, mapHeight);
     Pacman pacman = new Pacman("Pacman");
     gameBoard.setValue(new Point(mapHeight / 2, mapWidth / 2), pacman);
+    gameBoard.setValue(new Point(0, mapWidth - 1), new Wall());
+    gameBoard.setValue(new Point(1, mapWidth - 1), new Wall());
     currentEntities.put(pacman, new Point(mapHeight / 2, mapWidth / 2));
   }
 
@@ -32,22 +34,30 @@ public class BoardController {
   }
 
   public void attemptToMoveEntity(IEntityObject entityToMove) {
-    if (isPathUnblocked(entityToMove)) {
+    if (isPathBlocked(entityToMove)) {
       return;
     }
     movePositionOnBoard(entityToMove);
     attemptToEat(entityToMove);
   }
 
-  public String getObjectRepresentationAtPosition(Point positionToGet){
+  public void attemptToRotateEntity(IEntityObject entityToMove, Directions newDirection) {
+    Directions oldDirection = entityToMove.getCurrentDirection();
+    entityToMove.updateCurrentDirection(newDirection);
+    if (isPathBlocked(entityToMove)) {
+      entityToMove.updateCurrentDirection(oldDirection);
+    }
+  }
+
+  public String getObjectRepresentationAtPosition(Point positionToGet) {
     return gameBoard.getValue(positionToGet).getString();
   }
 
-  public int getBoardWidth(){
+  public int getBoardWidth() {
     return gameBoard.GetWidth();
   }
 
-  public int getBoardHeight(){
+  public int getBoardHeight() {
     return gameBoard.GetHeight();
   }
 
@@ -57,31 +67,33 @@ public class BoardController {
     test.setValue(newPosition);
   }
 
-  private boolean isPathUnblocked(IEntityObject entityToCheck) {
+  private boolean isPathBlocked(IEntityObject entityToCheck) {
     Point entityPosition = getExistingEntityPositionByName(entityToCheck);
     Directions entityDirection = getExistingEntityByName(entityToCheck.getName())
         .getCurrentDirection();
     return gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Value.isSolid();
   }
 
-  private void attemptToEat(IEntityObject entityToMove){
+  private void attemptToEat(IEntityObject entityToMove) {
     Point entityPosition = getExistingEntityPositionByName(entityToMove);
-    Directions entityDirection = getExistingEntityByName(entityToMove.getName()).getCurrentDirection();
-    if (entityToMove.isHoldingDot()){
+    Directions entityDirection = getExistingEntityByName(entityToMove.getName())
+        .getCurrentDirection();
+    if (entityToMove.isHoldingDot()) {
       entityToMove.increaseScore();
       entityToMove.setHoldingDot(false);
-      gameBoard.getPreviousNodeInDirection(entityPosition, entityDirection).Value = new Space();
     }
+    gameBoard.getPreviousNodeInDirection(entityPosition, entityDirection).Value = new Space();
   }
 
   private void movePositionOnBoard(IEntityObject entityToMove) {
     Point entityPosition = getExistingEntityPositionByName(entityToMove);
-    Directions entityDirection = getExistingEntityByName(entityToMove.getName()).getCurrentDirection();
-    if (gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Value instanceof Dot)
-    {
+    Directions entityDirection = getExistingEntityByName(entityToMove.getName())
+        .getCurrentDirection();
+    if (gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Value instanceof Dot) {
       entityToMove.setHoldingDot(true);
     }
+    updateEntityPosition(entityToMove,
+        gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Position);
     gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Value = entityToMove;
-    updateEntityPosition(entityToMove, gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Position);
   }
 }
