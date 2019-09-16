@@ -33,19 +33,14 @@ public class BoardController {
         .orElse(null);
   }
 
-  public void attemptToMoveEntity(IEntityObject entityToMove) {
-    if (isPathBlocked(entityToMove)) {
-      return;
-    }
-    movePositionOnBoard(entityToMove);
-    attemptToEat(entityToMove);
-  }
-
-  public void attemptToRotateEntity(IEntityObject entityToMove, Directions newDirection) {
+  public void attemptToRotateAndMoveEntity(IEntityObject entityToMove, Directions newDirection) {
     Directions oldDirection = entityToMove.getCurrentDirection();
     entityToMove.updateCurrentDirection(newDirection);
     if (isPathBlocked(entityToMove)) {
       entityToMove.updateCurrentDirection(oldDirection);
+    } else {
+      movePositionOnBoard(entityToMove);
+      attemptToEat(entityToMove);
     }
   }
 

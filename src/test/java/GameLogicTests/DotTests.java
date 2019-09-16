@@ -16,8 +16,8 @@ public class DotTests {
 
   @Test
   public void dotBecomesSpaceWhenPacmanMovesOverIt() {
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Up);
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Up);
     Assert.assertEquals(" ", testMaster.getObjectRepresentationAtPosition(new Point(2, 2)));
   }
 }

@@ -37,32 +37,28 @@ public class ConsoleInterface {
       }
 
       if (userInputAsByte == 119) {
-        boardController.attemptToRotateEntity(player, Directions.Up);
-        boardController.attemptToMoveEntity(player);
+        boardController.attemptToRotateAndMoveEntity(player, Directions.Up);
         userInputAsByte = 0;
       }
 
       if (userInputAsByte == 97) {
-        boardController.attemptToRotateEntity(player, Directions.Left);
-        boardController.attemptToMoveEntity(player);
+        boardController.attemptToRotateAndMoveEntity(player, Directions.Left);
         userInputAsByte = 0;
       }
 
       if (userInputAsByte == 100) {
-        boardController.attemptToRotateEntity(player, Directions.Right);
-        boardController.attemptToMoveEntity(player);
+        boardController.attemptToRotateAndMoveEntity(player, Directions.Right);
         userInputAsByte = 0;
       }
 
       if (userInputAsByte == 115) {
-        boardController.attemptToRotateEntity(player, Directions.Down);
-        boardController.attemptToMoveEntity(player);
+        boardController.attemptToRotateAndMoveEntity(player, Directions.Down);
         userInputAsByte = 0;
       }
 
       System.out.print("\033[H\033[2J");
       consolePrinter.printBoard();
-      Thread.sleep(1000);
+      Thread.sleep(200);
     }
     enterCookedTerminalModeAndExit();
   }

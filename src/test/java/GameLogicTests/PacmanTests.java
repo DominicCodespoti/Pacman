@@ -49,63 +49,57 @@ public class PacmanTests {
 
   @Test
   public void testPacmanCanMoveUpOnBoard() {
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Up);
     Assert.assertArrayEquals(new int[] {2, 1}, findPacman());
   }
 
   @Test
   public void testPacmanCanMoveDownOnBoard() {
-    testMaster.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Down);
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Down);
     Assert.assertArrayEquals(new int[] {2, 3}, findPacman());
   }
 
   @Test
   public void testPacmanCanMoveLeftOnBoard() {
-    testMaster.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Left);
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Left);
     Assert.assertArrayEquals(new int[] {1, 2}, findPacman());
   }
 
   @Test
   public void testPacmanCanMoveRightOnBoard() {
-    testMaster.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Right);
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Right);
     Assert.assertArrayEquals(new int[] {3, 2}, findPacman());
   }
 
   @Test
   public void testPacmanCanWrapUpOnBoard() {
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Up);
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Up);
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Up);
     Assert.assertArrayEquals(new int[] {2, 4}, findPacman());
   }
 
   @Test
   public void testPacmanCanWrapDownOnBoard() {
-    testMaster.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Down);
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Down);
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Down);
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Down);
     Assert.assertArrayEquals(new int[] {2, 0}, findPacman());
   }
 
   @Test
   public void testPacmanCanWrapLeftOnBoard() {
-    testMaster.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Left);
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Left);
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Left);
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Left);
     Assert.assertArrayEquals(new int[] {4, 2}, findPacman());
   }
 
   @Test
   public void testPacmanCanWrapRightOnBoard() {
-    testMaster.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Right);
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Right);
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Right);
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Right);
     Assert.assertArrayEquals(new int[] {0, 2}, findPacman());
   }
 }

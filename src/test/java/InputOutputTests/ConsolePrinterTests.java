@@ -1,6 +1,7 @@
 package InputOutputTests;
 
 import GameLogicTests.BoardController;
+import GameLogicTests.Directions;
 import InputOutput.ConsolePrinter;
 import org.junit.Test;
 
@@ -15,11 +16,11 @@ public class ConsolePrinterTests {
     consolePrinter = new ConsolePrinter(testMaster);
 
     consolePrinter.printBoard();
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Up);
     consolePrinter.printBoard();
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Up);
     consolePrinter.printBoard();
-    testMaster.attemptToMoveEntity(testMaster.getExistingEntityByName("Pacman"));
+    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Up);
     consolePrinter.printBoard();
   }
 }
