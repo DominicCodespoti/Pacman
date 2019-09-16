@@ -1,9 +1,11 @@
-package LogicLayer;
+package GameLogicTests;
 
 public class Pacman implements IEntityObject {
 
   private Directions currentDirection;
   private String name;
+  private int score = 0;
+  private boolean holdingDot = false;
 
   public Pacman(String name) {
     currentDirection = Directions.Up;
@@ -12,12 +14,12 @@ public class Pacman implements IEntityObject {
 
   @Override
   public boolean holdingDot() {
-    return false;
+    return holdingDot;
   }
 
   @Override
   public boolean isSolid() {
-    return true;
+    return false;
   }
 
   @Override
@@ -26,7 +28,18 @@ public class Pacman implements IEntityObject {
   }
 
   @Override
-  public void effectWhenEaten() {
+  public void increaseScore() {
+    score++;
+  }
+
+  @Override
+  public boolean winCondition(int scoreCondition) {
+    return score >= scoreCondition;
+  }
+
+  @Override
+  public int getCurrentScore() {
+    return score;
   }
 
   @Override
@@ -42,5 +55,10 @@ public class Pacman implements IEntityObject {
   @Override
   public String getName() {
     return name;
+  }
+
+  @Override
+  public void pickUpDot() {
+    holdingDot = true;
   }
 }

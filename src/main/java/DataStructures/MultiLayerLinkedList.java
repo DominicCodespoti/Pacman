@@ -1,7 +1,7 @@
-package DataStructureLayer;
+package DataStructures;
 
-import LogicLayer.Directions;
-import LogicLayer.IGameObject;
+import GameLogicTests.Directions;
+import GameLogicTests.IGameObject;
 
 public class MultiLayerLinkedList {
 
@@ -18,16 +18,16 @@ public class MultiLayerLinkedList {
 
     for (int I = 0; I < Height; ++I) {
       for (int J = 0; J < Width; ++J) {
-        if (I == 0) { //if first row
-          if (J < Width - 1) { //if not end of column
+        if (I == 0) {
+          if (J < Width - 1) {
             rowIteratorNode.Right = new Node();
             rowIteratorNode.Right.Left = rowIteratorNode;
             rowIteratorNode = rowIteratorNode.Right;
           }
         } else {
-          if (J < Width - 1) {//if not end of column
+          if (J < Width - 1) {
             rowIteratorNode.Right = new Node();
-            rowIteratorNode.Up.Down = rowIteratorNode; //Up alters own down
+            rowIteratorNode.Up.Down = rowIteratorNode;
             rowIteratorNode.Right.Left = rowIteratorNode;
             rowIteratorNode.Right.Up = rowIteratorNode.Up.Right;
             rowIteratorNode = rowIteratorNode.Right;
@@ -83,7 +83,7 @@ public class MultiLayerLinkedList {
     return rowIteratorNode.Value;
   }
 
-  public Node getNeighbouringNode(Point coordinate, Directions currentDirection) {
+  public Node getNextNodeInDirection(Point coordinate, Directions currentDirection) {
     int X = coordinate.getX();
     int Y = coordinate.getY();
 
@@ -98,6 +98,33 @@ public class MultiLayerLinkedList {
     }
 
     switch (currentDirection) {
+      case Up:
+        return rowIteratorNode.Up;
+      case Down:
+        return rowIteratorNode.Down;
+      case Left:
+        return rowIteratorNode.Left;
+      case Right:
+        return rowIteratorNode.Right;
+    }
+    return null;
+  }
+
+  public Node getPreviousNodeInDirection(Point coordinate, Directions currentDirection) {
+    int X = coordinate.getX();
+    int Y = coordinate.getY();
+
+    rowIteratorNode = referenceNode;
+
+    for (int I = 0; I < Y; ++I) {
+      rowIteratorNode = rowIteratorNode.Down;
+    }
+
+    for (int J = 0; J < X; ++J) {
+      rowIteratorNode = rowIteratorNode.Right;
+    }
+
+    switch (currentDirection.getOppositeDirection()) {
       case Up:
         return rowIteratorNode.Up;
       case Down:

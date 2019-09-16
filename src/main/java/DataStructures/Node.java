@@ -1,7 +1,7 @@
-package DataStructureLayer;
+package DataStructures;
 
-import LogicLayer.Dot;
-import LogicLayer.IGameObject;
+import GameLogicTests.Dot;
+import GameLogicTests.IGameObject;
 
 public class Node {
 

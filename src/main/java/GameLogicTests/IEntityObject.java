@@ -1,6 +1,10 @@
-package LogicLayer;
+package GameLogicTests;
 
 public interface IEntityObject extends IGameObject {
+
+  void increaseScore();
+
+  int getCurrentScore();
 
   boolean holdingDot();
 
@@ -9,4 +13,8 @@ public interface IEntityObject extends IGameObject {
   Directions getCurrentDirection();
 
   String getName();
+
+  boolean winCondition(int scoreCondition);
+
+  void pickUpDot();
 }

@@ -1,4 +1,4 @@
-package DataStructureLayer;
+package DataStructures;
 
 public class Point {
   private int x;
