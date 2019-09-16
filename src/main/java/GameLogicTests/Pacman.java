@@ -13,6 +13,21 @@ public class Pacman implements IEntityObject {
   }
 
   @Override
+  public String getString(){
+    switch (currentDirection){
+      case Up:
+        return "V";
+      case Left:
+        return ">";
+      case Right:
+        return "<";
+      case Down:
+        return "^";
+    }
+    return "";
+  }
+
+  @Override
   public boolean holdingDot() {
     return holdingDot;
   }

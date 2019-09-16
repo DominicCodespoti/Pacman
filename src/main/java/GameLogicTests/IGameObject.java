@@ -6,4 +6,5 @@ public interface IGameObject {
 
   boolean isEdible();
 
+  String getString();
 }

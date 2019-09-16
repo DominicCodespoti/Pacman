@@ -39,6 +39,18 @@ public class BoardController {
     attemptToEat(entityToMove);
   }
 
+  public String getObjectRepresentationAtPosition(Point positionToGet){
+    return gameBoard.getValue(positionToGet).getString();
+  }
+
+  public int getBoardWidth(){
+    return gameBoard.GetWidth();
+  }
+
+  public int getBoardHeight(){
+    return gameBoard.GetHeight();
+  }
+
   private void updateEntityPosition(IEntityObject entityToMove, Point newPosition) {
     Entry test = currentEntities.entrySet().stream()
         .filter(x -> x.getKey().getName().equals(entityToMove.getName())).findFirst().orElse(null);
