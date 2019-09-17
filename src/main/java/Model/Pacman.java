@@ -1,20 +1,32 @@
-package GameLogicTests;
+package Model;
 
-public class Ghost implements IEntityObject {
+import DataStructures.Directions;
+
+public class Pacman implements IEntityObject {
 
   private Directions currentDirection;
   private String name;
   private int score = 0;
   private boolean holdingDot = false;
 
-  public Ghost(String name) {
+  public Pacman(String name) {
     currentDirection = Directions.Up;
     this.name = name;
   }
 
   @Override
   public String getString() {
-    return "G";
+    switch (currentDirection) {
+      case Up:
+        return "V";
+      case Left:
+        return ">";
+      case Right:
+        return "<";
+      case Down:
+        return "^";
+    }
+    return "";
   }
 
   @Override
@@ -29,7 +41,7 @@ public class Ghost implements IEntityObject {
 
   @Override
   public boolean isEdible() {
-    return false;
+    return true;
   }
 
   @Override
@@ -39,7 +51,7 @@ public class Ghost implements IEntityObject {
 
   @Override
   public boolean winCondition(int scoreCondition) {
-    return score == scoreCondition;
+    return score >= scoreCondition;
   }
 
   @Override
@@ -61,5 +73,4 @@ public class Ghost implements IEntityObject {
   public void setHoldingDot(boolean isHolding) {
     holdingDot = isHolding;
   }
-
 }

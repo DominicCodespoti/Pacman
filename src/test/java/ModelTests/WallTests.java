@@ -1,6 +1,8 @@
-package GameLogicTests;
+package ModelTests;
 
+import Controller.BoardController;
 import DataStructures.Point;
+import DataStructures.Directions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,9 +17,9 @@ public class WallTests {
 
   @Test
   public void pacmanDoesNotRotateAndDoesNotMoveIfAttemptingToMoveIntoWall() {
-    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Down);
-    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Down);
-    testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Left);
+    testMaster.tryToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Down);
+    testMaster.tryToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Down);
+    testMaster.tryToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Left);
     Assert.assertEquals("^", testMaster.getObjectRepresentationAtPosition(new Point(2, 4)));
   }
 }

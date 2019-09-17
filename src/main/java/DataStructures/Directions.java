@@ -1,4 +1,4 @@
-package GameLogicTests;
+package DataStructures;
 
 public enum Directions {
   Down,

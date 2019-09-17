@@ -1,9 +1,9 @@
-package InputOutput;
+package View;
 
 import DataStructures.Point;
-import GameLogicTests.BoardController;
+import Controller.BoardController;
 
-public class ConsoleOutput {
+public class ConsoleOutput implements IViewOutput{
   private BoardController boardController;
 
   public ConsoleOutput (BoardController boardController){
@@ -14,6 +14,7 @@ public class ConsoleOutput {
     System.out.print("\033[H\033[2J");
   }
 
+  @Override
   public void printBoard(){
     for (int i = 0; i < boardController.getBoardHeight(); i++) {
       for (int j = 0; j < boardController.getBoardWidth(); j++) {

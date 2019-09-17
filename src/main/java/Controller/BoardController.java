@@ -1,18 +1,25 @@
-package GameLogicTests;
+package Controller;
 
-import DataStructures.MultiLayerLinkedList;
+import DataStructures.QuadruplyLinkedList;
 import DataStructures.Point;
+import DataStructures.Directions;
+import Model.Dot;
+import Model.Ghost;
+import Model.IEntityObject;
+import Model.Pacman;
+import Model.Space;
+import Model.Wall;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 public class BoardController {
 
-  private MultiLayerLinkedList gameBoard;
+  private QuadruplyLinkedList gameBoard;
   private Map<IEntityObject, Point> currentEntities = new HashMap<>();
 
   public BoardController(int mapHeight, int mapWidth) {
-    gameBoard = new MultiLayerLinkedList(mapWidth, mapHeight);
+    gameBoard = new QuadruplyLinkedList(mapWidth, mapHeight);
 
     Pacman pacman = new Pacman("Pacman");
     currentEntities.put(pacman, new Point(mapHeight / 2, mapWidth / 2));
@@ -26,7 +33,7 @@ public class BoardController {
     gameBoard.setValue(new Point(1, mapWidth - 1), new Wall());
   }
 
-  public Point getExistingEntityPositionByName(IEntityObject entityToMove) {
+  public Point getExistingEntityPosition(IEntityObject entityToMove) {
     Entry test = currentEntities.entrySet().stream()
         .filter(x -> x.getKey().getName().equals(entityToMove.getName())).findFirst().orElse(null);
     return (Point) test.getValue();
@@ -39,7 +46,7 @@ public class BoardController {
         .orElse(null);
   }
 
-  public void attemptToRotateAndMoveEntity(IEntityObject entityToMove, Directions newDirection) {
+  public void tryToRotateAndMoveEntity(IEntityObject entityToMove, Directions newDirection) {
     Directions oldDirection = entityToMove.getCurrentDirection();
     entityToMove.updateCurrentDirection(newDirection);
     if (isPathBlocked(entityToMove)) {
@@ -69,14 +76,14 @@ public class BoardController {
   }
 
   private boolean isPathBlocked(IEntityObject entityToCheck) {
-    Point entityPosition = getExistingEntityPositionByName(entityToCheck);
+    Point entityPosition = getExistingEntityPosition(entityToCheck);
     Directions entityDirection = getExistingEntityByName(entityToCheck.getName())
         .getCurrentDirection();
     return gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value.isSolid();
   }
 
   private void attemptToEat(IEntityObject entityToMove) {
-    Point entityPosition = getExistingEntityPositionByName(entityToMove);
+    Point entityPosition = getExistingEntityPosition(entityToMove);
     Directions entityDirection = getExistingEntityByName(entityToMove.getName())
         .getCurrentDirection();
     if (entityToMove instanceof Ghost
@@ -97,7 +104,7 @@ public class BoardController {
   }
 
   private void movePositionOnBoard(IEntityObject entityToMove) {
-    Point entityPosition = getExistingEntityPositionByName(entityToMove);
+    Point entityPosition = getExistingEntityPosition(entityToMove);
     Directions entityDirection = getExistingEntityByName(entityToMove.getName())
         .getCurrentDirection();
     if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value instanceof Dot) {

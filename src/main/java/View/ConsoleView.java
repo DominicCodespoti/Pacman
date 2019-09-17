@@ -1,11 +1,13 @@
-package InputOutput;
+package View;
 
-import GameLogicTests.BoardController;
-import GameLogicTests.Directions;
-import GameLogicTests.IEntityObject;
+import DataStructures.Point;
+import Controller.BoardController;
+import DataStructures.Directions;
+import Model.DistanceCalculator;
+import Model.IEntityObject;
 import java.io.IOException;
 
-public class ConsoleInterface {
+public class ConsoleView implements IView {
 
   private ConsoleInput consoleInput = new ConsoleInput();
 
@@ -16,13 +18,14 @@ public class ConsoleInterface {
   }
 
   private void enterRawTerminalMode() throws IOException, InterruptedException {
-    String[] cmd = {"/bin/sh", "-c", "stty raw </dev/tty"};
-    Runtime.getRuntime().exec(cmd).waitFor();
+
   }
 
+  @Override
   public void runGame() throws IOException, InterruptedException {
     BoardController boardController = new BoardController(10, 10);
     ConsoleOutput consoleOutput = new ConsoleOutput(boardController);
+    DistanceCalculator distanceCalculator;
     IEntityObject player = boardController.getExistingEntityByName("Pacman");
     IEntityObject enemy = boardController.getExistingEntityByName("Ghost");
     int userInputAsByte = 0;
@@ -41,22 +44,27 @@ public class ConsoleInterface {
       }
 
       if (userInputAsByte == 119) {
-        boardController.attemptToRotateAndMoveEntity(player, Directions.Up);
+        boardController.tryToRotateAndMoveEntity(player, Directions.Up);
       }
 
       if (userInputAsByte == 97) {
-        boardController.attemptToRotateAndMoveEntity(player, Directions.Left);
+        boardController.tryToRotateAndMoveEntity(player, Directions.Left);
       }
 
       if (userInputAsByte == 100) {
-        boardController.attemptToRotateAndMoveEntity(player, Directions.Right);
+        boardController.tryToRotateAndMoveEntity(player, Directions.Right);
       }
 
       if (userInputAsByte == 115) {
-        boardController.attemptToRotateAndMoveEntity(player, Directions.Down);
+        boardController.tryToRotateAndMoveEntity(player, Directions.Down);
       }
 
-      boardController.attemptToRotateAndMoveEntity(enemy, Directions.Left);
+      Point playerCurrentPosition = boardController.getExistingEntityPosition(player);
+      Point enemyCurrentPosition = boardController.getExistingEntityPosition(enemy);
+
+      distanceCalculator = new DistanceCalculator(enemyCurrentPosition);
+      boardController.tryToRotateAndMoveEntity(enemy,
+          distanceCalculator.findDirectionWithClosestPath(playerCurrentPosition));
 
       consoleOutput.clearScreen();
       consoleOutput.printBoard();

@@ -1,16 +1,15 @@
 package DataStructures;
 
-import GameLogicTests.Directions;
-import GameLogicTests.IGameObject;
+import Model.IGameObject;
 
-public class MultiLayerLinkedList {
+public class QuadruplyLinkedList {
 
   private Node referenceNode;
   private Node rowIteratorNode;
   private Node columnIterator;
   private int width, height;
 
-  public MultiLayerLinkedList(int Width, int Height) {
+  public QuadruplyLinkedList(int Width, int Height) {
     width = Width;
     height = Height;
     referenceNode = new Node();

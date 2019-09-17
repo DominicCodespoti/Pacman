@@ -1,4 +1,6 @@
-package GameLogicTests;
+package Model;
+
+import DataStructures.Directions;
 
 public interface IEntityObject extends IGameObject {
 

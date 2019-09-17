@@ -1,7 +1,7 @@
 package DataStructures;
 
-import GameLogicTests.Dot;
-import GameLogicTests.IGameObject;
+import Model.Dot;
+import Model.IGameObject;
 
 public class Node {
 

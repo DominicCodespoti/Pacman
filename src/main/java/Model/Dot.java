@@ -1,4 +1,4 @@
-package GameLogicTests;
+package Model;
 
 public class Dot implements IGameObject {
 

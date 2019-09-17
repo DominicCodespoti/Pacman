@@ -1,4 +1,4 @@
-package InputOutput;
+package View;
 
 class ConsoleInputValidation {
 
