@@ -3,12 +3,15 @@ package InputOutput;
 import DataStructures.Point;
 import GameLogicTests.BoardController;
 
-public class ConsolePrinter {
-
+public class ConsoleOutput {
   private BoardController boardController;
 
-  public ConsolePrinter (BoardController boardController){
+  public ConsoleOutput (BoardController boardController){
     this.boardController = boardController;
+  }
+
+  public void clearScreen(){
+    System.out.print("\033[H\033[2J");
   }
 
   public void printBoard(){

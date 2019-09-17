@@ -13,11 +13,17 @@ public class BoardController {
 
   public BoardController(int mapHeight, int mapWidth) {
     gameBoard = new MultiLayerLinkedList(mapWidth, mapHeight);
+
     Pacman pacman = new Pacman("Pacman");
+    currentEntities.put(pacman, new Point(mapHeight / 2, mapWidth / 2));
     gameBoard.setValue(new Point(mapHeight / 2, mapWidth / 2), pacman);
+
+    Ghost ghost = new Ghost("Ghost");
+    currentEntities.put(ghost, new Point(mapHeight, mapWidth / 2));
+    gameBoard.setValue(new Point(mapHeight, mapWidth / 2), ghost);
+
     gameBoard.setValue(new Point(0, mapWidth - 1), new Wall());
     gameBoard.setValue(new Point(1, mapWidth - 1), new Wall());
-    currentEntities.put(pacman, new Point(mapHeight / 2, mapWidth / 2));
   }
 
   public Point getExistingEntityPositionByName(IEntityObject entityToMove) {
@@ -29,7 +35,7 @@ public class BoardController {
   public IEntityObject getExistingEntityByName(String entityName) {
     return currentEntities.keySet().stream()
         .filter(x -> x.getName().equals(entityName))
-        .findAny()
+        .findFirst()
         .orElse(null);
   }
 
@@ -49,11 +55,11 @@ public class BoardController {
   }
 
   public int getBoardWidth() {
-    return gameBoard.GetWidth();
+    return gameBoard.getWidth();
   }
 
   public int getBoardHeight() {
-    return gameBoard.GetHeight();
+    return gameBoard.getHeight();
   }
 
   private void updateEntityPosition(IEntityObject entityToMove, Point newPosition) {

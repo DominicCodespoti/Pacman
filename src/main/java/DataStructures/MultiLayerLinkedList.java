@@ -182,11 +182,11 @@ public class MultiLayerLinkedList {
     }
   }
 
-  public int GetWidth() {
+  public int getWidth() {
     return width;
   }
 
-  public int GetHeight() {
+  public int getHeight() {
     return height;
   }
 }

@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58c56f5e-bad2-46d9-9bd2-f53727c991ef" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/GameLogicTests/Ghost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInputValidation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/InputOutput/ConsoleOutput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/GameLogicTests/WallTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -13,10 +19,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataStructures/MultiLayerLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataStructures/MultiLayerLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameLogicTests/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameLogicTests/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GameLogicTests/DotTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GameLogicTests/DotTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GameLogicTests/PacmanTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GameLogicTests/PacmanTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/InputOutput/ConsolePrinter.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/InputOutputTests/ConsolePrinterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/InputOutputTests/ConsolePrinterTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -55,48 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/BoardController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2032#2033#0" expanded="true" />
-                <element signature="e#2069#2070#0" expanded="true" />
-                <element signature="e#2102#2103#0" expanded="true" />
-                <element signature="e#2140#2141#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/GameLogicTests/DotTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="19" column="105" selection-start-line="19" selection-start-column="105" selection-end-line="19" selection-end-column="105" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/InputOutputTests/ConsolePrinterTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="18" column="105" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="105" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/GameLogicTests/PacmanTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2037">
-              <caret line="99" column="108" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="108" />
+            <state relative-caret-position="310">
+              <caret line="85" column="94" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="94" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,13 +71,71 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="130" selection-start-line="130" selection-end-line="130" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="60" column="6" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
+            <state relative-caret-position="229">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Ghost.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+              <folding>
+                <element signature="e#332#333#0" expanded="true" />
+                <element signature="e#352#353#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsoleOutput.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#191#192#0" expanded="true" />
+                <element signature="e#239#240#0" expanded="true" />
+                <element signature="e#336#337#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInput.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInputValidation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -142,11 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/CoreLogic/Board.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConsoleImplementation/ConsoleBoard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConsoleImplementation/ConsoleIBoard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConsoleLayer/ConsoleIBoard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LogicLayer/Directions.java" />
         <option value="$PROJECT_DIR$/src/main/java/LogicLayer/IEntityController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ConsoleLayer/ConsoleBoard.java" />
         <option value="$PROJECT_DIR$/src/main/java/ConsoleLayer/ConsoleGameplay.java" />
@@ -185,14 +204,19 @@
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameLogicTests/IEntityObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameLogicTests/Pacman.java" />
-        <option value="$PROJECT_DIR$/src/main/java/DataStructures/MultiLayerLinkedList.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameLogicTests/Wall.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/test/java/GameLogicTests/PacmanTests.java" />
-        <option value="$PROJECT_DIR$/src/test/java/InputOutputTests/ConsolePrinterTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DataStructures/MultiLayerLinkedList.java" />
         <option value="$PROJECT_DIR$/src/test/java/GameLogicTests/DotTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameLogicTests/BoardController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/GameLogicTests/WallTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameLogicTests/Ghost.java" />
+        <option value="$PROJECT_DIR$/src/main/java/InputOutput/ConsoleOutput.java" />
+        <option value="$PROJECT_DIR$/src/test/java/InputOutputTests/ConsolePrinterTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInputValidation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInput.java" />
         <option value="$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameLogicTests/BoardController.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -271,6 +295,22 @@
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Pacman" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PacmanComposition" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GameLogicTests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pacman" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PacmanComposition" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="InputOutputTests" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -308,7 +348,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GameLogicTests in Pacman.test">
+  <component name="RunManager" selected="JUnit.All in Pacman.test">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Pacman.main" />
@@ -316,33 +356,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConsolePrinterTests.printerPrintsCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in Pacman.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Pacman.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="InputOutputTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="InputOutputTests" />
-      <option name="MAIN_CLASS_NAME" value="InputOutputTests.ConsolePrinterTests" />
-      <option name="METHOD_NAME" value="printerPrintsCorrectly" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DotTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DotTests.dotBecomesSpaceWhenPacmanMovesOverIt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Pacman.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="InputOutputTests.*" />
+          <option name="PATTERN" value="GameLogicTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="GameLogicTests" />
       <option name="MAIN_CLASS_NAME" value="GameLogicTests.DotTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="dotBecomesSpaceWhenPacmanMovesOverIt" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -361,28 +394,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PacmanTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WallTests.dotBecomesSpaceWhenPacmanMovesOverIt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Pacman.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="InputOutputTests.*" />
+          <option name="PATTERN" value="GameLogicTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="GameLogicTests" />
-      <option name="MAIN_CLASS_NAME" value="GameLogicTests.PacmanTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="GameLogicTests.WallTests" />
+      <option name="METHOD_NAME" value="dotBecomesSpaceWhenPacmanMovesOverIt" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in Pacman.test" />
+        <item itemvalue="JUnit.WallTests.dotBecomesSpaceWhenPacmanMovesOverIt" />
+        <item itemvalue="JUnit.DotTests.dotBecomesSpaceWhenPacmanMovesOverIt" />
         <item itemvalue="JUnit.GameLogicTests in Pacman.test" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.DotTests" />
-        <item itemvalue="JUnit.ConsolePrinterTests.printerPrintsCorrectly" />
-        <item itemvalue="JUnit.PacmanTests" />
       </list>
     </recent_temporary>
   </component>
@@ -404,44 +438,44 @@
       <workItem from="1568182928152" duration="19940000" />
       <workItem from="1568353887781" duration="72000" />
       <workItem from="1568590484450" duration="7923000" />
-      <workItem from="1568600036251" duration="14400000" />
+      <workItem from="1568600036251" duration="20282000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ConsolePrinterTests_printerPrintsCorrectly - 2019.09.16 at 15h 11m 48s.xml">
-      <configuration name="ConsolePrinterTests.printerPrintsCorrectly" configurationId="JUnit" />
+    <history-entry file="WallTests_dotBecomesSpaceWhenPacmanMovesOverIt - 2019.09.17 at 10h 11m 42s.xml">
+      <configuration name="WallTests.dotBecomesSpaceWhenPacmanMovesOverIt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConsolePrinterTests_printerPrintsCorrectly - 2019.09.16 at 15h 12m 03s.xml">
-      <configuration name="ConsolePrinterTests.printerPrintsCorrectly" configurationId="JUnit" />
+    <history-entry file="DotTests_dotBecomesSpaceWhenPacmanMovesOverIt - 2019.09.17 at 10h 12m 08s.xml">
+      <configuration name="DotTests.dotBecomesSpaceWhenPacmanMovesOverIt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConsolePrinterTests_printerPrintsCorrectly - 2019.09.16 at 15h 13m 48s.xml">
-      <configuration name="ConsolePrinterTests.printerPrintsCorrectly" configurationId="JUnit" />
+    <history-entry file="DotTests_dotBecomesSpaceWhenPacmanMovesOverIt - 2019.09.17 at 10h 12m 27s.xml">
+      <configuration name="DotTests.dotBecomesSpaceWhenPacmanMovesOverIt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConsolePrinterTests_printerPrintsCorrectly - 2019.09.16 at 15h 14m 50s.xml">
-      <configuration name="ConsolePrinterTests.printerPrintsCorrectly" configurationId="JUnit" />
+    <history-entry file="DotTests_dotBecomesSpaceWhenPacmanMovesOverIt - 2019.09.17 at 10h 12m 52s.xml">
+      <configuration name="DotTests.dotBecomesSpaceWhenPacmanMovesOverIt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DotTests - 2019.09.16 at 15h 25m 32s.xml">
-      <configuration name="DotTests" configurationId="JUnit" />
+    <history-entry file="DotTests_dotBecomesSpaceWhenPacmanMovesOverIt - 2019.09.17 at 10h 12m 58s.xml">
+      <configuration name="DotTests.dotBecomesSpaceWhenPacmanMovesOverIt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GameLogicTests_in_Pacman_test - 2019.09.17 at 08h 38m 23s.xml">
-      <configuration name="GameLogicTests in Pacman.test" configurationId="JUnit" />
+    <history-entry file="WallTests_dotBecomesSpaceWhenPacmanMovesOverIt - 2019.09.17 at 10h 13m 08s.xml">
+      <configuration name="WallTests.dotBecomesSpaceWhenPacmanMovesOverIt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GameLogicTests_in_Pacman_test - 2019.09.17 at 09h 13m 41s.xml">
-      <configuration name="GameLogicTests in Pacman.test" configurationId="JUnit" />
+    <history-entry file="WallTests_dotBecomesSpaceWhenPacmanMovesOverIt - 2019.09.17 at 10h 33m 54s.xml">
+      <configuration name="WallTests.dotBecomesSpaceWhenPacmanMovesOverIt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GameLogicTests_in_Pacman_test - 2019.09.17 at 09h 51m 33s.xml">
-      <configuration name="GameLogicTests in Pacman.test" configurationId="JUnit" />
+    <history-entry file="All_in_Pacman_test - 2019.09.17 at 10h 34m 15s.xml">
+      <configuration name="All in Pacman.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GameLogicTests_in_Pacman_test - 2019.09.17 at 09h 55m 40s.xml">
-      <configuration name="GameLogicTests in Pacman.test" configurationId="JUnit" />
+    <history-entry file="All_in_Pacman_test - 2019.09.17 at 11h 10m 41s.xml">
+      <configuration name="All in Pacman.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GameLogicTests_in_Pacman_test - 2019.09.17 at 09h 56m 17s.xml">
-      <configuration name="GameLogicTests in Pacman.test" configurationId="JUnit" />
+    <history-entry file="All_in_Pacman_test - 2019.09.17 at 11h 16m 33s.xml">
+      <configuration name="All in Pacman.test" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105671000" />
+    <option name="totallyTimeSpent" value="111553000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="30" y="30" width="1620" height="990" extended-state="0" />
@@ -567,34 +601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DataStructures/Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DataStructures/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Directions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding>
-            <element signature="e#151#152#0" expanded="true" />
-            <element signature="e#167#168#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/IBoard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -609,13 +615,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/IGameObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Board.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -623,46 +622,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Space.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/DataStructures/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
           <folding>
-            <element signature="e#242#243#0" expanded="true" />
-            <element signature="e#262#263#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Dot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="17" selection-end-column="3" />
-          <folding>
-            <element signature="e#237#238#0" expanded="true" />
-            <element signature="e#255#256#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DataStructures/MultiLayerLinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="936">
+          <caret line="121" column="33" lean-forward="true" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4611#4612#0" expanded="true" />
             <element signature="e#4633#4634#0" expanded="true" />
+            <element signature="e#4661#4662#0" expanded="true" />
             <element signature="e#4684#4685#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsolePrinter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/DataStructures/Point.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+        <state relative-caret-position="231">
+          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Directions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Dot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="17" column="3" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#235#236#0" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/IEntityObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/IGameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Space.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Wall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <element signature="e#108#109#0" expanded="true" />
+            <element signature="e#129#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -670,53 +706,61 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/IEntityObject.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/GameLogicTests/PacmanTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="541">
+          <caret line="99" column="108" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="108" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Wall.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/GameLogicTests/DotTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        <state relative-caret-position="298">
+          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
           <folding>
-            <element signature="e#108#109#0" expanded="true" />
-            <element signature="e#130#131#0" expanded="true" />
-            <element signature="e#173#174#0" expanded="true" />
-            <element signature="e#195#196#0" expanded="true" />
-            <element signature="e#238#239#0" expanded="true" />
-            <element signature="e#255#256#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/GameLogicTests/WallTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="16" column="73" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Pacman.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="54" column="11" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
+        <state relative-caret-position="84">
+          <caret line="4" selection-start-line="4" selection-end-line="72" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/requests/FilterRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        <state relative-caret-position="327">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/GameLogicTests/DotTests.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsolePrinter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="19" column="105" selection-start-line="19" selection-start-column="105" selection-end-line="19" selection-end-column="105" />
+        <state relative-caret-position="405">
+          <caret line="21" column="3" lean-forward="true" selection-start-line="13" selection-start-column="2" selection-end-line="21" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -725,45 +769,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/InputOutputTests/ConsolePrinterTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="18" column="105" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="105" />
+        <state relative-caret-position="294">
+          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/BoardController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInputValidation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="189">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2032#2033#0" expanded="true" />
-            <element signature="e#2069#2070#0" expanded="true" />
-            <element signature="e#2102#2103#0" expanded="true" />
-            <element signature="e#2140#2141#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/GameLogicTests/PacmanTests.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsoleOutput.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2037">
-          <caret line="99" column="108" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="108" />
+        <state relative-caret-position="188">
+          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#191#192#0" expanded="true" />
+            <element signature="e#239#240#0" expanded="true" />
+            <element signature="e#336#337#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="60" column="6" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
+        <state relative-caret-position="229">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Ghost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+          <folding>
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#352#353#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/BoardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="85" column="94" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
         </state>
       </provider>
     </entry>

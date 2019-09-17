@@ -2,18 +2,18 @@ package InputOutputTests;
 
 import GameLogicTests.BoardController;
 import GameLogicTests.Directions;
-import InputOutput.ConsolePrinter;
+import InputOutput.ConsoleOutput;
 import org.junit.Test;
 
 public class ConsolePrinterTests {
 
-  private ConsolePrinter consolePrinter;
+  private ConsoleOutput consolePrinter;
   private BoardController testMaster;
 
   @Test
   public void printerPrintsCorrectly() {
     testMaster = new BoardController(5, 5);
-    consolePrinter = new ConsolePrinter(testMaster);
+    consolePrinter = new ConsoleOutput(testMaster);
 
     consolePrinter.printBoard();
     testMaster.attemptToRotateAndMoveEntity(testMaster.getExistingEntityByName("Pacman"), Directions.Up);
