@@ -1,9 +1,10 @@
-package View;
+package View.Console;
 
 import DataStructures.Point;
 import Controller.BoardController;
+import View.IViewOutput;
 
-public class ConsoleOutput implements IViewOutput{
+public class ConsoleOutput implements IViewOutput {
   private BoardController boardController;
 
   public ConsoleOutput (BoardController boardController){

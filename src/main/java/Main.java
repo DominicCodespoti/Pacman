@@ -1,4 +1,4 @@
-import View.ConsoleView;
+import View.Console.ConsoleView;
 import View.IView;
 import java.io.IOException;
 

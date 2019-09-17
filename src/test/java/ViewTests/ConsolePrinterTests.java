@@ -2,7 +2,7 @@ package ViewTests;
 
 import Controller.BoardController;
 import DataStructures.Directions;
-import View.ConsoleOutput;
+import View.Console.ConsoleOutput;
 import org.junit.Test;
 
 public class ConsolePrinterTests {

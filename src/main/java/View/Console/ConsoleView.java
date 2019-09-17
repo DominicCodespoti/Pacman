@@ -1,10 +1,11 @@
-package View;
+package View.Console;
 
 import DataStructures.Point;
 import Controller.BoardController;
 import DataStructures.Directions;
 import Model.DistanceCalculator;
 import Model.IEntityObject;
+import View.IView;
 import java.io.IOException;
 
 public class ConsoleView implements IView {
@@ -18,7 +19,8 @@ public class ConsoleView implements IView {
   }
 
   private void enterRawTerminalMode() throws IOException, InterruptedException {
-
+    String[] cmd = {"/bin/sh", "-c", "stty raw </dev/tty"};
+    Runtime.getRuntime().exec(cmd).waitFor();
   }
 
   @Override

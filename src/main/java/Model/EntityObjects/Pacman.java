@@ -1,6 +1,7 @@
-package Model;
+package Model.EntityObjects;
 
 import DataStructures.Directions;
+import Model.IEntityObject;
 
 public class Pacman implements IEntityObject {
 

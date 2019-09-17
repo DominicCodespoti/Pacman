@@ -1,6 +1,6 @@
 package DataStructures;
 
-import Model.Dot;
+import Model.GameObjects.Dot;
 import Model.IGameObject;
 
 public class Node {

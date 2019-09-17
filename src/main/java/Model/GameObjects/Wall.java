@@ -1,4 +1,6 @@
-package Model;
+package Model.GameObjects;
+
+import Model.IGameObject;
 
 public class Wall implements IGameObject {
 
