@@ -86,7 +86,7 @@ public class MultiLayerLinkedList {
     return rowIteratorNode.Value;
   }
 
-  public Node getNextNodeInDirection(Point coordinate, Directions currentDirection) {
+  public Node nextNodeInDirection(Point coordinate, Directions currentDirection) {
     int X = coordinate.getX();
     int Y = coordinate.getY();
 
@@ -113,7 +113,7 @@ public class MultiLayerLinkedList {
     return null;
   }
 
-  public Node getPreviousNodeInDirection(Point coordinate, Directions currentDirection) {
+  public Node oppositeNodeInDirection(Point coordinate, Directions currentDirection) {
     int X = coordinate.getX();
     int Y = coordinate.getY();
 

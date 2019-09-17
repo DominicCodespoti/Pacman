@@ -72,29 +72,39 @@ public class BoardController {
     Point entityPosition = getExistingEntityPositionByName(entityToCheck);
     Directions entityDirection = getExistingEntityByName(entityToCheck.getName())
         .getCurrentDirection();
-    return gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Value.isSolid();
+    return gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value.isSolid();
   }
 
   private void attemptToEat(IEntityObject entityToMove) {
     Point entityPosition = getExistingEntityPositionByName(entityToMove);
     Directions entityDirection = getExistingEntityByName(entityToMove.getName())
         .getCurrentDirection();
-    if (entityToMove.isHoldingDot()) {
+    if (entityToMove instanceof Ghost
+        && gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value instanceof Pacman) {
+      currentEntities.remove(gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value);
       entityToMove.increaseScore();
-      entityToMove.setHoldingDot(false);
     }
-    gameBoard.getPreviousNodeInDirection(entityPosition, entityDirection).Value = new Space();
+    if (entityToMove instanceof Ghost && entityToMove.isHoldingDot()) {
+      gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).Value = new Dot();
+      entityToMove.setHoldingDot(false);
+    } else {
+      if (entityToMove.isHoldingDot()) {
+        entityToMove.increaseScore();
+        entityToMove.setHoldingDot(false);
+      }
+      gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).Value = new Space();
+    }
   }
 
   private void movePositionOnBoard(IEntityObject entityToMove) {
     Point entityPosition = getExistingEntityPositionByName(entityToMove);
     Directions entityDirection = getExistingEntityByName(entityToMove.getName())
         .getCurrentDirection();
-    if (gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Value instanceof Dot) {
+    if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value instanceof Dot) {
       entityToMove.setHoldingDot(true);
     }
     updateEntityPosition(entityToMove,
-        gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Position);
-    gameBoard.getNextNodeInDirection(entityPosition, entityDirection).Value = entityToMove;
+        gameBoard.nextNodeInDirection(entityPosition, entityDirection).Position);
+    gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value = entityToMove;
   }
 }

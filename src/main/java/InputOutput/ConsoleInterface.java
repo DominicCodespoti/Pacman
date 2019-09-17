@@ -21,15 +21,16 @@ public class ConsoleInterface {
   }
 
   public void runGame() throws IOException, InterruptedException {
-    BoardController boardController = new BoardController(25, 25);
+    BoardController boardController = new BoardController(10, 10);
     ConsoleOutput consoleOutput = new ConsoleOutput(boardController);
     IEntityObject player = boardController.getExistingEntityByName("Pacman");
     IEntityObject enemy = boardController.getExistingEntityByName("Ghost");
     int userInputAsByte = 0;
 
     enterRawTerminalMode();
+    int pacmanScoreToWin = boardController.getBoardHeight() * boardController.getBoardWidth() - 3;
 
-    while (!boardController.getExistingEntityByName("Pacman").winCondition(22)) {
+    while (!player.winCondition(pacmanScoreToWin) && !enemy.winCondition(1)) {
       int uncheckedInput = consoleInput.getUserInput();
       if (uncheckedInput != 0) {
         userInputAsByte = uncheckedInput;
@@ -61,6 +62,7 @@ public class ConsoleInterface {
       consoleOutput.printBoard();
       Thread.sleep(500);
     }
+    consoleOutput.clearScreen();
     enterCookedTerminalModeAndExit();
   }
 }

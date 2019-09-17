@@ -1,6 +1,7 @@
 package GameLogicTests;
 
 public class Ghost implements IEntityObject {
+
   private Directions currentDirection;
   private String name;
   private int score = 0;
@@ -38,7 +39,7 @@ public class Ghost implements IEntityObject {
 
   @Override
   public boolean winCondition(int scoreCondition) {
-    return score >= scoreCondition;
+    return score == scoreCondition;
   }
 
   @Override
@@ -58,7 +59,7 @@ public class Ghost implements IEntityObject {
 
   @Override
   public void setHoldingDot(boolean isHolding) {
-    holdingDot = false;
+    holdingDot = isHolding;
   }
 
 }
