@@ -2,43 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58c56f5e-bad2-46d9-9bd2-f53727c991ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ControllerTests/BoardGeneratorTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataStructures/Directions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataStructures/Directions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataStructures/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataStructures/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataStructures/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataStructures/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataStructures/QuadruplyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataStructures/QuadruplyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/BoardGeneratorStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/BoardGeneratorStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DistanceCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DistanceCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/GameObjects/Dot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/GameObjects/Dot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/GameObjects/Space.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/GameObjects/Space.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/IEntityObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/IEntityObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/IGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/IViewInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/IGameInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/IViewOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/IGameOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTests/DistanceCalculatorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTests/DistanceCalculatorTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTests/DotTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTests/DotTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTests/PacmanTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTests/PacmanTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTests/WallTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTests/WallTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests/ConsolePrinterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTests/ConsolePrinterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -73,11 +39,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/BoardController.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="121" column="88" lean-forward="true" selection-start-line="121" selection-start-column="77" selection-end-line="121" selection-end-column="88" />
+            <state relative-caret-position="903">
+              <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,7 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/GameLogicTests/PacmanTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/GameLogicTests/DotTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/GameLogicTests/WallTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/InputOutputTests/ConsolePrinterTests.java" />
@@ -135,12 +127,10 @@
         <option value="$PROJECT_DIR$/src/main/java/View/IViewOutput.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/ConsoleView.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/IBoardGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleView.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsolePlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleRunner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java" />
         <option value="$PROJECT_DIR$/src/test/java/ModelTests/DotTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/ModelTests/PacmanTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/ModelTests/WallTests.java" />
@@ -155,10 +145,13 @@
         <option value="$PROJECT_DIR$/src/test/java/ViewTests/ConsolePrinterTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/DataStructures/Node.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInput.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" />
         <option value="$PROJECT_DIR$/src/main/java/DataStructures/Point.java" />
         <option value="$PROJECT_DIR$/src/main/java/DataStructures/QuadruplyLinkedList.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java" />
       </list>
     </option>
   </component>
@@ -233,15 +226,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
               <item name="EntityObjects" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Pacman" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PacmanComposition" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-              <item name="GameObjects" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Pacman" type="b2602c69:ProjectViewProjectNode" />
@@ -418,20 +402,11 @@
       <workItem from="1568353887781" duration="72000" />
       <workItem from="1568590484450" duration="7923000" />
       <workItem from="1568600036251" duration="28134000" />
-      <workItem from="1568697630415" duration="20245000" />
+      <workItem from="1568697630415" duration="23104000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_Pacman_test_(1) - 2019.09.18 at 12h 54m 24s.xml">
-      <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Pacman_test_(1) - 2019.09.18 at 12h 55m 02s.xml">
-      <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Pacman_test_(1) - 2019.09.18 at 12h 57m 16s.xml">
-      <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_Pacman_test_(1) - 2019.09.18 at 12h 57m 42s.xml">
       <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
     </history-entry>
@@ -453,9 +428,18 @@
     <history-entry file="All_in_Pacman_test_(1) - 2019.09.19 at 08h 39m 25s.xml">
       <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_Pacman_test_(1) - 2019.09.19 at 09h 01m 40s.xml">
+      <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Pacman_test_(1) - 2019.09.19 at 09h 01m 53s.xml">
+      <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Pacman_test_(1) - 2019.09.19 at 09h 38m 20s.xml">
+      <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139650000" />
+    <option name="totallyTimeSpent" value="142509000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
@@ -652,13 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/IBoardGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ViewTests/ConsolePrinterTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -753,13 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="47" column="11" lean-forward="true" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/GameObjects/Space.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -774,30 +744,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-33">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DistanceCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="56" column="25" lean-forward="true" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -815,26 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
           <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -872,10 +802,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/IBoardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1323">
+          <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
+          <folding>
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#775#776#0" expanded="true" />
+            <element signature="e#839#840#0" expanded="true" />
+            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#965#966#0" expanded="true" />
+            <element signature="e#1070#1071#0" expanded="true" />
+            <element signature="e#1147#1148#0" expanded="true" />
+            <element signature="e#1188#1189#0" expanded="true" />
+            <element signature="e#1278#1279#0" expanded="true" />
+            <element signature="e#1340#1341#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Controller/BoardController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="121" column="88" lean-forward="true" selection-start-line="121" selection-start-column="77" selection-end-line="121" selection-end-column="88" />
+        <state relative-caret-position="321">
+          <caret line="102" column="43" lean-forward="true" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="903">
+          <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

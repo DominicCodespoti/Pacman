@@ -2,13 +2,12 @@ package Model;
 
 import DataStructures.Point;
 import DataStructures.QuadruplyLinkedList;
-import Model.GameObjects.Dot;
 import Model.GameObjects.Wall;
 import java.util.Random;
 
 public class BoardGenerator implements IBoardGenerator {
 
-  private int gameBoardScore = 0;
+  private QuadruplyLinkedList gameBoard;
 
   @Override
   public QuadruplyLinkedList generateBoard() {
@@ -16,7 +15,7 @@ public class BoardGenerator implements IBoardGenerator {
 
     int boardWidth = randomNumberGenerator.nextInt(5) + 5;
     int boardHeight = randomNumberGenerator.nextInt(5) + 5;
-    QuadruplyLinkedList gameBoard = new QuadruplyLinkedList(boardWidth, boardHeight);
+    gameBoard = new QuadruplyLinkedList(boardWidth, boardHeight);
 
     for (int i = 0; i < boardHeight; i++) {
       for (int j = 0; j < boardWidth; j++) {
@@ -25,9 +24,6 @@ public class BoardGenerator implements IBoardGenerator {
             gameBoard.setValue(new Point(i, j), new Wall());
           }
         }
-        if (gameBoard.getValue(new Point(i, j)) instanceof Dot) {
-          gameBoardScore++;
-        }
       }
     }
     return gameBoard;
@@ -35,6 +31,14 @@ public class BoardGenerator implements IBoardGenerator {
 
   @Override
   public int scoreAmount() {
+    int gameBoardScore = 0;
+    for (int i = 0; i < gameBoard.getHeight(); i++) {
+      for (int j = 0; j < gameBoard.getWidth(); j++) {
+        if (gameBoard.getValue(new Point(i, j)).isEdible()) {
+          gameBoardScore++;
+        }
+      }
+    }
     return gameBoardScore;
   }
 }

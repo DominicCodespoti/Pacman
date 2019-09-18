@@ -62,7 +62,7 @@ public class Pacman implements IEntityObject {
 
   @Override
   public void updateCurrentDirection(Directions newDirection) {
-    this.currentDirection = newDirection;
+    currentDirection = newDirection;
   }
 
   @Override

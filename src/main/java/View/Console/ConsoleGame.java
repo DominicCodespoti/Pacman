@@ -89,6 +89,7 @@ public class ConsoleGame implements IGame {
       }
 
       consoleOutput.printBoard();
+
       try {
         Thread.sleep(500);
       } catch (InterruptedException e) {
