@@ -41,12 +41,16 @@ public class DistanceCalculator {
     return 0;
   }
 
-  public Directions findDirectionWithClosestPath(Point entityPositionToTrack){
+  public Directions findDirectionWithClosestPath(Point entityPositionToTrack) {
     Map<Directions, Integer> possibleDistances = new HashMap<>();
-    possibleDistances.put(Directions.Left, calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Left));
-    possibleDistances.put(Directions.Right, calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Right));
-    possibleDistances.put(Directions.Up, calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Up));
-    possibleDistances.put(Directions.Down, calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Down));
+    possibleDistances.put(Directions.Left,
+        calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Left));
+    possibleDistances.put(Directions.Right,
+        calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Right));
+    possibleDistances.put(Directions.Up,
+        calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Up));
+    possibleDistances.put(Directions.Down,
+        calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Down));
     Optional<Entry<Directions, Integer>> maxEntry = possibleDistances.entrySet()
         .stream()
         .min(Comparator.comparing(Map.Entry::getValue));

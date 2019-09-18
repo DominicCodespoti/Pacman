@@ -16,6 +16,6 @@ public class BoardGeneratorStub implements IBoardGenerator {
 
   @Override
   public int scoreAmount() {
-    return (5 * 5) - 4;
+    return (5 * 5) - 2;
   }
 }

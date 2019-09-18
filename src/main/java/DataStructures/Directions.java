@@ -6,8 +6,6 @@ public enum Directions {
   Left,
   Right;
 
-  private Directions oppositeDirection;
-
   static {
     Up.oppositeDirection = Down;
     Down.oppositeDirection = Up;
@@ -15,7 +13,9 @@ public enum Directions {
     Right.oppositeDirection = Left;
   }
 
-  public Directions getOppositeDirection(){
+  private Directions oppositeDirection;
+
+  public Directions getOppositeDirection() {
     return oppositeDirection;
   }
 }

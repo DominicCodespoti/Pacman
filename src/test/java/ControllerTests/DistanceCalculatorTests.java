@@ -1,4 +1,4 @@
-package ModelTests;
+package ControllerTests;
 
 import DataStructures.Point;
 import DataStructures.Directions;

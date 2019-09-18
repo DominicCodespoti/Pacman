@@ -1,11 +1,10 @@
-import View.Console.ConsoleView;
-import View.IView;
-import java.io.IOException;
+import View.Console.ConsoleGame;
+import View.IGame;
 
 public class Main {
 
-  public static void main(String[] args) throws IOException, InterruptedException {
-    IView chosenImplementation = new ConsoleView();
+  public static void main(String[] args) {
+    IGame chosenImplementation = new ConsoleGame();
     chosenImplementation.runGame();
   }
 }

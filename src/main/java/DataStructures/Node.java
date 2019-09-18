@@ -5,13 +5,13 @@ import Model.IGameObject;
 
 public class Node {
 
-  public Node Up, Down, Left, Right;
-  public Point Position;
-  public IGameObject Value;
+  public Node up, down, left, right;
+  public Point position;
+  public IGameObject value;
 
   public Node() {
-    Value = new Dot();
-    Position = new Point(0, 0);
-    Up = Down = Left = Right = null;
+    value = new Dot();
+    position = new Point(0, 0);
+    up = down = left = right = null;
   }
 }

@@ -25,7 +25,7 @@ public class BoardGenerator implements IBoardGenerator {
             gameBoard.setValue(new Point(i, j), new Wall());
           }
         }
-        if (gameBoard.getValue(new Point(i, j)) instanceof Dot){
+        if (gameBoard.getValue(new Point(i, j)) instanceof Dot) {
           gameBoardScore++;
         }
       }
@@ -34,7 +34,7 @@ public class BoardGenerator implements IBoardGenerator {
   }
 
   @Override
-  public int scoreAmount(){
+  public int scoreAmount() {
     return gameBoardScore;
   }
 }

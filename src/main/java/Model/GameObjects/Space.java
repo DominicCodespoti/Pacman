@@ -15,7 +15,7 @@ public class Space implements IGameObject {
   }
 
   @Override
-  public String getString(){
+  public String getString() {
     return " ";
   }
 }

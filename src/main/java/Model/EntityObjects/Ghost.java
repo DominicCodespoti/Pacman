@@ -26,6 +26,11 @@ public class Ghost implements IEntityObject {
   }
 
   @Override
+  public void setHoldingDot(boolean isHolding) {
+    holdingDot = isHolding;
+  }
+
+  @Override
   public boolean isSolid() {
     return false;
   }
@@ -58,11 +63,6 @@ public class Ghost implements IEntityObject {
   @Override
   public String getName() {
     return name;
-  }
-
-  @Override
-  public void setHoldingDot(boolean isHolding) {
-    holdingDot = isHolding;
   }
 
 }

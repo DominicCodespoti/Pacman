@@ -28,12 +28,12 @@ public class BoardController {
     gameBoard.setValue(new Point(boardWidth / 2, boardHeight / 2), pacman);
 
     Ghost ghost = new Ghost("Ghost");
-    currentEntities.put(ghost, new Point(boardWidth, boardHeight / 2));
-    gameBoard.setValue(new Point(boardWidth, boardHeight / 2), ghost);
+    currentEntities.put(ghost, new Point(boardWidth, boardHeight / 3));
+    gameBoard.setValue(new Point(boardWidth, boardHeight / 3), ghost);
 
     Ghost ghost2 = new Ghost("Ghost2");
-    currentEntities.put(ghost2, new Point(boardWidth, 0));
-    gameBoard.setValue(new Point(boardWidth, 0), ghost2);
+    currentEntities.put(ghost2, new Point(boardWidth, 1));
+    gameBoard.setValue(new Point(boardWidth, 1), ghost2);
   }
 
   public Point getExistingEntityPosition(IEntityObject entityToMove) {
@@ -82,7 +82,7 @@ public class BoardController {
     Point entityPosition = getExistingEntityPosition(entityToCheck);
     Directions entityDirection = getExistingEntityByName(entityToCheck.getName())
         .getCurrentDirection();
-    return gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value.isSolid();
+    return gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isSolid();
   }
 
   private void attemptToEat(IEntityObject entityToMove) {
@@ -91,27 +91,27 @@ public class BoardController {
         .getCurrentDirection();
 
     if (entityToMove instanceof Ghost &&
-        gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value instanceof Pacman) {
-      currentEntities.remove(gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value);
+        gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Pacman) {
+      currentEntities.remove(gameBoard.nextNodeInDirection(entityPosition, entityDirection).value);
       entityToMove.increaseScore();
     }
 
     if (entityToMove instanceof Pacman &&
-        gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value instanceof Ghost) {
-      ((Ghost) gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value)
+        gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Ghost) {
+      ((Ghost) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value)
           .increaseScore();
       currentEntities.remove(entityToMove);
     }
 
     if (entityToMove instanceof Ghost && entityToMove.isHoldingDot()) {
-      gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).Value = new Dot();
+      gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).value = new Dot();
       entityToMove.setHoldingDot(false);
     } else {
       if (entityToMove.isHoldingDot()) {
         entityToMove.increaseScore();
         entityToMove.setHoldingDot(false);
       }
-      gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).Value = new Space();
+      gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).value = new Space();
     }
   }
 
@@ -119,11 +119,11 @@ public class BoardController {
     Point entityPosition = getExistingEntityPosition(entityToMove);
     Directions entityDirection = getExistingEntityByName(entityToMove.getName())
         .getCurrentDirection();
-    if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value instanceof Dot) {
+    if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isEdible()) {
       entityToMove.setHoldingDot(true);
     }
     updateEntityPosition(entityToMove,
-        gameBoard.nextNodeInDirection(entityPosition, entityDirection).Position);
-    gameBoard.nextNodeInDirection(entityPosition, entityDirection).Value = entityToMove;
+        gameBoard.nextNodeInDirection(entityPosition, entityDirection).position);
+    gameBoard.nextNodeInDirection(entityPosition, entityDirection).value = entityToMove;
   }
 }

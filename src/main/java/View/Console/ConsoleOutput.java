@@ -1,18 +1,19 @@
 package View.Console;
 
-import DataStructures.Point;
 import Controller.BoardController;
-import View.IViewOutput;
+import DataStructures.Point;
+import View.IGameOutput;
 
-public class ConsoleOutput implements IViewOutput {
+public class ConsoleOutput implements IGameOutput {
+
   private BoardController boardController;
 
-  public ConsoleOutput (BoardController boardController){
+  public ConsoleOutput(BoardController boardController) {
     this.boardController = boardController;
   }
 
   @Override
-  public void printBoard(){
+  public void printBoard() {
     System.out.print("\033[H\033[2J");
     for (int i = 0; i < boardController.getBoardHeight(); i++) {
       for (int j = 0; j < boardController.getBoardWidth(); j++) {
@@ -23,12 +24,14 @@ public class ConsoleOutput implements IViewOutput {
     System.out.print("\r\n");
   }
 
-  public void printVictory(){
+  @Override
+  public void printVictory() {
     System.out.print("\033[H\033[2J");
     System.out.println("You win!");
   }
 
-  public void printLose(){
+  @Override
+  public void printLose() {
     System.out.print("\033[H\033[2J");
     System.out.println("You lose!");
   }

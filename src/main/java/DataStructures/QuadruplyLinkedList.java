@@ -6,50 +6,58 @@ public class QuadruplyLinkedList {
 
   private Node referenceNode;
   private Node rowIteratorNode;
-  private Node columnIterator;
   private int width, height;
 
   public QuadruplyLinkedList(int Width, int Height) {
     width = Width;
     height = Height;
     referenceNode = new Node();
-    rowIteratorNode = columnIterator = referenceNode;
+    Node columnIteratorNode;
+    rowIteratorNode = columnIteratorNode = referenceNode;
 
     for (int I = 0; I < Height; I++) {
       for (int J = 0; J < Width; J++) {
         if (I == 0) {
           if (J < Width - 1) {
-            rowIteratorNode.Right = new Node();
-            rowIteratorNode.Right.Left = rowIteratorNode;
-            rowIteratorNode = rowIteratorNode.Right;
+            rowIteratorNode.right = new Node();
+            rowIteratorNode.right.left = rowIteratorNode;
+            rowIteratorNode = rowIteratorNode.right;
           }
         } else {
           if (J < Width - 1) {
-            rowIteratorNode.Right = new Node();
-            rowIteratorNode.Up.Down = rowIteratorNode;
-            rowIteratorNode.Right.Left = rowIteratorNode;
-            rowIteratorNode.Right.Up = rowIteratorNode.Up.Right;
-            rowIteratorNode = rowIteratorNode.Right;
+            rowIteratorNode.right = new Node();
+            rowIteratorNode.up.down = rowIteratorNode;
+            rowIteratorNode.right.left = rowIteratorNode;
+            rowIteratorNode.right.up = rowIteratorNode.up.right;
+            rowIteratorNode = rowIteratorNode.right;
           }
           if (J == Width - 1) {
-            rowIteratorNode.Up.Down = rowIteratorNode;
+            rowIteratorNode.up.down = rowIteratorNode;
           }
         }
       }
       if (I < Height - 1) {
-        columnIterator.Down = new Node();
-        columnIterator.Down.Up = columnIterator;
-        rowIteratorNode = columnIterator = columnIterator.Down;
+        columnIteratorNode.down = new Node();
+        columnIteratorNode.down.up = columnIteratorNode;
+        rowIteratorNode = columnIteratorNode = columnIteratorNode.down;
       }
     }
 
     for (int I = 0; I < Height; ++I) {
       for (int J = 0; J < Width; ++J) {
         wrapNode(J, I);
-        getNode(J, I).Position = new Point(J, I);
+        getNode(J, I).position = new Point(J, I);
       }
       System.out.println();
     }
+  }
+
+  public int getWidth() {
+    return width;
+  }
+
+  public int getHeight() {
+    return height;
   }
 
   public void setValue(Point coordinate, IGameObject Value) {
@@ -58,14 +66,14 @@ public class QuadruplyLinkedList {
     rowIteratorNode = referenceNode;
 
     for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.Down;
+      rowIteratorNode = rowIteratorNode.down;
     }
 
     for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.Right;
+      rowIteratorNode = rowIteratorNode.right;
     }
 
-    rowIteratorNode.Value = Value;
+    rowIteratorNode.value = Value;
   }
 
   public IGameObject getValue(Point coordinate) {
@@ -75,14 +83,14 @@ public class QuadruplyLinkedList {
     rowIteratorNode = referenceNode;
 
     for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.Down;
+      rowIteratorNode = rowIteratorNode.down;
     }
 
     for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.Right;
+      rowIteratorNode = rowIteratorNode.right;
     }
 
-    return rowIteratorNode.Value;
+    return rowIteratorNode.value;
   }
 
   public Node nextNodeInDirection(Point coordinate, Directions currentDirection) {
@@ -92,22 +100,22 @@ public class QuadruplyLinkedList {
     rowIteratorNode = referenceNode;
 
     for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.Down;
+      rowIteratorNode = rowIteratorNode.down;
     }
 
     for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.Right;
+      rowIteratorNode = rowIteratorNode.right;
     }
 
     switch (currentDirection) {
       case Up:
-        return rowIteratorNode.Up;
+        return rowIteratorNode.up;
       case Down:
-        return rowIteratorNode.Down;
+        return rowIteratorNode.down;
       case Left:
-        return rowIteratorNode.Left;
+        return rowIteratorNode.left;
       case Right:
-        return rowIteratorNode.Right;
+        return rowIteratorNode.right;
     }
     return null;
   }
@@ -119,22 +127,22 @@ public class QuadruplyLinkedList {
     rowIteratorNode = referenceNode;
 
     for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.Down;
+      rowIteratorNode = rowIteratorNode.down;
     }
 
     for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.Right;
+      rowIteratorNode = rowIteratorNode.right;
     }
 
     switch (currentDirection.getOppositeDirection()) {
       case Up:
-        return rowIteratorNode.Up;
+        return rowIteratorNode.up;
       case Down:
-        return rowIteratorNode.Down;
+        return rowIteratorNode.down;
       case Left:
-        return rowIteratorNode.Left;
+        return rowIteratorNode.left;
       case Right:
-        return rowIteratorNode.Right;
+        return rowIteratorNode.right;
     }
     return null;
   }
@@ -143,11 +151,11 @@ public class QuadruplyLinkedList {
     rowIteratorNode = referenceNode;
 
     for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.Down;
+      rowIteratorNode = rowIteratorNode.down;
     }
 
     for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.Right;
+      rowIteratorNode = rowIteratorNode.right;
     }
 
     return rowIteratorNode;
@@ -159,33 +167,25 @@ public class QuadruplyLinkedList {
     if (I == 0) {
       Node newNode = getNode(width - 1, J);
       rowIteratorNode = getNode(I, J);
-      rowIteratorNode.Left = newNode;
+      rowIteratorNode.left = newNode;
     }
 
     if (J == 0) {
       Node newNode = getNode(I, height - 1);
       rowIteratorNode = getNode(I, J);
-      rowIteratorNode.Up = newNode;
+      rowIteratorNode.up = newNode;
     }
 
     if (I == width - 1) {
       Node newNode = getNode(0, J);
       rowIteratorNode = getNode(I, J);
-      rowIteratorNode.Right = newNode;
+      rowIteratorNode.right = newNode;
     }
 
     if (J == height - 1) {
       Node newNode = getNode(I, 0);
       rowIteratorNode = getNode(I, J);
-      rowIteratorNode.Down = newNode;
+      rowIteratorNode.down = newNode;
     }
-  }
-
-  public int getWidth() {
-    return width;
-  }
-
-  public int getHeight() {
-    return height;
   }
 }

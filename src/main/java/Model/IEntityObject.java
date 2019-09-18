@@ -8,6 +8,8 @@ public interface IEntityObject extends IGameObject {
 
   boolean isHoldingDot();
 
+  void setHoldingDot(boolean isHolding);
+
   void updateCurrentDirection(Directions newDirection);
 
   Directions getCurrentDirection();
@@ -15,6 +17,4 @@ public interface IEntityObject extends IGameObject {
   String getName();
 
   boolean winCondition(int scoreCondition);
-
-  void setHoldingDot(boolean isHolding);
 }

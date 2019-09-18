@@ -1,9 +1,10 @@
-package ModelTests;
+package ControllerTests;
 
 import Controller.BoardController;
 import DataStructures.Point;
 import DataStructures.Directions;
 import Model.BoardGeneratorStub;
+import Model.IBoardGenerator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,7 @@ public class WallTests {
 
   @Before
   public void initTests() {
-    BoardGeneratorStub boardGeneratorStub = new BoardGeneratorStub();
+    IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
     testMaster = new BoardController(boardGeneratorStub);
   }
 

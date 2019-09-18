@@ -6,26 +6,34 @@ import DataStructures.Point;
 import Model.BoardGenerator;
 import Model.DistanceCalculator;
 import Model.IEntityObject;
-import View.IView;
+import View.IGame;
 import java.io.IOException;
 
-public class ConsoleView implements IView {
+public class ConsoleGame implements IGame {
 
   private ConsoleInput consoleInput = new ConsoleInput();
 
-  private void enterCookedTerminalModeAndExit() throws IOException, InterruptedException {
+  private void enterCookedTerminalModeAndExit() {
     String[] cmd = {"/bin/sh", "-c", "stty cooked </dev/tty"};
-    Runtime.getRuntime().exec(cmd).waitFor();
+    try {
+      Runtime.getRuntime().exec(cmd).waitFor();
+    } catch (InterruptedException | IOException e) {
+      e.printStackTrace();
+    }
     System.exit(0);
   }
 
-  private void enterRawTerminalMode() throws IOException, InterruptedException {
+  private void enterRawTerminalMode() {
     String[] cmd = {"/bin/sh", "-c", "stty raw </dev/tty"};
-    Runtime.getRuntime().exec(cmd).waitFor();
+    try {
+      Runtime.getRuntime().exec(cmd).waitFor();
+    } catch (InterruptedException | IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
-  public void runGame() throws IOException, InterruptedException {
+  public void runGame() {
     BoardGenerator boardGenerator = new BoardGenerator();
     BoardController boardController = new BoardController(boardGenerator);
     ConsoleOutput consoleOutput = new ConsoleOutput(boardController);
@@ -39,7 +47,10 @@ public class ConsoleView implements IView {
     int pacmanScoreToWin = boardGenerator.scoreAmount() - 1;
 
     while (!player.winCondition(pacmanScoreToWin) && !enemy.winCondition(1)) {
-      int uncheckedInput = consoleInput.getUserInput();
+      int uncheckedInput = 0;
+
+      uncheckedInput = consoleInput.getUserInput();
+
       if (uncheckedInput != 0) {
         userInputAsByte = uncheckedInput;
       }
@@ -78,7 +89,11 @@ public class ConsoleView implements IView {
       }
 
       consoleOutput.printBoard();
-      Thread.sleep(500);
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
     }
 
     if (player.winCondition(pacmanScoreToWin)) {
@@ -86,6 +101,7 @@ public class ConsoleView implements IView {
     } else {
       consoleOutput.printLose();
     }
+
     enterCookedTerminalModeAndExit();
   }
 }
