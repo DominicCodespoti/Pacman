@@ -2,6 +2,8 @@ package ModelTests;
 
 import Controller.BoardController;
 import DataStructures.Directions;
+import Model.BoardGenerator;
+import Model.BoardGeneratorStub;
 import Model.IEntityObject;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,7 +21,8 @@ public class PacmanTests {
 
   @Before
   public void initTests() {
-    testMaster = new BoardController(5, 5);
+    BoardGeneratorStub boardGeneratorStub = new BoardGeneratorStub();
+    testMaster = new BoardController(boardGeneratorStub);
   }
 
   @Test

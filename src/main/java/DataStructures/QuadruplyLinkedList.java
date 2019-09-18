@@ -45,8 +45,8 @@ public class QuadruplyLinkedList {
 
     for (int I = 0; I < Height; ++I) {
       for (int J = 0; J < Width; ++J) {
-        wrapNode(I, J);
-        getNode(I, J).Position = new Point(I, J);
+        wrapNode(J, I);
+        getNode(J, I).Position = new Point(J, I);
       }
       System.out.println();
     }
@@ -157,13 +157,13 @@ public class QuadruplyLinkedList {
     rowIteratorNode = getNode(I, J);
 
     if (I == 0) {
-      Node newNode = getNode(height - 1, J);
+      Node newNode = getNode(width - 1, J);
       rowIteratorNode = getNode(I, J);
       rowIteratorNode.Left = newNode;
     }
 
     if (J == 0) {
-      Node newNode = getNode(I, width - 1);
+      Node newNode = getNode(I, height - 1);
       rowIteratorNode = getNode(I, J);
       rowIteratorNode.Up = newNode;
     }

@@ -11,12 +11,9 @@ public class ConsoleOutput implements IViewOutput {
     this.boardController = boardController;
   }
 
-  public void clearScreen(){
-    System.out.print("\033[H\033[2J");
-  }
-
   @Override
   public void printBoard(){
+    System.out.print("\033[H\033[2J");
     for (int i = 0; i < boardController.getBoardHeight(); i++) {
       for (int j = 0; j < boardController.getBoardWidth(); j++) {
         System.out.print(boardController.getObjectRepresentationAtPosition(new Point(j, i)));
@@ -24,5 +21,15 @@ public class ConsoleOutput implements IViewOutput {
       System.out.print("\r\n");
     }
     System.out.print("\r\n");
+  }
+
+  public void printVictory(){
+    System.out.print("\033[H\033[2J");
+    System.out.println("You win!");
+  }
+
+  public void printLose(){
+    System.out.print("\033[H\033[2J");
+    System.out.println("You lose!");
   }
 }

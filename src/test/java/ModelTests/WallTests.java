@@ -3,6 +3,7 @@ package ModelTests;
 import Controller.BoardController;
 import DataStructures.Point;
 import DataStructures.Directions;
+import Model.BoardGeneratorStub;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +13,8 @@ public class WallTests {
 
   @Before
   public void initTests() {
-    testMaster = new BoardController(5, 5);
+    BoardGeneratorStub boardGeneratorStub = new BoardGeneratorStub();
+    testMaster = new BoardController(boardGeneratorStub);
   }
 
   @Test

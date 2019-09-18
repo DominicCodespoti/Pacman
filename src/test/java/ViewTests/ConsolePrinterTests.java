@@ -2,6 +2,7 @@ package ViewTests;
 
 import Controller.BoardController;
 import DataStructures.Directions;
+import Model.BoardGeneratorStub;
 import View.Console.ConsoleOutput;
 import org.junit.Test;
 
@@ -12,7 +13,8 @@ public class ConsolePrinterTests {
 
   @Test
   public void printerPrintsCorrectly() {
-    testMaster = new BoardController(5, 5);
+    BoardGeneratorStub boardGeneratorStub = new BoardGeneratorStub();
+    testMaster = new BoardController(boardGeneratorStub);
     consolePrinter = new ConsoleOutput(testMaster);
 
     consolePrinter.printBoard();
