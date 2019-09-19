@@ -2,5 +2,5 @@ package View;
 
 public interface IGame {
 
-  void runGame();
+  void runGame(int currentLevelIteration);
 }

@@ -8,5 +8,5 @@ public interface IGameOutput {
 
   void printLose();
 
-  void printScore(int currentScore);
+  void printScore(int currentScore, int levelAmount);
 }

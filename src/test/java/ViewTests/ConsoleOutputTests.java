@@ -7,7 +7,7 @@ import Model.IBoardGenerator;
 import View.Console.ConsoleOutput;
 import org.junit.Test;
 
-public class ConsolePrinterTests {
+public class ConsoleOutputTests {
 
   @Test
   public void printerPrintsCorrectly() {

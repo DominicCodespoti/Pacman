@@ -34,7 +34,7 @@ public class ConsoleGame implements IGame {
   }
 
   @Override
-  public void runGame() {
+  public void runGame(int currentLevelIteration) {
     BoardGenerator boardGenerator = new BoardGenerator();
     BoardController boardController = new BoardController(boardGenerator);
     ConsoleOutput consoleOutput = new ConsoleOutput(boardController);
@@ -93,7 +93,7 @@ public class ConsoleGame implements IGame {
       }
 
       consoleOutput.printBoard();
-      consoleOutput.printScore(boardController.getEntityScore(player));
+      consoleOutput.printScore(boardController.getEntityScore(player), currentLevelIteration);
 
       try {
         Thread.sleep(500);
@@ -104,6 +104,7 @@ public class ConsoleGame implements IGame {
 
     if (player.getCurrentScore() >= pacmanScoreToWin) {
       consoleOutput.printVictory();
+      runGame(currentLevelIteration++);
     } else {
       consoleOutput.printLose();
     }

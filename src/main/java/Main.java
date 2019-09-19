@@ -5,6 +5,6 @@ public class Main {
 
   public static void main(String[] args) {
     IGame chosenImplementation = new ConsoleGame();
-    chosenImplementation.runGame();
+    chosenImplementation.runGame(1);
   }
 }

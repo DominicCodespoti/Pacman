@@ -37,7 +37,8 @@ public class ConsoleOutput implements IGameOutput {
   }
 
   @Override
-  public void printScore(int currentScore){
-    System.out.println("Score: " + currentScore);
+  public void printScore(int currentScore, int levelAmount){
+    System.out.print("Score: " + currentScore + "\r\n");
+    System.out.print("Level: " + levelAmount);
   }
 }
