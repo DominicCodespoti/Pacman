@@ -56,9 +56,9 @@ public class BoardController {
   public void tryToRotateAndMoveEntity(IEntityObject entityToMove, Directions newDirection) {
     Directions oldDirection = entityToMove.getCurrentDirection();
     entityToMove.updateCurrentDirection(newDirection);
-    if ( getExistingEntityByName(entityToMove.getName()) != null && isPathBlocked(entityToMove)) {
+    if (getExistingEntityByName(entityToMove.getName()) != null && isPathBlocked(entityToMove)) {
       entityToMove.updateCurrentDirection(oldDirection);
-    } else {
+    } else if (getExistingEntityByName(entityToMove.getName()) != null) {
       attemptToEatEntity(entityToMove);
       if (getExistingEntityByName(entityToMove.getName()) != null) {
         movePositionOnBoard(entityToMove);
@@ -92,7 +92,7 @@ public class BoardController {
     return gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isSolid();
   }
 
-  private void attemptToEatEntity(IEntityObject entityToMove){
+  private void attemptToEatEntity(IEntityObject entityToMove) {
     Point entityPosition = getExistingEntityPosition(entityToMove);
     Directions entityDirection = getExistingEntityByName(entityToMove.getName())
         .getCurrentDirection();
@@ -105,7 +105,8 @@ public class BoardController {
     } else if (entityToMove instanceof Pacman &&
         gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Ghost) {
       gameBoard.setValue(entityPosition, new Space());
-      ((Ghost) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value).increaseScore();
+      ((Ghost) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value)
+          .increaseScore();
       currentEntities.remove(entityToMove);
     }
   }
