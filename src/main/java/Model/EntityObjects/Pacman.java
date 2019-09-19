@@ -9,23 +9,28 @@ public class Pacman implements IEntityObject {
   private String name;
   private int score = 0;
   private boolean holdingDot = false;
+  private boolean wakaWaka = true;
 
   public Pacman(String name) {
     currentDirection = Directions.Up;
     this.name = name;
   }
 
+  public void setWakaWaka(boolean wakaWaka) {
+    this.wakaWaka = wakaWaka;
+  }
+
   @Override
   public String getString() {
     switch (currentDirection) {
       case Up:
-        return "V";
+        return wakaWaka ? "V" : "|";
       case Left:
-        return ">";
+        return wakaWaka ? ">" : "-";
       case Right:
-        return "<";
+        return wakaWaka ? "<" : "-";
       case Down:
-        return "^";
+        return wakaWaka ? "^" : "|";
     }
     return "";
   }

@@ -5,6 +5,8 @@ import DataStructures.Directions;
 import DataStructures.Point;
 import Model.BoardGenerator;
 import Model.DistanceCalculator;
+import Model.EntityObjects.Ghost;
+import Model.EntityObjects.Pacman;
 import Model.IEntityObject;
 import View.IGame;
 import java.io.IOException;
@@ -38,9 +40,10 @@ public class ConsoleGame implements IGame {
     BoardController boardController = new BoardController(boardGenerator);
     ConsoleOutput consoleOutput = new ConsoleOutput(boardController);
     DistanceCalculator distanceCalculator;
-    IEntityObject player = boardController.getExistingEntityByName("Pacman");
-    IEntityObject enemy = boardController.getExistingEntityByName("Ghost");
-    IEntityObject enemy2 = boardController.getExistingEntityByName("Ghost2");
+    Pacman player = (Pacman) boardController.getExistingEntityByName("Pacman");
+    Ghost enemy = (Ghost) boardController.getExistingEntityByName("Ghost");
+    Ghost enemy2 = (Ghost) boardController.getExistingEntityByName("Ghost2");
+    boolean isPacmansMouthOpen = true;
     int userInputAsByte = 0;
 
     enterRawTerminalMode();
@@ -61,18 +64,26 @@ public class ConsoleGame implements IGame {
 
       if (userInputAsByte == 119) {
         boardController.tryToRotateAndMoveEntity(player, Directions.Up);
+        player.setWakaWaka(isPacmansMouthOpen);
+        isPacmansMouthOpen = !isPacmansMouthOpen;
       }
 
       if (userInputAsByte == 97) {
         boardController.tryToRotateAndMoveEntity(player, Directions.Left);
+        player.setWakaWaka(isPacmansMouthOpen);
+        isPacmansMouthOpen = !isPacmansMouthOpen;
       }
 
       if (userInputAsByte == 100) {
         boardController.tryToRotateAndMoveEntity(player, Directions.Right);
+        player.setWakaWaka(isPacmansMouthOpen);
+        isPacmansMouthOpen = !isPacmansMouthOpen;
       }
 
       if (userInputAsByte == 115) {
         boardController.tryToRotateAndMoveEntity(player, Directions.Down);
+        player.setWakaWaka(isPacmansMouthOpen);
+        isPacmansMouthOpen = !isPacmansMouthOpen;
       }
 
       if (boardController.getExistingEntityByName("Pacman") != null) {
