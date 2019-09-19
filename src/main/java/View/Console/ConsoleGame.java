@@ -7,7 +7,6 @@ import Model.BoardGenerator;
 import Model.DistanceCalculator;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
-import Model.IEntityObject;
 import View.IGame;
 import java.io.IOException;
 
@@ -43,14 +42,13 @@ public class ConsoleGame implements IGame {
     Pacman player = (Pacman) boardController.getExistingEntityByName("Pacman");
     Ghost enemy = (Ghost) boardController.getExistingEntityByName("Ghost");
     Ghost enemy2 = (Ghost) boardController.getExistingEntityByName("Ghost2");
-    boolean isPacmansMouthOpen = true;
     int userInputAsByte = 0;
 
     enterRawTerminalMode();
     int pacmanScoreToWin = boardGenerator.scoreAmount() - 1;
 
     while (!player.winCondition(pacmanScoreToWin) && !enemy.winCondition(1)) {
-      int uncheckedInput = 0;
+      int uncheckedInput;
 
       uncheckedInput = consoleInput.getUserInput();
 

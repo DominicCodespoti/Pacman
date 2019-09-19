@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58c56f5e-bad2-46d9-9bd2-f53727c991ef" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -39,10 +39,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/BoardController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="96" column="13" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="81" column="42" selection-start-line="81" selection-start-column="42" selection-end-line="81" selection-end-column="42" />
+            <state relative-caret-position="144">
+              <caret line="65" column="7" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-181">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+            <state relative-caret-position="626">
+              <caret line="34" column="14" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
               <folding>
                 <element signature="e#417#418#0" expanded="true" />
                 <element signature="e#457#458#0" expanded="true" />
@@ -153,11 +174,11 @@
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInput.java" />
         <option value="$PROJECT_DIR$/src/main/java/DataStructures/Point.java" />
         <option value="$PROJECT_DIR$/src/main/java/DataStructures/QuadruplyLinkedList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" />
       </list>
     </option>
   </component>
@@ -406,7 +427,7 @@
       <workItem from="1568353887781" duration="72000" />
       <workItem from="1568590484450" duration="7923000" />
       <workItem from="1568600036251" duration="28134000" />
-      <workItem from="1568697630415" duration="24518000" />
+      <workItem from="1568697630415" duration="25729000" />
     </task>
     <servers />
   </component>
@@ -443,7 +464,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143923000" />
+    <option name="totallyTimeSpent" value="145134000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -509,7 +530,6 @@
     <SUITE FILE_PATH="coverage/Pacman$All_in_Pacman_test.ic" NAME="All in Pacman.test Coverage Results" MODIFIED="1568158103733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/BoardTest.java" />
     <entry file="jrt:///Library/Java/JavaVirtualMachines/jdk-11.0.4.jdk/Contents/Home!/jdk.internal.vm.compiler/org/graalvm/compiler/loop/InductionVariable.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-34">
@@ -816,23 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/BoardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="102" column="43" lean-forward="true" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
@@ -850,10 +853,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/BoardController.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-181">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+        <state relative-caret-position="626">
+          <caret line="34" column="14" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
           <folding>
             <element signature="e#417#418#0" expanded="true" />
             <element signature="e#457#458#0" expanded="true" />
@@ -881,11 +897,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="81" column="42" selection-start-line="81" selection-start-column="42" selection-end-line="81" selection-end-column="42" />
+        <state relative-caret-position="144">
+          <caret line="65" column="7" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/BoardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="96" column="13" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
         </state>
       </provider>
     </entry>

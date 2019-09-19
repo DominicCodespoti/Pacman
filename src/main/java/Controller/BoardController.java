@@ -94,13 +94,14 @@ public class BoardController {
         gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Pacman) {
       currentEntities.remove(gameBoard.nextNodeInDirection(entityPosition, entityDirection).value);
       entityToMove.increaseScore();
+      return;
     }
 
     if (entityToMove instanceof Pacman &&
         gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Ghost) {
-      ((Ghost) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value)
-          .increaseScore();
+      ((Ghost) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value).increaseScore();
       currentEntities.remove(entityToMove);
+      return;
     }
 
     if (entityToMove instanceof Ghost && entityToMove.isHoldingDot()) {
