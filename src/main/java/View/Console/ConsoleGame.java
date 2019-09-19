@@ -64,26 +64,22 @@ public class ConsoleGame implements IGame {
 
       if (userInputAsByte == 119) {
         boardController.tryToRotateAndMoveEntity(player, Directions.Up);
-        player.setWakaWaka(isPacmansMouthOpen);
-        isPacmansMouthOpen = !isPacmansMouthOpen;
+        player.setIsMouthOpenToOpposite();
       }
 
       if (userInputAsByte == 97) {
         boardController.tryToRotateAndMoveEntity(player, Directions.Left);
-        player.setWakaWaka(isPacmansMouthOpen);
-        isPacmansMouthOpen = !isPacmansMouthOpen;
+        player.setIsMouthOpenToOpposite();
       }
 
       if (userInputAsByte == 100) {
         boardController.tryToRotateAndMoveEntity(player, Directions.Right);
-        player.setWakaWaka(isPacmansMouthOpen);
-        isPacmansMouthOpen = !isPacmansMouthOpen;
+        player.setIsMouthOpenToOpposite();
       }
 
       if (userInputAsByte == 115) {
         boardController.tryToRotateAndMoveEntity(player, Directions.Down);
-        player.setWakaWaka(isPacmansMouthOpen);
-        isPacmansMouthOpen = !isPacmansMouthOpen;
+        player.setIsMouthOpenToOpposite();
       }
 
       if (boardController.getExistingEntityByName("Pacman") != null) {
