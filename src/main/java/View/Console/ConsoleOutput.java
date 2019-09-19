@@ -27,12 +27,17 @@ public class ConsoleOutput implements IGameOutput {
   @Override
   public void printVictory() {
     System.out.print("\033[H\033[2J");
-    System.out.println("You win!");
+    System.out.print("You win!");
   }
 
   @Override
   public void printLose() {
     System.out.print("\033[H\033[2J");
-    System.out.println("You lose!");
+    System.out.print("You lose!");
+  }
+
+  @Override
+  public void printScore(int currentScore){
+    System.out.println("Score: " + currentScore);
   }
 }

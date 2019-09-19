@@ -47,9 +47,8 @@ public class ConsoleGame implements IGame {
     enterRawTerminalMode();
     int pacmanScoreToWin = boardGenerator.scoreAmount() - 1;
 
-    while (!player.winCondition(pacmanScoreToWin) && !enemy.winCondition(1)) {
+    while (player.getCurrentScore() < pacmanScoreToWin && enemy.getCurrentScore() < 1) {
       int uncheckedInput;
-
       uncheckedInput = consoleInput.getUserInput();
 
       if (uncheckedInput != 0) {
@@ -94,6 +93,7 @@ public class ConsoleGame implements IGame {
       }
 
       consoleOutput.printBoard();
+      consoleOutput.printScore(boardController.getEntityScore(player));
 
       try {
         Thread.sleep(500);
@@ -102,7 +102,7 @@ public class ConsoleGame implements IGame {
       }
     }
 
-    if (player.winCondition(pacmanScoreToWin)) {
+    if (player.getCurrentScore() >= pacmanScoreToWin) {
       consoleOutput.printVictory();
     } else {
       consoleOutput.printLose();

@@ -61,8 +61,8 @@ public class Pacman implements IEntityObject {
   }
 
   @Override
-  public boolean winCondition(int scoreCondition) {
-    return score >= scoreCondition;
+  public int getCurrentScore() {
+    return score;
   }
 
   @Override

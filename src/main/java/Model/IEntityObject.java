@@ -10,11 +10,11 @@ public interface IEntityObject extends IGameObject {
 
   void setHoldingDot(boolean isHolding);
 
+  int getCurrentScore();
+
   void updateCurrentDirection(Directions newDirection);
 
   Directions getCurrentDirection();
 
   String getName();
-
-  boolean winCondition(int scoreCondition);
 }

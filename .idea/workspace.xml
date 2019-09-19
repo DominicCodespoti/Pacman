@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="58c56f5e-bad2-46d9-9bd2-f53727c991ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/IEntityObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/IEntityObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/IGameOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/IGameOutput.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -38,23 +43,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Controller/BoardController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="96" column="13" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+            <state relative-caret-position="328">
+              <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
+              <folding>
+                <element signature="e#1834#1835#0" expanded="true" />
+                <element signature="e#1881#1882#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="347">
+              <caret line="95" column="68" selection-start-line="95" selection-start-column="68" selection-end-line="95" selection-end-column="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="65" column="7" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
+            <state relative-caret-position="543">
+              <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#985#986#0" expanded="true" />
+                <element signature="e#1025#1026#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -74,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
-              <caret line="34" column="14" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
+            <state relative-caret-position="-487">
+              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
               <folding>
                 <element signature="e#417#418#0" expanded="true" />
                 <element signature="e#457#458#0" expanded="true" />
@@ -98,6 +130,15 @@
                 <element signature="e#1319#1320#0" expanded="true" />
                 <element signature="e#1340#1341#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/IEntityObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -128,7 +169,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/GameLogicTests/DotTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/GameLogicTests/WallTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/InputOutputTests/ConsolePrinterTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/InputOutput/ConsoleInputValidation.java" />
@@ -154,7 +194,6 @@
         <option value="$PROJECT_DIR$/src/main/java/View/IViewOutput.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/ConsoleView.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/IBoardGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleView.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsolePlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleRunner.java" />
@@ -174,11 +213,13 @@
         <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInput.java" />
         <option value="$PROJECT_DIR$/src/main/java/DataStructures/Point.java" />
         <option value="$PROJECT_DIR$/src/main/java/DataStructures/QuadruplyLinkedList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/BoardGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/IEntityObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" />
       </list>
     </option>
   </component>
@@ -427,17 +468,11 @@
       <workItem from="1568353887781" duration="72000" />
       <workItem from="1568590484450" duration="7923000" />
       <workItem from="1568600036251" duration="28134000" />
-      <workItem from="1568697630415" duration="25729000" />
+      <workItem from="1568697630415" duration="29512000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_Pacman_test_(1) - 2019.09.18 at 12h 57m 42s.xml">
-      <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Pacman_test_(1) - 2019.09.18 at 14h 35m 19s.xml">
-      <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_Pacman_test_(1) - 2019.09.19 at 08h 17m 10s.xml">
       <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
     </history-entry>
@@ -462,9 +497,15 @@
     <history-entry file="All_in_Pacman_test_(1) - 2019.09.19 at 09h 38m 20s.xml">
       <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_Pacman_test_(1) - 2019.09.19 at 13h 20m 31s.xml">
+      <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Pacman_test_(1) - 2019.09.19 at 13h 34m 47s.xml">
+      <configuration name="All in Pacman.test (1)" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145134000" />
+    <option name="totallyTimeSpent" value="148917000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -598,13 +639,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/IBoard.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/InputOutput/ConsoleBoard.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/GameLogicTests/Board.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/IEntityObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/IGameObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -747,13 +781,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/GameObjects/Space.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -836,16 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/IGame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -866,10 +883,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/IEntityObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="34" column="14" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
+        <state relative-caret-position="-487">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
           <folding>
             <element signature="e#417#418#0" expanded="true" />
             <element signature="e#457#458#0" expanded="true" />
@@ -895,20 +919,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="65" column="7" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="321">
+          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Controller/BoardController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="96" column="13" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+        <state relative-caret-position="328">
+          <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
+          <folding>
+            <element signature="e#1834#1835#0" expanded="true" />
+            <element signature="e#1881#1882#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="95" column="68" selection-start-line="95" selection-start-column="68" selection-end-line="95" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

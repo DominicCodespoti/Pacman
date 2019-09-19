@@ -7,4 +7,6 @@ public interface IGameOutput {
   void printVictory();
 
   void printLose();
+
+  void printScore(int currentScore);
 }
