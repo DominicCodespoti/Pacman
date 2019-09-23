@@ -1,9 +1,8 @@
 package View.Console;
 
 import Controller.BoardController;
-import DataStructures.Point;
+import Controller.EnemyController;
 import Model.BoardGenerator;
-import Model.DistanceCalculator;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
 import View.IGame;
@@ -16,6 +15,7 @@ public class ConsoleGame implements IGame {
   private IGameOutput consoleOutput;
   private ConsoleInputAdapter consoleInputAdapter;
   private BoardController boardController;
+  private EnemyController enemyController;
   private Pacman pacman;
   private Ghost ghostOne, ghostTwo;
   private int pacmanScoreToWin;
@@ -32,6 +32,7 @@ public class ConsoleGame implements IGame {
     pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
     ghostOne = (Ghost) boardController.getExistingEntityByName("Ghost");
     ghostTwo = (Ghost) boardController.getExistingEntityByName("Ghost2");
+    enemyController = new EnemyController();
     pacmanScoreToWin = boardGenerator.scoreAmount() - 1;
   }
 
@@ -41,23 +42,15 @@ public class ConsoleGame implements IGame {
     int userInputAsByte = 0, rawInput;
     while (pacman.getCurrentScore() < pacmanScoreToWin && ghostOne.getCurrentScore() < 1) {
       rawInput = consoleInput.getUserInput();
+
       if (rawInput != 0) {
         userInputAsByte = rawInput;
       }
+
       consoleInputAdapter.translateInputToGame(boardController, userInputAsByte, pacman);
 
-      if (boardController.getExistingEntityByName("Pacman") != null) {
-        Point playerCurrentPosition = boardController.getExistingEntityPosition(pacman);
-        Point enemyCurrentPosition = boardController.getExistingEntityPosition(ghostOne);
-        Point enemy2CurrentPosition = boardController.getExistingEntityPosition(ghostOne);
-
-        DistanceCalculator distanceCalculator = new DistanceCalculator(enemyCurrentPosition);
-        boardController
-            .tryToRotateAndMoveEntity(ghostOne, distanceCalculator.findDirectionWithClosestPath(playerCurrentPosition));
-        distanceCalculator = new DistanceCalculator(enemy2CurrentPosition);
-        boardController
-            .tryToRotateAndMoveEntity(ghostTwo, distanceCalculator.findDirectionWithClosestPath(playerCurrentPosition));
-      }
+      enemyController.moveEnemy(boardController, pacman, ghostOne);
+      enemyController.moveEnemy(boardController, pacman, ghostTwo);
 
       consoleOutput.printBoard();
       consoleOutput.printScore(boardController.getEntityScore(pacman), currentLevelIteration);
