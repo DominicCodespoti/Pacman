@@ -6,14 +6,8 @@ import View.IGameOutput;
 
 public class ConsoleOutput implements IGameOutput {
 
-  private BoardController boardController;
-
-  public ConsoleOutput(BoardController boardController) {
-    this.boardController = boardController;
-  }
-
   @Override
-  public void printBoard() {
+  public void printBoard(BoardController boardController) {
     System.out.print("\033[H\033[2J");
     for (int i = 0; i < boardController.getBoardHeight(); i++) {
       for (int j = 0; j < boardController.getBoardWidth(); j++) {
@@ -37,7 +31,7 @@ public class ConsoleOutput implements IGameOutput {
   }
 
   @Override
-  public void printScore(int currentScore, int levelAmount){
+  public void printScore(int currentScore, int levelAmount) {
     System.out.print("Score: " + currentScore + "\r\n");
     System.out.print("Level: " + levelAmount);
   }

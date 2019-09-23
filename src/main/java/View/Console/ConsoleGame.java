@@ -13,26 +13,29 @@ public class ConsoleGame implements IGame {
 
   private IGameInput consoleInput;
   private IGameOutput consoleOutput;
-  private ConsoleInputAdapter consoleInputAdapter;
-  private BoardController boardController;
+  private ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
+  private BoardGenerator boardGenerator = new BoardGenerator();
+  private BoardController boardController = new BoardController(boardGenerator);
   private EnemyController enemyController;
   private Pacman pacman;
   private Ghost ghostOne, ghostTwo;
   private int pacmanScoreToWin;
 
+  public ConsoleGame(IGameInput consoleInput, IGameOutput consoleOutput) {
+    this.consoleInput = consoleInput;
+    this.consoleOutput = consoleOutput;
+  }
+
   @Override
   public void setupGame() {
     Runtime runtime = Runtime.getRuntime();
     runtime.addShutdownHook(new ConsoleCleanUp());
-    BoardGenerator boardGenerator = new BoardGenerator();
-    boardController = new BoardController(boardGenerator);
-    consoleOutput = new ConsoleOutput(boardController);
-    consoleInput = new ConsoleInput();
-    consoleInputAdapter = new ConsoleInputAdapter();
+
     pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
     ghostOne = (Ghost) boardController.getExistingEntityByName("Ghost");
     ghostTwo = (Ghost) boardController.getExistingEntityByName("Ghost2");
     enemyController = new EnemyController();
+
     pacmanScoreToWin = boardGenerator.scoreAmount() - 1;
   }
 
@@ -40,7 +43,8 @@ public class ConsoleGame implements IGame {
   public void runGame(int currentLevelIteration) {
     setupGame();
     int userInputAsByte = 0, rawInput;
-    while (pacman.getCurrentScore() < pacmanScoreToWin && ghostOne.getCurrentScore() < 1) {
+    while (pacman.getCurrentScore() < pacmanScoreToWin && ghostOne.getCurrentScore() < 1
+        && ghostTwo.getCurrentScore() < 1) {
       rawInput = consoleInput.getUserInput();
 
       if (rawInput != 0) {
@@ -52,11 +56,11 @@ public class ConsoleGame implements IGame {
       enemyController.moveEnemy(boardController, pacman, ghostOne);
       enemyController.moveEnemy(boardController, pacman, ghostTwo);
 
-      consoleOutput.printBoard();
+      consoleOutput.printBoard(boardController);
       consoleOutput.printScore(boardController.getEntityScore(pacman), currentLevelIteration);
 
       try {
-        Thread.sleep(100);
+        Thread.sleep(200);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
@@ -68,7 +72,8 @@ public class ConsoleGame implements IGame {
   public void endGame(Boolean playerWin, int currentLevelIteration) {
     if (playerWin) {
       consoleOutput.printVictory();
-      runGame(++currentLevelIteration);
+      ConsoleGame newGame = new ConsoleGame(consoleInput, consoleOutput);
+      newGame.runGame(++currentLevelIteration);
     } else {
       consoleOutput.printLose();
     }

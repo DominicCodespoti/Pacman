@@ -1,5 +1,8 @@
 package View.Console;
 
+import static DataStructures.Constants.BUFFERED_READER_EXCEPTION;
+import static DataStructures.Constants.RAW_MODE_EXCEPTION;
+
 import View.IGameInput;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +27,7 @@ public class ConsoleInput implements IGameInput {
         }
       }
     } catch (IOException e) {
+      System.out.println(BUFFERED_READER_EXCEPTION);
       e.printStackTrace();
     }
     return 0;
@@ -34,6 +38,7 @@ public class ConsoleInput implements IGameInput {
     try {
       Runtime.getRuntime().exec(cmd).waitFor();
     } catch (InterruptedException | IOException e) {
+      System.out.println(RAW_MODE_EXCEPTION);
       e.printStackTrace();
     }
   }
