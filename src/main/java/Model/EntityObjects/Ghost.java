@@ -32,7 +32,7 @@ public class Ghost implements IEntityObject {
 
   @Override
   public boolean isSolid() {
-    return true;
+    return false;
   }
 
   @Override

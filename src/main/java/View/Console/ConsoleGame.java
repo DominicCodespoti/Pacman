@@ -1,114 +1,83 @@
 package View.Console;
 
 import Controller.BoardController;
-import DataStructures.Directions;
 import DataStructures.Point;
 import Model.BoardGenerator;
 import Model.DistanceCalculator;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
 import View.IGame;
-import java.io.IOException;
+import View.IGameInput;
+import View.IGameOutput;
 
 public class ConsoleGame implements IGame {
 
-  private ConsoleInput consoleInput = new ConsoleInput();
+  private IGameInput consoleInput;
+  private IGameOutput consoleOutput;
+  private ConsoleInputAdapter consoleInputAdapter;
+  private BoardController boardController;
+  private Pacman pacman;
+  private Ghost ghostOne, ghostTwo;
+  private int pacmanScoreToWin;
 
-  private void enterCookedTerminalModeAndExit() {
-    String[] cmd = {"/bin/sh", "-c", "stty cooked </dev/tty"};
-    try {
-      Runtime.getRuntime().exec(cmd).waitFor();
-    } catch (InterruptedException | IOException e) {
-      e.printStackTrace();
-    }
-    System.exit(0);
-  }
-
-  private void enterRawTerminalMode() {
-    String[] cmd = {"/bin/sh", "-c", "stty raw </dev/tty"};
-    try {
-      Runtime.getRuntime().exec(cmd).waitFor();
-    } catch (InterruptedException | IOException e) {
-      e.printStackTrace();
-    }
+  @Override
+  public void setupGame() {
+    Runtime runtime = Runtime.getRuntime();
+    runtime.addShutdownHook(new ConsoleCleanUp());
+    BoardGenerator boardGenerator = new BoardGenerator();
+    boardController = new BoardController(boardGenerator);
+    consoleOutput = new ConsoleOutput(boardController);
+    consoleInput = new ConsoleInput();
+    consoleInputAdapter = new ConsoleInputAdapter();
+    pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
+    ghostOne = (Ghost) boardController.getExistingEntityByName("Ghost");
+    ghostTwo = (Ghost) boardController.getExistingEntityByName("Ghost2");
+    pacmanScoreToWin = boardGenerator.scoreAmount() - 1;
   }
 
   @Override
   public void runGame(int currentLevelIteration) {
-    BoardGenerator boardGenerator = new BoardGenerator();
-    BoardController boardController = new BoardController(boardGenerator);
-    ConsoleOutput consoleOutput = new ConsoleOutput(boardController);
-    DistanceCalculator distanceCalculator;
-    Pacman player = (Pacman) boardController.getExistingEntityByName("Pacman");
-    Ghost enemy = (Ghost) boardController.getExistingEntityByName("Ghost");
-    Ghost enemy2 = (Ghost) boardController.getExistingEntityByName("Ghost2");
-    int userInputAsByte = 0;
-
-    enterRawTerminalMode();
-    int pacmanScoreToWin = boardGenerator.scoreAmount() - 1;
-
-    while (player.getCurrentScore() < pacmanScoreToWin && enemy.getCurrentScore() < 1) {
-      int uncheckedInput;
-      uncheckedInput = consoleInput.getUserInput();
-
-      if (uncheckedInput != 0) {
-        userInputAsByte = uncheckedInput;
+    setupGame();
+    int userInputAsByte = 0, rawInput;
+    while (pacman.getCurrentScore() < pacmanScoreToWin && ghostOne.getCurrentScore() < 1) {
+      rawInput = consoleInput.getUserInput();
+      if (rawInput != 0) {
+        userInputAsByte = rawInput;
       }
-
-      if (userInputAsByte == 3) {
-        enterCookedTerminalModeAndExit();
-      }
-
-      if (userInputAsByte == 119) {
-        boardController.tryToRotateAndMoveEntity(player, Directions.Up);
-        player.setIsMouthOpenToOpposite();
-      }
-
-      if (userInputAsByte == 97) {
-        boardController.tryToRotateAndMoveEntity(player, Directions.Left);
-        player.setIsMouthOpenToOpposite();
-      }
-
-      if (userInputAsByte == 100) {
-        boardController.tryToRotateAndMoveEntity(player, Directions.Right);
-        player.setIsMouthOpenToOpposite();
-      }
-
-      if (userInputAsByte == 115) {
-        boardController.tryToRotateAndMoveEntity(player, Directions.Down);
-        player.setIsMouthOpenToOpposite();
-      }
+      consoleInputAdapter.translateInputToGame(boardController, userInputAsByte, pacman);
 
       if (boardController.getExistingEntityByName("Pacman") != null) {
-        Point playerCurrentPosition = boardController.getExistingEntityPosition(player);
-        Point enemyCurrentPosition = boardController.getExistingEntityPosition(enemy);
-        Point enemy2CurrentPosition = boardController.getExistingEntityPosition(enemy);
+        Point playerCurrentPosition = boardController.getExistingEntityPosition(pacman);
+        Point enemyCurrentPosition = boardController.getExistingEntityPosition(ghostOne);
+        Point enemy2CurrentPosition = boardController.getExistingEntityPosition(ghostOne);
 
-        distanceCalculator = new DistanceCalculator(enemyCurrentPosition);
-        boardController.tryToRotateAndMoveEntity(enemy,
-            distanceCalculator.findDirectionWithClosestPath(playerCurrentPosition));
+        DistanceCalculator distanceCalculator = new DistanceCalculator(enemyCurrentPosition);
+        boardController
+            .tryToRotateAndMoveEntity(ghostOne, distanceCalculator.findDirectionWithClosestPath(playerCurrentPosition));
         distanceCalculator = new DistanceCalculator(enemy2CurrentPosition);
-        boardController.tryToRotateAndMoveEntity(enemy2,
-            distanceCalculator.findDirectionWithClosestPath(playerCurrentPosition));
+        boardController
+            .tryToRotateAndMoveEntity(ghostTwo, distanceCalculator.findDirectionWithClosestPath(playerCurrentPosition));
       }
 
       consoleOutput.printBoard();
-      consoleOutput.printScore(boardController.getEntityScore(player), currentLevelIteration);
+      consoleOutput.printScore(boardController.getEntityScore(pacman), currentLevelIteration);
 
       try {
-        Thread.sleep(500);
+        Thread.sleep(100);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
     }
+    endGame(pacman.getCurrentScore() >= pacmanScoreToWin, currentLevelIteration);
+  }
 
-    if (player.getCurrentScore() >= pacmanScoreToWin) {
+  @Override
+  public void endGame(Boolean playerWin, int currentLevelIteration) {
+    if (playerWin) {
       consoleOutput.printVictory();
-      runGame(currentLevelIteration++);
+      runGame(++currentLevelIteration);
     } else {
       consoleOutput.printLose();
     }
-
-    enterCookedTerminalModeAndExit();
   }
 }

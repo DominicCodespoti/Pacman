@@ -13,6 +13,7 @@ public class ConsoleInput implements IGameInput {
 
   @Override
   public int getUserInput() {
+    enterRawTerminalMode();
     try {
       if (bufferedReader.ready()) {
         int currentInput = bufferedReader.read();
@@ -26,5 +27,14 @@ public class ConsoleInput implements IGameInput {
       e.printStackTrace();
     }
     return 0;
+  }
+
+  private void enterRawTerminalMode() {
+    String[] cmd = {"/bin/sh", "-c", "stty raw </dev/tty"};
+    try {
+      Runtime.getRuntime().exec(cmd).waitFor();
+    } catch (InterruptedException | IOException e) {
+      e.printStackTrace();
+    }
   }
 }
