@@ -1,9 +1,9 @@
 package ViewTests;
 
 import Controller.BoardController;
-import DataStructures.Directions;
-import Model.BoardGeneratorStub;
-import Model.IBoardGenerator;
+import Controller.IBoardGenerator;
+import ControllerTests.BoardGeneratorStub;
+import Model.Directions;
 import View.Console.ConsoleOutput;
 import org.junit.Test;
 
@@ -13,17 +13,20 @@ public class ConsoleOutputTests {
   public void printerPrintsCorrectly() {
     IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
     BoardController boardController = new BoardController(boardGeneratorStub);
-    ConsoleOutput consolePrinter = new ConsoleOutput(boardController);
+    ConsoleOutput consolePrinter = new ConsoleOutput();
 
-    consolePrinter.printBoard();
     boardController
-        .tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
-    consolePrinter.printBoard();
+        .createEntity("Pacman", boardController.getBoardWidth() / 2, boardController.getBoardHeight() / 2, true);
+    boardController.createEntity("Ghost1", 0, 0, false);
     boardController
-        .tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
-    consolePrinter.printBoard();
-    boardController
-        .tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
-    consolePrinter.printBoard();
+        .createEntity("Ghost2", boardController.getBoardWidth() - 1, boardController.getBoardHeight() - 1, false);
+
+    consolePrinter.printBoard(boardController);
+    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
+    consolePrinter.printBoard(boardController);
+    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
+    consolePrinter.printBoard(boardController);
+    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
+    consolePrinter.printBoard(boardController); //TODO: MOCK OUTPUT
   }
 }

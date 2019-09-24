@@ -9,20 +9,23 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class PacmanTests {
+public class BoardControllerTests {
 
   private BoardController boardController;
+
+  @Before
+  public void initializeBoard(){
+    IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
+    boardController = new BoardController(boardGeneratorStub);
+    boardController.createEntity("Pacman", boardController.getBoardWidth() / 2, boardController.getBoardHeight() / 2, true);
+    boardController.createEntity("Ghost1", 0, 0, false);
+    boardController.createEntity("Ghost2", boardController.getBoardWidth() - 1, boardController.getBoardHeight() - 1, false);
+  }
 
   private int[] findPacman() {
     IEntityObject entityToFind = boardController.getExistingEntityByName("Pacman");
     return new int[] {boardController.getExistingEntityPosition(entityToFind).getX(),
         boardController.getExistingEntityPosition(entityToFind).getY()};
-  }
-
-  @Before
-  public void initTests() {
-    IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
-    boardController = new BoardController(boardGeneratorStub);
   }
 
   @Test

@@ -1,4 +1,4 @@
-package ControllerTests;
+package UtilitiesTests;
 
 import Model.Directions;
 import Model.Point;

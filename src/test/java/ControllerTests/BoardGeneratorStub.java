@@ -1,3 +1,5 @@
+package ControllerTests;
+
 import Model.Point;
 import DataStructures.QuadruplyLinkedList;
 import Model.GameObjects.Wall;

@@ -1,21 +1,29 @@
 package ControllerTests;
 
 import Controller.BoardController;
-import DataStructures.Point;
-import Model.BoardGenerator;
-import Model.BoardGeneratorStub;
-import Model.IBoardGenerator;
+import Controller.IBoardGenerator;
+import Model.Point;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class BoardGeneratorTests {
 
   private BoardController boardController;
 
+  @Before
+  public void initializeBoard() {
+    IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
+    boardController = new BoardController(boardGeneratorStub);
+    boardController
+        .createEntity("Pacman", boardController.getBoardWidth() / 2, boardController.getBoardHeight() / 2, true);
+    boardController.createEntity("Ghost1", 0, 0, false);
+    boardController
+        .createEntity("Ghost2", boardController.getBoardWidth() - 1, boardController.getBoardHeight() - 1, false);
+  }
+
   @Test
-  public void wallsDoNotGenerateOnPacman() {
-    IBoardGenerator boardGenerator = new BoardGenerator();
-    boardController = new BoardController(boardGenerator);
+  public void wallsDoNotGenerateOnPacman() { //TODO: INTRODUCE BEFORE
     int boardHeight = boardController.getBoardHeight();
     int boardWidth = boardController.getBoardWidth();
     Point wherePacmanShouldBe = new Point(boardWidth / 2, boardHeight / 2);
@@ -24,8 +32,6 @@ public class BoardGeneratorTests {
 
   @Test
   public void correctScoreIsGeneratedOnNewBoard() {
-    IBoardGenerator boardGenerator = new BoardGeneratorStub();
-    boardController = new BoardController(boardGenerator);
     int boardHeight = boardController.getBoardHeight();
     int boardWidth = boardController.getBoardWidth();
     int wallAmount = 0;
@@ -36,6 +42,6 @@ public class BoardGeneratorTests {
         }
       }
     }
-    Assert.assertEquals(boardGenerator.scoreAmount(), boardHeight * boardWidth - wallAmount);
+    Assert.assertEquals(new BoardGeneratorStub().scoreAmount(), boardHeight * boardWidth - wallAmount);
   }
 }
