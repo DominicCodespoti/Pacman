@@ -9,7 +9,7 @@ public class ConsoleCleanUp extends Thread { //TODO: STATIC
     try {
       Runtime.getRuntime().exec(cmd).waitFor();
     } catch (InterruptedException | IOException e) {
-      e.getMessage();
+      System.out.println(e.getMessage());
     }
   }
 }
