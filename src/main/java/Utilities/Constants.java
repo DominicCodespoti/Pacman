@@ -1,4 +1,4 @@
-package DataStructures;
+package Utilities;
 
 public final class Constants {
   public static final int W_KEY = 119;

@@ -1,4 +1,4 @@
-package DataStructures;
+package Model;
 
 public enum Directions {
   Down,

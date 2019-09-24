@@ -1,7 +1,8 @@
 package DataStructures;
 
 import Model.GameObjects.Dot;
-import Model.IGameObject;
+import Model.GameObjects.IGameObject;
+import Model.Point;
 
 public class Node {
 

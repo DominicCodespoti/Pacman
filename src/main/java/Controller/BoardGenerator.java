@@ -1,6 +1,6 @@
-package Model;
+package Controller;
 
-import DataStructures.Point;
+import Model.Point;
 import DataStructures.QuadruplyLinkedList;
 import Model.GameObjects.Wall;
 import java.util.Random;

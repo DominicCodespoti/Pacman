@@ -1,7 +1,6 @@
 package Model.EntityObjects;
 
-import DataStructures.Directions;
-import Model.IEntityObject;
+import Model.Directions;
 
 public class Ghost implements IEntityObject {
 

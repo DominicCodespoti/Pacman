@@ -1,8 +1,7 @@
-package Model;
-
-import DataStructures.Point;
+import Model.Point;
 import DataStructures.QuadruplyLinkedList;
 import Model.GameObjects.Wall;
+import Controller.IBoardGenerator;
 
 public class BoardGeneratorStub implements IBoardGenerator {
 

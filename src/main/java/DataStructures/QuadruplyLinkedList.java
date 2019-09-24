@@ -1,6 +1,8 @@
 package DataStructures;
 
-import Model.IGameObject;
+import Model.Directions;
+import Model.GameObjects.IGameObject;
+import Model.Point;
 
 public class QuadruplyLinkedList {
 
@@ -8,7 +10,7 @@ public class QuadruplyLinkedList {
   private Node rowIteratorNode;
   private int width, height;
 
-  public QuadruplyLinkedList(int Width, int Height) {
+  public QuadruplyLinkedList(int Width, int Height) { //TODO: FIX CASING
     width = Width;
     height = Height;
     referenceNode = new Node();

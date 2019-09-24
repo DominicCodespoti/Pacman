@@ -8,9 +8,9 @@ import View.IGameOutput;
 public class Main {
 
   public static void main(String[] args) {
-    IGameInput iGameInput = new ConsoleInput();
-    IGameOutput iGameOutput = new ConsoleOutput();
-    IGame chosenImplementation = new ConsoleGame(iGameInput, iGameOutput);
-    chosenImplementation.runGame(1);
+    IGameInput gameInput = new ConsoleInput();
+    IGameOutput gameOutput = new ConsoleOutput();
+    IGame game = new ConsoleGame(gameInput, gameOutput);
+    game.runGame(1);
   }
 }

@@ -1,7 +1,5 @@
 package Model.GameObjects;
 
-import Model.IGameObject;
-
 public class Dot implements IGameObject {
 
   @Override

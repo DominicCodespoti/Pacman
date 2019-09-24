@@ -1,6 +1,7 @@
-package Model;
+package Model.EntityObjects;
 
-import DataStructures.Directions;
+import Model.Directions;
+import Model.GameObjects.IGameObject;
 
 public interface IEntityObject extends IGameObject {
 

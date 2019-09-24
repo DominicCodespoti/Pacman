@@ -1,10 +1,10 @@
 package ControllerTests;
 
 import Controller.BoardController;
-import DataStructures.Directions;
-import Model.BoardGeneratorStub;
-import Model.IBoardGenerator;
-import Model.IEntityObject;
+import Model.Directions;
+import Controller.IBoardGenerator;
+import Model.EntityObjects.IEntityObject;
+import Model.Point;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -135,5 +135,31 @@ public class PacmanTests {
         .tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"),
             Directions.Right);
     Assert.assertArrayEquals(new int[] {0, 2}, findPacman());
+  }
+
+  @Test
+  public void dotBecomesSpaceWhenPacmanMovesOverIt() {
+    boardController
+        .tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
+    boardController
+        .tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
+    Assert.assertEquals(" ", boardController.getObjectRepresentationAtPosition(new Point(2, 2)));
+  }
+
+  @Test
+  public void pacmanDoesNotRotateAndContinuesMovingWhenRotatingIntoWall() {
+    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
+    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
+    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
+    Assert.assertEquals("^", boardController.getObjectRepresentationAtPosition(new Point(2, 0)));
+  }
+
+  @Test
+  public void pacmanDoesNotMoveThroughWallsWhenWalkingIntoThem() {
+    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
+    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
+    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
+    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
+    Assert.assertEquals("^", boardController.getObjectRepresentationAtPosition(new Point(1, 3)));
   }
 }

@@ -1,7 +1,7 @@
 package View.Console;
 
 import Controller.BoardController;
-import DataStructures.Point;
+import Model.Point;
 import View.IGameOutput;
 
 public class ConsoleOutput implements IGameOutput {

@@ -1,8 +1,8 @@
 package Controller;
 
-import DataStructures.Point;
-import Model.DistanceCalculator;
-import Model.IEntityObject;
+import Model.Point;
+import Model.EntityObjects.IEntityObject;
+import Utilities.DistanceCalculator;
 
 public class EnemyController {
   public void moveEnemy(BoardController boardController, IEntityObject pacman, IEntityObject ghost){
@@ -10,9 +10,9 @@ public class EnemyController {
       Point playerCurrentPosition = boardController.getExistingEntityPosition(pacman);
       Point enemyCurrentPosition = boardController.getExistingEntityPosition(ghost);
 
-      DistanceCalculator distanceCalculator = new DistanceCalculator(enemyCurrentPosition);
       boardController
-          .tryToRotateAndMoveEntity(ghost, distanceCalculator.findDirectionWithClosestPath(playerCurrentPosition));
+          .tryToRotateAndMoveEntity(ghost, DistanceCalculator.findDirectionWithClosestPath(playerCurrentPosition,
+              enemyCurrentPosition));
     }
   }
 }

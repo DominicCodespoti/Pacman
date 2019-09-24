@@ -1,14 +1,13 @@
 package Controller;
 
-import DataStructures.Directions;
-import DataStructures.Point;
+import Model.Directions;
+import Model.Point;
 import DataStructures.QuadruplyLinkedList;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
 import Model.GameObjects.Dot;
 import Model.GameObjects.Space;
-import Model.IBoardGenerator;
-import Model.IEntityObject;
+import Model.EntityObjects.IEntityObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -22,18 +21,9 @@ public class BoardController {
     gameBoard = boardGenerator.generateBoard();
     int boardHeight = gameBoard.getHeight();
     int boardWidth = gameBoard.getWidth();
-
-    Pacman pacman = new Pacman("Pacman");
-    currentEntities.put(pacman, new Point(boardWidth / 2, boardHeight / 2));
-    gameBoard.setValue(new Point(boardWidth / 2, boardHeight / 2), pacman);
-
-    Ghost ghost = new Ghost("Ghost");
-    currentEntities.put(ghost, new Point(boardWidth, boardHeight / 3));
-    gameBoard.setValue(new Point(boardWidth, boardHeight / 3), ghost);
-
-    Ghost ghost2 = new Ghost("Ghost2");
-    currentEntities.put(ghost2, new Point(boardWidth, 1));
-    gameBoard.setValue(new Point(boardWidth, 1), ghost2);
+    createEntity("Pacman", boardWidth / 2, boardHeight / 2, true);
+    createEntity("Ghost1", 0, 0, false);
+    createEntity("Ghost2", boardWidth - 1, boardHeight - 1, false);
   }
 
   public Point getExistingEntityPosition(IEntityObject entityToMove) {
@@ -75,6 +65,19 @@ public class BoardController {
 
   public int getBoardHeight() {
     return gameBoard.getHeight();
+  }
+
+  private void createEntity(String entityName, int xPosition, int yPosition, boolean isPacman){
+    if (isPacman) {
+      Pacman pacman = new Pacman(entityName);
+      currentEntities.put(pacman, new Point(xPosition, yPosition));
+      gameBoard.setValue(new Point(xPosition, yPosition), pacman);
+    }
+    else {
+      Ghost ghost = new Ghost(entityName);
+      currentEntities.put(ghost, new Point(xPosition, yPosition));
+      gameBoard.setValue(new Point(xPosition, yPosition), ghost);
+    }
   }
 
   private void updateEntityPosition(IEntityObject entityToMove, Point newPosition) {
