@@ -19,11 +19,6 @@ public class BoardController {
 
   public BoardController(IBoardGenerator boardGenerator) {
     gameBoard = boardGenerator.generateBoard();
-    int boardHeight = gameBoard.getHeight();
-    int boardWidth = gameBoard.getWidth();
-    createEntity("Pacman", boardWidth / 2, boardHeight / 2, true);
-    createEntity("Ghost1", 0, 0, false);
-    createEntity("Ghost2", boardWidth - 1, boardHeight - 1, false);
   }
 
   public Point getExistingEntityPosition(IEntityObject entityToMove) {
@@ -67,7 +62,7 @@ public class BoardController {
     return gameBoard.getHeight();
   }
 
-  private void createEntity(String entityName, int xPosition, int yPosition, boolean isPacman){
+  public void createEntity(String entityName, int xPosition, int yPosition, boolean isPacman){
     if (isPacman) {
       Pacman pacman = new Pacman(entityName);
       currentEntities.put(pacman, new Point(xPosition, yPosition));

@@ -33,6 +33,9 @@ public class ConsoleGame implements IGame {
     runtime.addShutdownHook(new ConsoleCleanUp());
 
     pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
+    boardController.createEntity("Pacman", boardController.getBoardWidth() / 2, boardController.getBoardHeight() / 2, true);
+    boardController.createEntity("Ghost1", 0, 0, false);
+    boardController.createEntity("Ghost2", boardController.getBoardWidth() - 1, boardController.getBoardHeight() - 1, false);
     ghosts = new ArrayList<>();
 
     int i = 1;
@@ -42,7 +45,6 @@ public class ConsoleGame implements IGame {
     }
 
     enemyController = new EnemyController();
-
     pacmanScoreToWin = boardGenerator.scoreAmount() - 1;
   }
 
