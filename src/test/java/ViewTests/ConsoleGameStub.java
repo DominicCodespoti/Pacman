@@ -3,6 +3,7 @@ package ViewTests;
 import Controller.BoardController;
 import Controller.EnemyController;
 import Controller.IBoardGenerator;
+import Controller.IEnemyController;
 import ControllerTests.BoardGeneratorStub;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
@@ -15,7 +16,7 @@ public class ConsoleGameStub implements IGame {
   private ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
   private IBoardGenerator boardGenerator = new BoardGeneratorStub();
   private BoardController boardController = new BoardController(boardGenerator);
-  private EnemyController enemyController;
+  private IEnemyController enemyController;
   private Pacman pacman;
   private ArrayList<Ghost> ghosts;
   private int pacmanScoreToWin;
@@ -24,12 +25,11 @@ public class ConsoleGameStub implements IGame {
   public void setupGame() {
     boardController.createEntity("Pacman", 2, 2, true);
     pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
-
-    boardController.createEntity("Ghost1", 0, 0, false);
+    boardController.createEntity("Ghost1", 2, 1, false);
     ghosts = new ArrayList<>();
     ghosts.add((Ghost) boardController.getExistingEntityByName("Ghost1"));
 
-    enemyController = new EnemyController();
+    enemyController = new EnemyControllerStub();
     pacmanScoreToWin = boardGenerator.scoreAmount() - 1;
   }
 

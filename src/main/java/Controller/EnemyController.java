@@ -4,7 +4,9 @@ import Model.Point;
 import Model.EntityObjects.IEntityObject;
 import Utilities.DistanceCalculator;
 
-public class EnemyController {
+public class EnemyController implements IEnemyController{
+
+  @Override
   public void moveEnemy(BoardController boardController, IEntityObject pacman, IEntityObject ghost){
     if (boardController.getExistingEntityByName("Pacman") != null) {
       Point playerCurrentPosition = boardController.getExistingEntityPosition(pacman);

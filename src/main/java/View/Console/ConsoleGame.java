@@ -1,8 +1,6 @@
 package View.Console;
 
-import Controller.BoardController;
-import Controller.BoardGenerator;
-import Controller.EnemyController;
+import Controller.*;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
 import View.IGame;
@@ -15,9 +13,9 @@ public class ConsoleGame implements IGame {
   private IGameInput consoleInput;
   private IGameOutput consoleOutput;
   private ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
-  private BoardGenerator boardGenerator = new BoardGenerator();
+  private IBoardGenerator boardGenerator = new BoardGenerator();
   private BoardController boardController = new BoardController(boardGenerator);
-  private EnemyController enemyController;
+  private IEnemyController enemyController;
   private Pacman pacman;
   private ArrayList<Ghost> ghosts;
   private int pacmanScoreToWin;
