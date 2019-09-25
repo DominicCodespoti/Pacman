@@ -50,7 +50,7 @@ public class ConsoleGame implements IGame {
   }
 
   @Override
-  public boolean checkWinConditionsMet() {
+  public boolean isPacmanAliveOrDotsUneaten() {
     boolean haveAnyGhostsEatenPacman = ghosts.stream().anyMatch(x -> x.getCurrentScore() >= 1);
     return pacman.getCurrentScore() < pacmanScoreToWin && !haveAnyGhostsEatenPacman;
   }
@@ -59,7 +59,7 @@ public class ConsoleGame implements IGame {
   public void runGame(int currentLevelIteration) {
     setupGame();
     int userInputAsByte = 0, rawInput;
-    while (checkWinConditionsMet()) {
+    while (isPacmanAliveOrDotsUneaten()) {
       rawInput = consoleInput.getUserInput();
 
       if (rawInput != 0) {

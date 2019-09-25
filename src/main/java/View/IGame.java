@@ -4,7 +4,7 @@ public interface IGame {
 
   void setupGame();
 
-  boolean checkWinConditionsMet();
+  boolean isPacmanAliveOrDotsUneaten();
 
   void runGame(int currentLevelIteration);
 

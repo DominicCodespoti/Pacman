@@ -34,7 +34,7 @@ public class ConsoleGameStub implements IGame {
   }
 
   @Override
-  public boolean checkWinConditionsMet() {
+  public boolean isPacmanAliveOrDotsUneaten() {
     return pacman.getCurrentScore() < pacmanScoreToWin && ghosts.get(0).getCurrentScore() < 1;
   }
 
