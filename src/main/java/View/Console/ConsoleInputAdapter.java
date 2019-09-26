@@ -12,30 +12,23 @@ import Model.EntityObjects.Pacman;
 
 public class ConsoleInputAdapter {
 
-  public void translateInputToGameActions(BoardController boardController, int userInputAsByte, Pacman player) {
+  public Directions translateInputToGameActions(int userInputAsByte) {
     switch (userInputAsByte) {
       case A_KEY:
-        boardController.tryToRotateAndMoveEntity(player, Directions.Left);
-        player.setIsMouthOpenToOpposite();
-        return;
+        return Directions.Left;
 
       case D_KEY:
-        boardController.tryToRotateAndMoveEntity(player, Directions.Right);
-        player.setIsMouthOpenToOpposite();
-        return;
+        return Directions.Right;
 
       case S_KEY:
-        boardController.tryToRotateAndMoveEntity(player, Directions.Down);
-        player.setIsMouthOpenToOpposite();
-        return;
+        return Directions.Down;
 
       case W_KEY:
-        boardController.tryToRotateAndMoveEntity(player, Directions.Up);
-        player.setIsMouthOpenToOpposite();
-        return;
+        return Directions.Up;
 
       case EXIT_KEY:
         System.exit(0);
     }
+    return null;
   }
 }

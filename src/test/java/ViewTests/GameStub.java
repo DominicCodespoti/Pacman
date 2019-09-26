@@ -1,17 +1,19 @@
 package ViewTests;
 
 import Controller.BoardController;
-import Controller.EnemyController;
 import Controller.IBoardGenerator;
 import Controller.IEnemyController;
 import ControllerTests.BoardGeneratorStub;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
 import View.Console.ConsoleInputAdapter;
-import View.IGame;
+import View.Console.Game;
+import View.IGameInput;
+import View.IGameOutput;
+
 import java.util.ArrayList;
 
-public class ConsoleGameStub implements IGame {
+public class GameStub extends Game {
 
   private ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
   private IBoardGenerator boardGenerator = new BoardGeneratorStub();
@@ -20,6 +22,10 @@ public class ConsoleGameStub implements IGame {
   private Pacman pacman;
   private ArrayList<Ghost> ghosts;
   private int pacmanScoreToWin;
+
+  GameStub(IGameInput consoleInput, IGameOutput consoleOutput) {
+    super(consoleInput, consoleOutput);
+  }
 
   @Override
   public void setupGame() {
@@ -40,7 +46,8 @@ public class ConsoleGameStub implements IGame {
 
   @Override
   public void runGame(int userInputAsByte) {
-    consoleInputAdapter.translateInputToGameActions(boardController, userInputAsByte, pacman);
+    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(userInputAsByte));
+    boardController.alternatePacmanMouth(pacman);
 
     for (Ghost ghost : ghosts) {
       enemyController.moveEnemy(boardController, pacman, ghost);

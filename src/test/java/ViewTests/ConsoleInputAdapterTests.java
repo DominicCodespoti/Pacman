@@ -31,10 +31,10 @@ public class ConsoleInputAdapterTests {
   @Test
   public void wKeyPressMovesPacmanUp() {
     ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
-
     Pacman pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
 
-    consoleInputAdapter.translateInputToGameActions(boardController, W_KEY, pacman);
+    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(W_KEY));
+    boardController.alternatePacmanMouth(pacman);
     Point point = new Point(2, 1);
 
     Assert.assertEquals("|", boardController.getObjectRepresentationAtPosition(point));
@@ -43,10 +43,10 @@ public class ConsoleInputAdapterTests {
   @Test
   public void aKeyPressMovesPacmanLeft() {
     ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
-
     Pacman pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
 
-    consoleInputAdapter.translateInputToGameActions(boardController, A_KEY, pacman);
+    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(A_KEY));
+    boardController.alternatePacmanMouth(pacman);
     Point point = new Point(1, 2);
 
     Assert.assertEquals("-", boardController.getObjectRepresentationAtPosition(point));
@@ -55,10 +55,10 @@ public class ConsoleInputAdapterTests {
   @Test
   public void dKeyPressMovesPacmanRight() {
     ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
-
     Pacman pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
 
-    consoleInputAdapter.translateInputToGameActions(boardController, D_KEY, pacman);
+    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(D_KEY));
+    boardController.alternatePacmanMouth(pacman);
     Point point = new Point(3, 2);
 
     Assert.assertEquals("-", boardController.getObjectRepresentationAtPosition(point));
@@ -67,10 +67,10 @@ public class ConsoleInputAdapterTests {
   @Test
   public void sKeyPressMovesPacmanDown() {
     ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
-
     Pacman pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
 
-    consoleInputAdapter.translateInputToGameActions(boardController, S_KEY, pacman);
+    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(S_KEY));
+    boardController.alternatePacmanMouth(pacman);
     Point point = new Point(2, 3);
 
     Assert.assertEquals("|", boardController.getObjectRepresentationAtPosition(point));

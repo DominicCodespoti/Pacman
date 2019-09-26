@@ -62,6 +62,10 @@ public class BoardController {
     return gameBoard.getHeight();
   }
 
+  public void alternatePacmanMouth(Pacman entityToAlternate) {
+    entityToAlternate.setIsMouthOpenToOpposite();
+  }
+
   public void createEntity(String entityName, int xPosition, int yPosition, boolean isPacman){
     if (isPacman) {
       Pacman pacman = new Pacman(entityName);
