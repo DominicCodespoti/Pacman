@@ -1,15 +1,20 @@
 package View.Console;
 
-import Controller.*;
+import static Utilities.Constants.GHOST_AMOUNT;
+import static Utilities.Constants.TICK_SPEED;
+import static Utilities.Constants.W_KEY;
+
+
+import Controller.BoardController;
+import Controller.BoardGenerator;
+import Controller.EnemyController;
+import Controller.IBoardGenerator;
+import Controller.IEnemyController;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
 import View.IGameInput;
 import View.IGameOutput;
-
 import java.util.ArrayList;
-
-import static Utilities.Constants.GHOST_AMOUNT;
-import static Utilities.Constants.TICK_SPEED;
 
 public class Game {
 
@@ -33,16 +38,17 @@ public class Game {
         runtime.addShutdownHook(new ConsoleCleanUp());
 
         boardController.createEntity("Pacman", boardController.getBoardWidth() / 2, boardController.getBoardHeight() / 2, true);
+
         for (int i = 0; i < GHOST_AMOUNT; i++) {
             boardController.createEntity("Ghost" + (i + 1), i, 0, false);
         }
 
-        pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
+        pacman = (Pacman) boardController.getExistingEntitiesEntry("Pacman");
         ghosts = new ArrayList<>();
 
         int i = 1;
-        while (boardController.getExistingEntityByName("Ghost" + i) != null) {
-            ghosts.add((Ghost) boardController.getExistingEntityByName("Ghost" + i));
+        while (boardController.getExistingEntitiesEntry("Ghost" + i) != null) {
+            ghosts.add((Ghost) boardController.getExistingEntitiesEntry("Ghost" + i));
             i++;
         }
 
@@ -52,12 +58,12 @@ public class Game {
 
     public boolean isPacmanAliveOrDotsUneaten() {
         boolean haveAnyGhostsEatenPacman = ghosts.stream().anyMatch(x -> x.getCurrentScore() >= 1);
-        return pacman.getCurrentScore() < boardController.getEntityScore(pacman) && !haveAnyGhostsEatenPacman;
+        return boardController.getEntityScore("Pacman") < pacmanScoreToWin && !haveAnyGhostsEatenPacman;
     }
 
     public void runGame(int currentLevelIteration) {
         setupGame();
-        int userInputAsByte = 0, rawInput;
+        int userInputAsByte = W_KEY, rawInput;
         while (isPacmanAliveOrDotsUneaten()) {
             rawInput = consoleInput.getUserInput();
 
@@ -65,22 +71,22 @@ public class Game {
                 userInputAsByte = rawInput;
             }
 
-            boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(userInputAsByte));
-            boardController.alternatePacmanMouth(pacman);
+            boardController.tryToRotateAndMoveEntity("Pacman", consoleInputAdapter.translateInputToGameActions(userInputAsByte));
+            boardController.alternatePacmanMouth("Pacman");
 
             for (Ghost ghost : ghosts) {
-                enemyController.moveEnemy(boardController, pacman, ghost);
+                enemyController.moveEnemy(boardController, "Pacman", ghost.getName());
             }
 
             consoleOutput.printBoard(boardController);
-            consoleOutput.printScore(boardController.getEntityScore(pacman), currentLevelIteration);
+            consoleOutput.printScore(boardController.getEntityScore("Pacman"), currentLevelIteration);
             try {
                 Thread.sleep(TICK_SPEED); //TODO: EXTRACT TO SOMEWHERE
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
             }
         }
-        endGame(boardController.getEntityScore(pacman) >= pacmanScoreToWin, currentLevelIteration);
+        endGame(boardController.getEntityScore("Pacman") >= pacmanScoreToWin, currentLevelIteration);
     }
 
     public void endGame(Boolean playerWin, int currentLevelIteration) {

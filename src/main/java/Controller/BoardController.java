@@ -1,13 +1,13 @@
 package Controller;
 
-import Model.Directions;
-import Model.Point;
 import DataStructures.QuadruplyLinkedList;
+import Model.Directions;
 import Model.EntityObjects.Ghost;
+import Model.EntityObjects.IEntityObject;
 import Model.EntityObjects.Pacman;
 import Model.GameObjects.Dot;
 import Model.GameObjects.Space;
-import Model.EntityObjects.IEntityObject;
+import Model.Point;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -21,29 +21,27 @@ public class BoardController {
     gameBoard = boardGenerator.generateBoard();
   }
 
-  public Point getExistingEntityPosition(IEntityObject entityToMove) {
-    Entry test = currentEntities.entrySet().stream().filter(x -> x.getKey().getName().equals(entityToMove.getName()))
-        .findFirst().orElse(null);
-    return (Point) (test != null ? test.getValue() : null);
+  public Entry<IEntityObject, Point> getExistingEntitiesEntry(String entityName) {
+    return currentEntities.entrySet().stream()
+        .filter(x -> x.getKey().getName().equals(entityName))
+        .findFirst()
+        .orElse(null);
   }
 
-  public IEntityObject getExistingEntityByName(String entityName) {
-    return currentEntities.keySet().stream().filter(x -> x.getName().equals(entityName)).findFirst().orElse(null);
+  public int getEntityScore(String entityToMove) {
+    return getExistingEntitiesEntry(entityToMove).getKey().getCurrentScore();
   }
 
-  public int getEntityScore(IEntityObject entityToMove) {
-    return entityToMove.getCurrentScore();
-  }
-
-  public void tryToRotateAndMoveEntity(IEntityObject entityToMove, Directions newDirection) {
-    Directions oldDirection = entityToMove.getCurrentDirection();
-    entityToMove.updateCurrentDirection(newDirection);
-    if (getExistingEntityByName(entityToMove.getName()) != null && isPathBlocked(entityToMove)) {
-      entityToMove.updateCurrentDirection(oldDirection);
+  public void tryToRotateAndMoveEntity(String entityToMove, Directions newDirection) {
+    Entry<IEntityObject, Point> entityEntry = getExistingEntitiesEntry(entityToMove);
+    Directions oldDirection = entityEntry.getKey().getCurrentDirection();
+    entityEntry.getKey().updateCurrentDirection(newDirection);
+    if (getExistingEntitiesEntry(entityToMove) != null && isPathBlocked(entityToMove)) {
+      entityEntry.getKey().updateCurrentDirection(oldDirection);
     }
-    if (getExistingEntityByName(entityToMove.getName()) != null && !isPathBlocked(entityToMove)) {
+    if (getExistingEntitiesEntry(entityToMove) != null && !isPathBlocked(entityToMove)) {
       attemptToEatEntity(entityToMove);
-      if (getExistingEntityByName(entityToMove.getName()) != null) {
+      if (getExistingEntitiesEntry(entityToMove) != null) {
         movePositionOnBoard(entityToMove);
         attemptToEatDot(entityToMove);
       }
@@ -62,17 +60,17 @@ public class BoardController {
     return gameBoard.getHeight();
   }
 
-  public void alternatePacmanMouth(Pacman entityToAlternate) {
-    entityToAlternate.setIsMouthOpenToOpposite();
+  public void alternatePacmanMouth(String entityToAlternate) {
+    Pacman pacman = (Pacman) getExistingEntitiesEntry(entityToAlternate).getKey();
+    pacman.setIsMouthOpenToOpposite();
   }
 
-  public void createEntity(String entityName, int xPosition, int yPosition, boolean isPacman){
+  public void createEntity(String entityName, int xPosition, int yPosition, boolean isPacman) {
     if (isPacman) {
       Pacman pacman = new Pacman(entityName);
       currentEntities.put(pacman, new Point(xPosition, yPosition));
       gameBoard.setValue(new Point(xPosition, yPosition), pacman);
-    }
-    else {
+    } else {
       Ghost ghost = new Ghost(entityName);
       currentEntities.put(ghost, new Point(xPosition, yPosition));
       gameBoard.setValue(new Point(xPosition, yPosition), ghost);
@@ -80,57 +78,56 @@ public class BoardController {
   }
 
   private void updateEntityPosition(IEntityObject entityToMove, Point newPosition) {
-    Entry test = currentEntities.entrySet().stream().filter(x -> x.getKey().getName().equals(entityToMove.getName()))
-        .findFirst().orElse(null);
-    test.setValue(newPosition);
+    currentEntities.entrySet().stream()
+        .filter(x -> x.getKey().getName().equals(entityToMove.getName()))
+        .findFirst()
+        .ifPresent(entityMapEntry -> entityMapEntry.setValue(newPosition));
   }
 
-  private boolean isPathBlocked(IEntityObject entityToCheck) {
-    Point entityPosition = getExistingEntityPosition(entityToCheck);
-    Directions entityDirection = getExistingEntityByName(entityToCheck.getName()).getCurrentDirection();
-    return gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isSolid();
+  private boolean isPathBlocked(String entityToCheck) {
+    return gameBoard.nextNodeInDirection(
+        getExistingEntitiesEntry(entityToCheck).getValue(),
+        getExistingEntitiesEntry(entityToCheck).getKey().getCurrentDirection())
+        .value.isSolid();
   }
 
-  private void attemptToEatEntity(IEntityObject entityToMove) {
-    Point entityPosition = getExistingEntityPosition(entityToMove);
-    Directions entityDirection = getExistingEntityByName(entityToMove.getName()).getCurrentDirection();
+  private void attemptToEatEntity(String entityToMove) {
+    Entry<IEntityObject, Point> entityEntry = getExistingEntitiesEntry(entityToMove);
+    if (entityEntry.getKey() instanceof Ghost &&
+        gameBoard.nextNodeInDirection(entityEntry.getValue(), entityEntry.getKey().getCurrentDirection()).value
+            instanceof Pacman) {
 
-    if (entityToMove instanceof Ghost && gameBoard
-        .nextNodeInDirection(entityPosition, entityDirection).value instanceof Pacman) {
-      gameBoard.setValue(entityPosition, new Space());
-      currentEntities.remove(gameBoard.nextNodeInDirection(entityPosition, entityDirection).value);
-      entityToMove.increaseScore();
-    } else if (entityToMove instanceof Pacman && gameBoard
-        .nextNodeInDirection(entityPosition, entityDirection).value instanceof Ghost) {
-      gameBoard.setValue(entityPosition, new Space());
-      ((Ghost) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value).increaseScore();
-      currentEntities.remove(entityToMove);
+      gameBoard.setValue(entityEntry.getValue(), new Space());
+      currentEntities.remove(gameBoard.nextNodeInDirection(entityEntry.getValue(), entityEntry.getKey().getCurrentDirection()).value);
+      entityEntry.getKey().increaseScore();
+    } else if (entityEntry.getKey() instanceof Pacman && gameBoard
+        .nextNodeInDirection(entityEntry.getValue(), entityEntry.getKey().getCurrentDirection()).value instanceof Ghost) {
+      gameBoard.setValue(entityEntry.getValue(), new Space());
+      ((Ghost) gameBoard.nextNodeInDirection(entityEntry.getValue(), entityEntry.getKey().getCurrentDirection()).value).increaseScore();
+      currentEntities.remove(entityEntry.getKey());
     }
   }
 
-  private void attemptToEatDot(IEntityObject entityToMove) {
-    Point entityPosition = getExistingEntityPosition(entityToMove);
-    Directions entityDirection = getExistingEntityByName(entityToMove.getName()).getCurrentDirection();
-
-    if (entityToMove instanceof Ghost && entityToMove.isHoldingDot()) {
-      gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).value = new Dot();
-      entityToMove.setHoldingDot(false);
+  private void attemptToEatDot(String entityToMove) {
+    Entry<IEntityObject, Point> entityEntry = getExistingEntitiesEntry(entityToMove);
+    if (entityEntry.getKey() instanceof Ghost && entityEntry.getKey().isHoldingDot()) {
+      gameBoard.oppositeNodeInDirection(entityEntry.getValue(), entityEntry.getKey().getCurrentDirection()).value = new Dot();
+      entityEntry.getKey().setHoldingDot(false);
     } else {
-      if (entityToMove.isHoldingDot()) {
-        entityToMove.increaseScore();
-        entityToMove.setHoldingDot(false);
+      if (entityEntry.getKey().isHoldingDot()) {
+        entityEntry.getKey().increaseScore();
+        entityEntry.getKey().setHoldingDot(false);
       }
-      gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).value = new Space();
+      gameBoard.oppositeNodeInDirection(entityEntry.getValue(), entityEntry.getKey().getCurrentDirection()).value = new Space();
     }
   }
 
-  private void movePositionOnBoard(IEntityObject entityToMove) {
-    Point entityPosition = getExistingEntityPosition(entityToMove);
-    Directions entityDirection = getExistingEntityByName(entityToMove.getName()).getCurrentDirection();
-    if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isEdible()) {
-      entityToMove.setHoldingDot(true);
+  private void movePositionOnBoard(String entityToMove) {
+    Entry<IEntityObject, Point> entityEntry = getExistingEntitiesEntry(entityToMove);
+    if (gameBoard.nextNodeInDirection(entityEntry.getValue(), entityEntry.getKey().getCurrentDirection()).value.isEdible()) {
+      entityEntry.getKey().setHoldingDot(true);
     }
-    updateEntityPosition(entityToMove, gameBoard.nextNodeInDirection(entityPosition, entityDirection).position);
-    gameBoard.nextNodeInDirection(entityPosition, entityDirection).value = entityToMove;
+    updateEntityPosition(entityEntry.getKey(), gameBoard.nextNodeInDirection(entityEntry.getValue(), entityEntry.getKey().getCurrentDirection()).position);
+    gameBoard.nextNodeInDirection(entityEntry.getValue(), entityEntry.getKey().getCurrentDirection()).value = entityEntry.getKey();
   }
 }

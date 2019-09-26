@@ -3,7 +3,6 @@ package ControllerTests;
 import Controller.BoardController;
 import Controller.EnemyController;
 import Controller.IBoardGenerator;
-import Model.EntityObjects.IEntityObject;
 import Model.Point;
 import org.junit.Assert;
 import org.junit.Before;
@@ -27,19 +26,15 @@ public class EnemyControllerTests {
   @Test
   public void enemyCanTrackAndMoveTowardsPacman() {
     EnemyController enemyController = new EnemyController();
-    IEntityObject ghost = boardController.getExistingEntityByName("Ghost1");
-    IEntityObject pacman = boardController.getExistingEntityByName("Pacman");
-    enemyController.moveEnemy(boardController, pacman, ghost);
+    enemyController.moveEnemy(boardController, "Pacman", "Ghost1");
     Assert.assertEquals("G", boardController.getObjectRepresentationAtPosition(new Point(2, 3)));
   }
 
   @Test
   public void enemyCanTrackAndMoveToPacmanAndEatHim() {
     EnemyController enemyController = new EnemyController();
-    IEntityObject ghost = boardController.getExistingEntityByName("Ghost1");
-    IEntityObject pacman = boardController.getExistingEntityByName("Pacman");
-    enemyController.moveEnemy(boardController, pacman, ghost);
-    enemyController.moveEnemy(boardController, pacman, ghost);
-    Assert.assertEquals(1, boardController.getEntityScore(ghost));
+    enemyController.moveEnemy(boardController, "Pacman", "Ghost1");
+    enemyController.moveEnemy(boardController, "Pacman", "Ghost1");
+    Assert.assertEquals(1, boardController.getEntityScore("Ghost1"));
   }
 }

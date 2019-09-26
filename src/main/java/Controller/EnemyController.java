@@ -1,20 +1,17 @@
 package Controller;
 
-import Model.Point;
-import Model.EntityObjects.IEntityObject;
 import Utilities.DistanceCalculator;
 
-public class EnemyController implements IEnemyController{
+public class EnemyController implements IEnemyController {
 
   @Override
-  public void moveEnemy(BoardController boardController, IEntityObject pacman, IEntityObject ghost){
-    if (boardController.getExistingEntityByName("Pacman") != null) {
-      Point playerCurrentPosition = boardController.getExistingEntityPosition(pacman);
-      Point enemyCurrentPosition = boardController.getExistingEntityPosition(ghost);
+  public void moveEnemy(BoardController boardController, String pacman, String ghost) {
+    if (boardController.getExistingEntitiesEntry(pacman) != null) {
 
-      boardController
-          .tryToRotateAndMoveEntity(ghost, DistanceCalculator.findDirectionWithClosestPath(playerCurrentPosition,
-              enemyCurrentPosition));
+      boardController.tryToRotateAndMoveEntity(ghost,
+          DistanceCalculator.findDirectionWithClosestPath(
+              boardController.getExistingEntitiesEntry(pacman).getValue(),
+              boardController.getExistingEntitiesEntry(ghost).getValue()));
     }
   }
 }

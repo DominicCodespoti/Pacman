@@ -10,7 +10,6 @@ import View.Console.ConsoleInputAdapter;
 import View.Console.Game;
 import View.IGameInput;
 import View.IGameOutput;
-
 import java.util.ArrayList;
 
 public class GameStub extends Game {
@@ -30,10 +29,10 @@ public class GameStub extends Game {
   @Override
   public void setupGame() {
     boardController.createEntity("Pacman", 2, 2, true);
-    pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
+    pacman = (Pacman) boardController.getExistingEntitiesEntry("Pacman");
     boardController.createEntity("Ghost1", 2, 1, false);
     ghosts = new ArrayList<>();
-    ghosts.add((Ghost) boardController.getExistingEntityByName("Ghost1"));
+    ghosts.add((Ghost) boardController.getExistingEntitiesEntry("Ghost1"));
 
     enemyController = new EnemyControllerStub();
     pacmanScoreToWin = boardGenerator.scoreAmount() - 1;
@@ -46,11 +45,11 @@ public class GameStub extends Game {
 
   @Override
   public void runGame(int userInputAsByte) {
-    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(userInputAsByte));
-    boardController.alternatePacmanMouth(pacman);
+    boardController.tryToRotateAndMoveEntity("Pacman", consoleInputAdapter.translateInputToGameActions(userInputAsByte));
+    boardController.alternatePacmanMouth("Pacman");
 
     for (Ghost ghost : ghosts) {
-      enemyController.moveEnemy(boardController, pacman, ghost);
+      enemyController.moveEnemy(boardController, "Pacman", ghost.getName());
     }
 
     if (pacman.getCurrentScore() > pacmanScoreToWin) {
