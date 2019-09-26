@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class EnemyControllerTests {
 
-  private IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
+  private final IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
   private BoardController boardController = new BoardController(boardGeneratorStub);
 
   @Before

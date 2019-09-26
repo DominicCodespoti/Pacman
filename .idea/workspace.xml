@@ -14,6 +14,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataStructures/QuadruplyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataStructures/QuadruplyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Ghost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/EntityObjects/Pacman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/DistanceCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/DistanceCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInputAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInputAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTests/EnemyControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTests/EnemyControllerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests/GameStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTests/GameStub.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,6 +90,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
@@ -198,7 +209,7 @@
       <workItem from="1569195232837" duration="40497000" />
       <workItem from="1569449478808" duration="215000" />
       <workItem from="1569449768993" duration="5917000" />
-      <workItem from="1569464808121" duration="2251000" />
+      <workItem from="1569464808121" duration="4102000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented enemy controller interface to stub possible random movement and allow for different enemy drivers">
       <created>1569451640123</created>
@@ -214,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569466227214</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed all warnings in BoardController">
+      <created>1569469076814</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1569469076814</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,7 +256,8 @@
     <MESSAGE value="Implemented enemy controller interface to stub possible random movement and allow for different enemy drivers" />
     <MESSAGE value="Changed implementation of adapter class to create a direction object" />
     <MESSAGE value="Undid bad changes, cleaned up boardcontroller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Undid bad changes, cleaned up boardcontroller" />
+    <MESSAGE value="Fixed all warnings in BoardController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed all warnings in BoardController" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

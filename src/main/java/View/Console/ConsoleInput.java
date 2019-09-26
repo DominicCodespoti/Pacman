@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 
 public class ConsoleInput implements IGameInput {
 
-  private InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-  private BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+  private final InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+  private final BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
   @Override
   public int getUserInput() {

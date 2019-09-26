@@ -48,6 +48,9 @@ public class DistanceCalculator { //TODO: SIMPLIFY
     Optional<Entry<Directions, Integer>> maxEntry = possibleDistances.entrySet()
         .stream()
         .min(Comparator.comparing(Map.Entry::getValue));
-    return maxEntry.get().getKey();
+    if (maxEntry.isPresent()) {
+      return maxEntry.get().getKey();
+    }
+    return Directions.Up;
   }
 }

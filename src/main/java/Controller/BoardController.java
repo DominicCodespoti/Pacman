@@ -14,8 +14,8 @@ import java.util.Map.Entry;
 
 public class BoardController {
 
-  private QuadruplyLinkedList gameBoard;
-  private Map<IEntityObject, Point> currentEntities = new HashMap<>();
+  private final QuadruplyLinkedList gameBoard;
+  private final Map<IEntityObject, Point> currentEntities = new HashMap<>();
 
   public BoardController(IBoardGenerator boardGenerator) {
     gameBoard = boardGenerator.generateBoard();
@@ -41,6 +41,7 @@ public class BoardController {
   public void tryToRotateAndMoveEntity(IEntityObject entityToMove, Directions newDirection) {
     Directions oldDirection = entityToMove.getCurrentDirection();
     Point entityPosition = getExistingEntityPosition(entityToMove);
+
     entityToMove.updateCurrentDirection(newDirection);
 
     if (getExistingEntityByName(entityToMove.getName()) != null && isPathBlocked(entityPosition, newDirection)) {
@@ -98,14 +99,14 @@ public class BoardController {
   }
 
   private void attemptToEatEntity(IEntityObject entityToMove, Point entityPosition, Directions entityDirection) {
-    if (entityToMove instanceof Ghost && gameBoard
-        .nextNodeInDirection(entityPosition, entityDirection).value instanceof Pacman) {
+    if (entityToMove instanceof Ghost &&
+        gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Pacman) {
       gameBoard.setValue(entityPosition, new Space());
       IEntityObject entityToRemove = (IEntityObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
       currentEntities.remove(entityToRemove);
       entityToMove.increaseScore();
-    } else if (entityToMove instanceof Pacman && gameBoard
-        .nextNodeInDirection(entityPosition, entityDirection).value instanceof Ghost) {
+    } else if (entityToMove instanceof Pacman &&
+        gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Ghost) {
       gameBoard.setValue(entityPosition, new Space());
       ((Ghost) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value).increaseScore();
       currentEntities.remove(entityToMove);

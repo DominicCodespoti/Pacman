@@ -6,9 +6,8 @@ import static Utilities.Constants.EXIT_KEY;
 import static Utilities.Constants.S_KEY;
 import static Utilities.Constants.W_KEY;
 
-import Controller.BoardController;
+
 import Model.Directions;
-import Model.EntityObjects.Pacman;
 
 public class ConsoleInputAdapter {
 

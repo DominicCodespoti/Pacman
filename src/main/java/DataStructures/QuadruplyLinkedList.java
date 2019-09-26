@@ -6,9 +6,9 @@ import Model.Point;
 
 public class QuadruplyLinkedList {
 
-  private Node referenceNode;
+  private final Node referenceNode;
   private Node rowIteratorNode;
-  private int width, height;
+  private final int width, height;
 
   public QuadruplyLinkedList(int Width, int Height) { //TODO: FIX CASING
     width = Width;

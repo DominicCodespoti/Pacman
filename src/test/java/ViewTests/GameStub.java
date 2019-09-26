@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class GameStub extends Game {
 
-  private ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
-  private IBoardGenerator boardGenerator = new BoardGeneratorStub();
-  private BoardController boardController = new BoardController(boardGenerator);
+  private final ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
+  private final IBoardGenerator boardGenerator = new BoardGeneratorStub();
+  private final BoardController boardController = new BoardController(boardGenerator);
   private IEnemyController enemyController;
   private Pacman pacman;
   private ArrayList<Ghost> ghosts;

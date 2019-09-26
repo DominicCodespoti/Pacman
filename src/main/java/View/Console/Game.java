@@ -17,11 +17,11 @@ import java.util.ArrayList;
 
 public class Game {
 
-    private IGameInput consoleInput;
-    private IGameOutput consoleOutput;
-    private ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
-    private IBoardGenerator boardGenerator = new BoardGenerator();
-    private BoardController boardController = new BoardController(boardGenerator);
+    private final IGameInput consoleInput;
+    private final IGameOutput consoleOutput;
+    private final ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
+    private final IBoardGenerator boardGenerator = new BoardGenerator();
+    private final BoardController boardController = new BoardController(boardGenerator);
     private IEnemyController enemyController;
     private Pacman pacman;
     private ArrayList<Ghost> ghosts;

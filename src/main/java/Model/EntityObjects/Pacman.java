@@ -5,7 +5,7 @@ import Model.Directions;
 public class Pacman implements IEntityObject {
 
   private Directions currentDirection;
-  private String name;
+  private final String name;
   private int score = 0;
   private boolean holdingDot = false;
   private boolean isMouthOpen = true;
