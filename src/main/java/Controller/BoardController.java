@@ -43,13 +43,13 @@ public class BoardController {
     Point entityPosition = getExistingEntityPosition(entityToMove);
     entityToMove.updateCurrentDirection(newDirection);
 
-    if (getExistingEntityByName(entityToMove.getName()) != null && isPathBlocked(entityToMove, entityPosition, newDirection)) {
+    if (getExistingEntityByName(entityToMove.getName()) != null && isPathBlocked(entityPosition, newDirection)) {
       entityToMove.updateCurrentDirection(oldDirection);
     }
 
     Directions entityDirection = getExistingEntityByName(entityToMove.getName()).getCurrentDirection();
 
-    if (getExistingEntityByName(entityToMove.getName()) != null && !isPathBlocked(entityToMove, entityPosition, entityDirection)) {
+    if (getExistingEntityByName(entityToMove.getName()) != null && !isPathBlocked(entityPosition, entityDirection)) {
       attemptToEatEntity(entityToMove, entityPosition, entityDirection);
 
       if (getExistingEntityByName(entityToMove.getName()) != null) {
@@ -93,7 +93,7 @@ public class BoardController {
         .forEach(x -> x.setValue(newPosition));
   }
 
-  private boolean isPathBlocked(IEntityObject entityToCheck, Point entityPosition, Directions entityDirection) {
+  private boolean isPathBlocked(Point entityPosition, Directions entityDirection) {
     return gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isSolid();
   }
 
@@ -101,7 +101,8 @@ public class BoardController {
     if (entityToMove instanceof Ghost && gameBoard
         .nextNodeInDirection(entityPosition, entityDirection).value instanceof Pacman) {
       gameBoard.setValue(entityPosition, new Space());
-      currentEntities.remove(gameBoard.nextNodeInDirection(entityPosition, entityDirection).value);
+      IEntityObject entityToRemove = (IEntityObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
+      currentEntities.remove(entityToRemove);
       entityToMove.increaseScore();
     } else if (entityToMove instanceof Pacman && gameBoard
         .nextNodeInDirection(entityPosition, entityDirection).value instanceof Ghost) {

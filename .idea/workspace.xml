@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58c56f5e-bad2-46d9-9bd2-f53727c991ef" name="Default Changelist" comment="Changed implementation of adapter class to create a direction object">
+    <list default="true" id="58c56f5e-bad2-46d9-9bd2-f53727c991ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -14,8 +14,6 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests/GameStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTests/GameStub.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -200,7 +198,7 @@
       <workItem from="1569195232837" duration="40497000" />
       <workItem from="1569449478808" duration="215000" />
       <workItem from="1569449768993" duration="5917000" />
-      <workItem from="1569464808121" duration="1376000" />
+      <workItem from="1569464808121" duration="2251000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented enemy controller interface to stub possible random movement and allow for different enemy drivers">
       <created>1569451640123</created>
@@ -209,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569451640123</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Undid bad changes, cleaned up boardcontroller">
+      <created>1569466227214</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569466227214</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,9 +234,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Implemented enemy controller interface to stub possible random movement and allow for different enemy drivers" />
     <MESSAGE value="Changed implementation of adapter class to create a direction object" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed implementation of adapter class to create a direction object" />
+    <MESSAGE value="Undid bad changes, cleaned up boardcontroller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Undid bad changes, cleaned up boardcontroller" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
