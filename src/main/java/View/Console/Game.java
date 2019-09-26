@@ -1,15 +1,19 @@
 package View.Console;
 
-import Controller.*;
+import static Utilities.Constants.GHOST_AMOUNT;
+import static Utilities.Constants.TICK_SPEED;
+
+
+import Controller.BoardController;
+import Controller.BoardGenerator;
+import Controller.EnemyController;
+import Controller.IBoardGenerator;
+import Controller.IEnemyController;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
 import View.IGameInput;
 import View.IGameOutput;
-
 import java.util.ArrayList;
-
-import static Utilities.Constants.GHOST_AMOUNT;
-import static Utilities.Constants.TICK_SPEED;
 
 public class Game {
 
@@ -52,7 +56,7 @@ public class Game {
 
     public boolean isPacmanAliveOrDotsUneaten() {
         boolean haveAnyGhostsEatenPacman = ghosts.stream().anyMatch(x -> x.getCurrentScore() >= 1);
-        return pacman.getCurrentScore() < boardController.getEntityScore(pacman) && !haveAnyGhostsEatenPacman;
+        return boardController.getEntityScore(pacman) < pacmanScoreToWin && !haveAnyGhostsEatenPacman;
     }
 
     public void runGame(int currentLevelIteration) {

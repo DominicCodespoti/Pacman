@@ -10,7 +10,6 @@ import View.Console.ConsoleInputAdapter;
 import View.Console.Game;
 import View.IGameInput;
 import View.IGameOutput;
-
 import java.util.ArrayList;
 
 public class GameStub extends Game {
@@ -31,7 +30,7 @@ public class GameStub extends Game {
   public void setupGame() {
     boardController.createEntity("Pacman", 2, 2, true);
     pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
-    boardController.createEntity("Ghost1", 2, 1, false);
+    boardController.createEntity("Ghost1", 2, 0, false);
     ghosts = new ArrayList<>();
     ghosts.add((Ghost) boardController.getExistingEntityByName("Ghost1"));
 

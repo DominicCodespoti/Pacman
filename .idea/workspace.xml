@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58c56f5e-bad2-46d9-9bd2-f53727c991ef" name="Default Changelist" comment="Changed implementation of adapter class to create a direction object">
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/Console/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -15,14 +14,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleGame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInputAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/ConsoleInputAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/IGame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests/ConsoleGameStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTests/GameStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests/ConsoleGameTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTests/GameTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests/ConsoleInputAdapterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTests/ConsoleInputAdapterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Console/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Console/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ViewTests/GameStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTests/GameStub.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +104,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.All in Pacman.test">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Pacman.main" />
@@ -179,7 +172,6 @@
       <list>
         <item itemvalue="JUnit.All in Pacman.test" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ConsoleGameTests.singleTickMovesBothPlayerAndGhost" />
         <item itemvalue="JUnit.EnemyControllerTests.singleTickMovesBothPlayerAndGhost" />
         <item itemvalue="JUnit.WallTests.pacmanDoesNotMoveThroughWallsWhenWalkingIntoThem" />
       </list>
@@ -208,6 +200,7 @@
       <workItem from="1569195232837" duration="40497000" />
       <workItem from="1569449478808" duration="215000" />
       <workItem from="1569449768993" duration="5917000" />
+      <workItem from="1569464808121" duration="1376000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented enemy controller interface to stub possible random movement and allow for different enemy drivers">
       <created>1569451640123</created>
@@ -244,6 +237,7 @@
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="((ConsolePrinter)this).gameBoard" custom="ConsoleLayer.ConsolePrinter" />
+        <watch expression="this" />
       </configuration>
     </watches-manager>
   </component>
