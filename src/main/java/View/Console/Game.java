@@ -2,6 +2,7 @@ package View.Console;
 
 import static Utilities.Constants.GHOST_AMOUNT;
 import static Utilities.Constants.TICK_SPEED;
+import static Utilities.Constants.W_KEY;
 
 
 import Controller.BoardController;
@@ -61,7 +62,8 @@ public class Game {
 
     public void runGame(int currentLevelIteration) {
         setupGame();
-        int userInputAsByte = 0, rawInput;
+        int userInputAsByte = W_KEY;
+        int rawInput;
         while (isPacmanAliveOrDotsUneaten()) {
             rawInput = consoleInput.getUserInput();
 
