@@ -80,6 +80,7 @@ public class Game {
 
             consoleOutput.printBoard(boardController);
             consoleOutput.printScore(boardController.getEntityScore(pacman), currentLevelIteration);
+
             try {
                 Thread.sleep(TICK_SPEED); //TODO: EXTRACT TO SOMEWHERE
             } catch (InterruptedException e) {

@@ -114,6 +114,7 @@ public class BoardController {
   }
 
   private void attemptToEatDot(IEntityObject entityToMove, Point entityPosition, Directions entityDirection) {
+    entityPosition = getExistingEntityPosition(entityToMove);
     if (entityToMove instanceof Ghost && entityToMove.isHoldingDot()) {
       gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).value = new Dot();
       entityToMove.setHoldingDot(false);
@@ -130,7 +131,8 @@ public class BoardController {
     if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isEdible()) {
       entityToMove.setHoldingDot(true);
     }
-    updateEntityPosition(entityToMove, gameBoard.nextNodeInDirection(entityPosition, entityDirection).position);
+    Point test = gameBoard.nextNodeInDirection(entityPosition, entityDirection).position;
+    updateEntityPosition(entityToMove, test);
     gameBoard.nextNodeInDirection(entityPosition, entityDirection).value = entityToMove;
   }
 }
