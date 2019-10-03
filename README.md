@@ -25,7 +25,9 @@ Due to the terminal implementation of Pacman requiring the terminal to enter int
 the game cannot be run in IntelliJ or similar IDEs, but instead compiled and run. 
 
 Step 1: CD into the Java directory (PacmanComposition/src/main/java)
+
 Step 2: Run the command "javac Main.java" to compile the game
+
 Step 3: Run the command "java Main" too launch and play the game!
 
 Notes: The controls for the terminal implementation are mapped by default too: 
