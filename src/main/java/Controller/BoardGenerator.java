@@ -1,8 +1,8 @@
 package Controller;
 
-import Model.Point;
 import DataStructures.QuadruplyLinkedList;
 import Model.GameObjects.Wall;
+import Model.Point;
 import java.util.Random;
 
 public class BoardGenerator implements IBoardGenerator {

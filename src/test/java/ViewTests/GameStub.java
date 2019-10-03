@@ -7,7 +7,7 @@ import ControllerTests.BoardGeneratorStub;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
 import View.Console.ConsoleInputAdapter;
-import View.Console.Game;
+import View.Game;
 import View.IGameInput;
 import View.IGameOutput;
 import java.util.ArrayList;

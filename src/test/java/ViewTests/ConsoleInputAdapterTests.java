@@ -1,9 +1,9 @@
 package ViewTests;
 
-import static Utilities.Constants.A_KEY;
-import static Utilities.Constants.D_KEY;
-import static Utilities.Constants.S_KEY;
-import static Utilities.Constants.W_KEY;
+import static Utilities.Constants.LEFT_INPUT;
+import static Utilities.Constants.RIGHT_INPUT;
+import static Utilities.Constants.DOWN_INPUT;
+import static Utilities.Constants.UP_INPUT;
 
 import Controller.BoardController;
 import Model.Point;
@@ -33,7 +33,7 @@ public class ConsoleInputAdapterTests {
     ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
     Pacman pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
 
-    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(W_KEY));
+    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(UP_INPUT));
     boardController.alternatePacmanMouth(pacman);
     Point point = new Point(2, 1);
 
@@ -45,7 +45,7 @@ public class ConsoleInputAdapterTests {
     ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
     Pacman pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
 
-    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(A_KEY));
+    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(LEFT_INPUT));
     boardController.alternatePacmanMouth(pacman);
     Point point = new Point(1, 2);
 
@@ -57,7 +57,7 @@ public class ConsoleInputAdapterTests {
     ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
     Pacman pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
 
-    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(D_KEY));
+    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(RIGHT_INPUT));
     boardController.alternatePacmanMouth(pacman);
     Point point = new Point(3, 2);
 
@@ -69,7 +69,7 @@ public class ConsoleInputAdapterTests {
     ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
     Pacman pacman = (Pacman) boardController.getExistingEntityByName("Pacman");
 
-    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(S_KEY));
+    boardController.tryToRotateAndMoveEntity(pacman, consoleInputAdapter.translateInputToGameActions(DOWN_INPUT));
     boardController.alternatePacmanMouth(pacman);
     Point point = new Point(2, 3);
 

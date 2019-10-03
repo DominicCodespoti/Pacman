@@ -31,55 +31,55 @@ public class BoardControllerTests {
   }
 
   @Test
-  public void testPacmanCanRotateUp() {
+  public void pacmanCanRotateUp() {
     boardController.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Up);
     Assert.assertEquals(Directions.Up, boardController.getExistingEntityByName("Pacman").getCurrentDirection());
   }
 
   @Test
-  public void testPacmanCanRotateLeft() {
+  public void pacmanCanRotateLeft() {
     boardController.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Left);
     Assert.assertEquals(Directions.Left, boardController.getExistingEntityByName("Pacman").getCurrentDirection());
   }
 
   @Test
-  public void testPacmanCanRotateDown() {
+  public void pacmanCanRotateDown() {
     boardController.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Down);
     Assert.assertEquals(Directions.Down, boardController.getExistingEntityByName("Pacman").getCurrentDirection());
   }
 
   @Test
-  public void testPacmanCanRotateRight() {
+  public void pacmanCanRotateRight() {
     boardController.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Right);
     Assert.assertEquals(Directions.Right, boardController.getExistingEntityByName("Pacman").getCurrentDirection());
   }
 
   @Test
-  public void testPacmanCanMoveUpOnBoard() {
+  public void pacmanCanMoveUpOnBoard() {
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
     Assert.assertArrayEquals(new int[] {2, 1}, findPacman());
   }
 
   @Test
-  public void testPacmanCanMoveDownOnBoard() {
+  public void pacmanCanMoveDownOnBoard() {
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
     Assert.assertArrayEquals(new int[] {2, 3}, findPacman());
   }
 
   @Test
-  public void testPacmanCanMoveLeftOnBoard() {
+  public void pacmanCanMoveLeftOnBoard() {
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
     Assert.assertArrayEquals(new int[] {1, 2}, findPacman());
   }
 
   @Test
-  public void testPacmanCanMoveRightOnBoard() {
+  public void pacmanCanMoveRightOnBoard() {
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Right);
     Assert.assertArrayEquals(new int[] {3, 2}, findPacman());
   }
 
   @Test
-  public void testPacmanCanWrapUpOnBoard() {
+  public void pacmanCanWrapUpOnBoard() {
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
@@ -87,7 +87,7 @@ public class BoardControllerTests {
   }
 
   @Test
-  public void testPacmanCanWrapDownOnBoard() {
+  public void pacmanCanWrapDownOnBoard() {
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
@@ -95,7 +95,7 @@ public class BoardControllerTests {
   }
 
   @Test
-  public void testPacmanCanWrapLeftOnBoard() {
+  public void pacmanCanWrapLeftOnBoard() {
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
@@ -103,7 +103,7 @@ public class BoardControllerTests {
   }
 
   @Test
-  public void testPacmanCanWrapRightOnBoard() {
+  public void pacmanCanWrapRightOnBoard() {
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Right);
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Right);
     boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Right);

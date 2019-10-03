@@ -1,4 +1,4 @@
-import View.Console.Game;
+import View.Game;
 import View.Console.ConsoleInput;
 import View.Console.ConsoleOutput;
 import View.IGameInput;

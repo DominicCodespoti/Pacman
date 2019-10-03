@@ -1,8 +1,8 @@
-package View.Console;
+package View;
 
 import static Utilities.Constants.GHOST_AMOUNT;
 import static Utilities.Constants.TICK_SPEED;
-import static Utilities.Constants.W_KEY;
+import static Utilities.Constants.UP_INPUT;
 
 
 import Controller.BoardController;
@@ -12,8 +12,8 @@ import Controller.IBoardGenerator;
 import Controller.IEnemyController;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
-import View.IGameInput;
-import View.IGameOutput;
+import View.Console.ConsoleCleanUp;
+import View.Console.ConsoleInputAdapter;
 import java.util.ArrayList;
 
 public class Game {
@@ -52,7 +52,7 @@ public class Game {
         }
 
         enemyController = new EnemyController();
-        pacmanScoreToWin = boardGenerator.scoreAmount() - (1 + ghosts.size());
+        pacmanScoreToWin = boardGenerator.scoreAmount() - (ghosts.size());
     }
 
     public boolean isPacmanAliveOrDotsUneaten() {
@@ -62,7 +62,7 @@ public class Game {
 
     public void runGame(int currentLevelIteration) {
         setupGame();
-        int userInputAsByte = W_KEY;
+        int userInputAsByte = UP_INPUT;
         int rawInput;
         while (isPacmanAliveOrDotsUneaten()) {
             rawInput = consoleInput.getUserInput();
@@ -82,7 +82,7 @@ public class Game {
             consoleOutput.printScore(boardController.getEntityScore(pacman), currentLevelIteration);
 
             try {
-                Thread.sleep(TICK_SPEED); //TODO: EXTRACT TO SOMEWHERE
+                Thread.sleep(TICK_SPEED);
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
             }

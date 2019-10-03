@@ -1,10 +1,10 @@
 package View.Console;
 
-import static Utilities.Constants.A_KEY;
-import static Utilities.Constants.D_KEY;
-import static Utilities.Constants.EXIT_KEY;
-import static Utilities.Constants.S_KEY;
-import static Utilities.Constants.W_KEY;
+import static Utilities.Constants.LEFT_INPUT;
+import static Utilities.Constants.RIGHT_INPUT;
+import static Utilities.Constants.EXIT_INPUT;
+import static Utilities.Constants.DOWN_INPUT;
+import static Utilities.Constants.UP_INPUT;
 
 
 import Model.Directions;
@@ -13,19 +13,19 @@ public class ConsoleInputAdapter {
 
   public Directions translateInputToGameActions(int userInputAsByte) {
     switch (userInputAsByte) {
-      case A_KEY:
+      case LEFT_INPUT:
         return Directions.Left;
 
-      case D_KEY:
+      case RIGHT_INPUT:
         return Directions.Right;
 
-      case S_KEY:
+      case DOWN_INPUT:
         return Directions.Down;
 
-      case W_KEY:
+      case UP_INPUT:
         return Directions.Up;
 
-      case EXIT_KEY:
+      case EXIT_INPUT:
         System.exit(0);
     }
     return null;

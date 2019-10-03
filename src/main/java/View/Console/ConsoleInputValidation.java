@@ -1,18 +1,18 @@
 package View.Console;
 
-import static Utilities.Constants.A_KEY;
-import static Utilities.Constants.D_KEY;
-import static Utilities.Constants.EXIT_KEY;
-import static Utilities.Constants.S_KEY;
-import static Utilities.Constants.W_KEY;
+import static Utilities.Constants.LEFT_INPUT;
+import static Utilities.Constants.RIGHT_INPUT;
+import static Utilities.Constants.EXIT_INPUT;
+import static Utilities.Constants.DOWN_INPUT;
+import static Utilities.Constants.UP_INPUT;
 
 class ConsoleInputValidation {
 
   static boolean checkInput(int read) {
-    return read == EXIT_KEY ||
-        read == W_KEY ||
-        read == A_KEY ||
-        read == S_KEY ||
-        read == D_KEY;
+    return read == EXIT_INPUT ||
+        read == UP_INPUT ||
+        read == LEFT_INPUT ||
+        read == DOWN_INPUT ||
+        read == RIGHT_INPUT;
   }
 }

@@ -23,15 +23,12 @@ public class BoardController {
 
   public Point getExistingEntityPosition(IEntityObject entityToMove) {
     Entry entityEntry = currentEntities.entrySet().stream()
-        .filter(x -> x.getKey().getName().equals(entityToMove.getName()))
-        .findFirst().orElse(null);
+        .filter(x -> x.getKey().getName().equals(entityToMove.getName())).findFirst().orElse(null);
     return (Point) (entityEntry != null ? entityEntry.getValue() : null);
   }
 
   public IEntityObject getExistingEntityByName(String entityName) {
-    return currentEntities.keySet().stream()
-        .filter(x -> x.getName().equals(entityName))
-        .findFirst().orElse(null);
+    return currentEntities.keySet().stream().filter(x -> x.getName().equals(entityName)).findFirst().orElse(null);
   }
 
   public int getEntityScore(IEntityObject entityToMove) {
@@ -55,7 +52,7 @@ public class BoardController {
 
       if (getExistingEntityByName(entityToMove.getName()) != null) {
         movePositionOnBoard(entityToMove, entityPosition, entityDirection);
-        attemptToEatDot(entityToMove, entityPosition, entityDirection);
+        attemptToEatDot(entityToMove, entityDirection);
       }
     }
   }
@@ -89,8 +86,7 @@ public class BoardController {
   }
 
   private void updateEntityPosition(IEntityObject entityToMove, Point newPosition) {
-    currentEntities.entrySet().stream()
-        .filter(x -> x.getKey().getName().equals(entityToMove.getName()))
+    currentEntities.entrySet().stream().filter(x -> x.getKey().getName().equals(entityToMove.getName()))
         .forEach(x -> x.setValue(newPosition));
   }
 
@@ -99,22 +95,23 @@ public class BoardController {
   }
 
   private void attemptToEatEntity(IEntityObject entityToMove, Point entityPosition, Directions entityDirection) {
-    if (entityToMove instanceof Ghost &&
-        gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Pacman) {
+    if (entityToMove instanceof Ghost && gameBoard
+        .nextNodeInDirection(entityPosition, entityDirection).value instanceof Pacman) {
       gameBoard.setValue(entityPosition, new Space());
-      IEntityObject entityToRemove = (IEntityObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
+      IEntityObject entityToRemove = (IEntityObject) gameBoard
+          .nextNodeInDirection(entityPosition, entityDirection).value;
       currentEntities.remove(entityToRemove);
       entityToMove.increaseScore();
-    } else if (entityToMove instanceof Pacman &&
-        gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Ghost) {
+    } else if (entityToMove instanceof Pacman && gameBoard
+        .nextNodeInDirection(entityPosition, entityDirection).value instanceof Ghost) {
       gameBoard.setValue(entityPosition, new Space());
       ((Ghost) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value).increaseScore();
       currentEntities.remove(entityToMove);
     }
   }
 
-  private void attemptToEatDot(IEntityObject entityToMove, Point entityPosition, Directions entityDirection) {
-    entityPosition = getExistingEntityPosition(entityToMove);
+  private void attemptToEatDot(IEntityObject entityToMove, Directions entityDirection) {
+    Point entityPosition = getExistingEntityPosition(entityToMove);
     if (entityToMove instanceof Ghost && entityToMove.isHoldingDot()) {
       gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).value = new Dot();
       entityToMove.setHoldingDot(false);
@@ -131,8 +128,8 @@ public class BoardController {
     if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isEdible()) {
       entityToMove.setHoldingDot(true);
     }
-    Point test = gameBoard.nextNodeInDirection(entityPosition, entityDirection).position;
-    updateEntityPosition(entityToMove, test);
+    Point nextPoint = gameBoard.nextNodeInDirection(entityPosition, entityDirection).position;
+    updateEntityPosition(entityToMove, nextPoint);
     gameBoard.nextNodeInDirection(entityPosition, entityDirection).value = entityToMove;
   }
 }
