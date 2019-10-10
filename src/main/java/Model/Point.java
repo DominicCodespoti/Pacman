@@ -17,4 +17,10 @@ public class Point {
   public int getY() {
     return y;
   }
+
+  @Override
+  public boolean equals(Object otherPoint){
+    final Point other = (Point) otherPoint;
+    return (this.x == other.x) && (this.y == other.y);
+  }
 }

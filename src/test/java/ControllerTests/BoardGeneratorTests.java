@@ -1,7 +1,10 @@
 package ControllerTests;
 
 import Controller.Board;
+import Controller.BoardGenerator;
 import Controller.IBoardGenerator;
+import Controller.PacmanController;
+import Model.EntityObjects.Pacman;
 import Model.Point;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,24 +13,21 @@ import org.junit.Test;
 public class BoardGeneratorTests {
 
   private Board boardController;
+  private PacmanController pacmanController;
+  private final Point MIDDLE_MIDDLE = new Point(2, 2);
 
   @Before
   public void initializeBoard() {
     IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
     boardController = new Board(boardGeneratorStub);
-    boardController
-        .createEntity("Pacman", boardController.getBoardWidth() / 2, boardController.getBoardHeight() / 2, true);
-    boardController.createEntity("Ghost1", 0, 0, false);
-    boardController
-        .createEntity("Ghost2", boardController.getBoardWidth() - 1, boardController.getBoardHeight() - 1, false);
+    Pacman pacman = (Pacman) boardController.createEntity("Pacman", "Pacman", MIDDLE_MIDDLE);
+    pacmanController = new PacmanController(boardController, pacman);
   }
 
   @Test
-  public void wallsDoNotGenerateOnPacman() { //TODO: INTRODUCE BEFORE
-    int boardHeight = boardController.getBoardHeight();
-    int boardWidth = boardController.getBoardWidth();
-    Point wherePacmanShouldBe = new Point(boardWidth / 2, boardHeight / 2);
-    Assert.assertEquals("V", boardController.getObjectRepresentationAtPosition(wherePacmanShouldBe));
+  public void wallsDoNotGenerateOnPacman() { //TODO: No stub needed, test makes no sense stubbed
+    boardController = new Board(new BoardGenerator());
+    Assert.assertEquals("V", boardController.getObjectRepresentationAtPosition(MIDDLE_MIDDLE));
   }
 
   @Test

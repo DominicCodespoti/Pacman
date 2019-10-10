@@ -34,6 +34,17 @@ public class Game {
     this.consoleOutput = consoleOutput;
   }
 
+  public void runGame(int currentLevelIteration) {
+    setupGame();
+    while (isPacmanAliveOrDotsUneaten()) {
+      getInput();
+      moveEntities(userInputAsByte);
+      consoleOutput.printBoard(board);
+      consoleOutput.printScore(pacman.getCurrentScore(), currentLevelIteration);
+    }
+    endGame(pacman.getCurrentScore() >= pacmanScoreToWin, currentLevelIteration);
+  }
+
   public void setupGame() {
     Point pacmanInitialPosition = new Point(board.getBoardWidth() / 2, board.getBoardHeight() / 2);
     pacman = (Pacman) board.createEntity("Pacman", "Pacman", pacmanInitialPosition);
@@ -46,17 +57,6 @@ public class Game {
   public boolean isPacmanAliveOrDotsUneaten() {
     boolean haveAnyGhostsEatenPacman = ghost.getCurrentScore() >= 1;
     return pacman.getCurrentScore() < pacmanScoreToWin && !haveAnyGhostsEatenPacman;
-  }
-
-  public void runGame(int currentLevelIteration) {
-    setupGame();
-    while (isPacmanAliveOrDotsUneaten()) {
-      getInput();
-      moveEntities(userInputAsByte);
-      consoleOutput.printBoard(board);
-      consoleOutput.printScore(pacman.getCurrentScore(), currentLevelIteration);
-    }
-    endGame(pacman.getCurrentScore() >= pacmanScoreToWin, currentLevelIteration);
   }
 
   private void getInput() {

@@ -3,7 +3,10 @@ package ControllerTests;
 import Controller.Board;
 import Controller.EnemyController;
 import Controller.IBoardGenerator;
-import Model.EntityObjects.IEntityObject;
+import Controller.PacmanController;
+import Model.Directions;
+import Model.EntityObjects.Ghost;
+import Model.EntityObjects.Pacman;
 import Model.Point;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,34 +15,24 @@ import org.junit.Test;
 public class EnemyControllerTests {
 
   private final IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
-  private Board boardController = new Board(boardGeneratorStub);
+  private Ghost ghost;
+  private PacmanController pacmanController;
+  private EnemyController enemyController;
+  private final Point MIDDLE_MIDDLE = new Point(2, 2);
 
   @Before
   public void initializeBoard() {
-    boardController = new Board(boardGeneratorStub);
-    int width = boardController.getBoardWidth();
-    int height = boardController.getBoardHeight();
-    boardController
-        .createEntity("Pacman", width / 2, height / 2, true);
-    boardController.createEntity("Ghost1", (width / 2), (height / 2) + 2, false);
+    IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
+    Board boardController = new Board(boardGeneratorStub);
+    Pacman pacman = (Pacman) boardController.createEntity("Pacman", "Pacman", MIDDLE_MIDDLE);
+    pacmanController = new PacmanController(boardController, pacman);
+    ghost = (Ghost) boardController.createEntity("Ghost", "Ghost", new Point(2, 3));
+    enemyController = new EnemyController(boardController, ghost);
   }
 
   @Test
-  public void enemyCanTrackAndMoveTowardsPacman() {
-    EnemyController enemyController = new EnemyController();
-    IEntityObject ghost = boardController.getExistingEntityByName("Ghost1");
-    IEntityObject pacman = boardController.getExistingEntityByName("Pacman");
-    enemyController.moveEnemy(boardController, pacman, ghost);
-    Assert.assertEquals("G", boardController.getObjectRepresentationAtPosition(new Point(2, 3)));
-  }
-
-  @Test
-  public void enemyCanTrackAndMoveToPacmanAndEatHim() {
-    EnemyController enemyController = new EnemyController();
-    IEntityObject ghost = boardController.getExistingEntityByName("Ghost1");
-    IEntityObject pacman = boardController.getExistingEntityByName("Pacman");
-    enemyController.moveEnemy(boardController, pacman, ghost);
-    enemyController.moveEnemy(boardController, pacman, ghost);
-    Assert.assertEquals(1, boardController.getEntityScore(ghost));
+  public void enemyCanEatPacman() {
+    enemyController.move(Directions.Up);
+    Assert.assertEquals(1, ghost.getCurrentScore());
   }
 }

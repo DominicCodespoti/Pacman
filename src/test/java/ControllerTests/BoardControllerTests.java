@@ -1,9 +1,13 @@
 package ControllerTests;
 
 import Controller.Board;
+import Controller.EnemyController;
 import Controller.IBoardGenerator;
+import Controller.PacmanController;
 import Model.Directions;
+import Model.EntityObjects.Ghost;
 import Model.EntityObjects.IEntityObject;
+import Model.EntityObjects.Pacman;
 import Model.Point;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,125 +16,121 @@ import org.junit.Test;
 public class BoardControllerTests {
 
   private Board boardController;
+  private Pacman pacman;
+  private PacmanController pacmanController;
+  private final Point MIDDLE_MIDDLE = new Point(2,2);
+  private final Point MIDDLE_TOP_OF_BOARD = new Point(2,0);
+  private final Point MIDDLE_BOTTOM_OF_BOARD = new Point(2,4);
+  private final Point MIDDLE_LEFT_OF_BOARD = new Point(0,2);
+  private final Point MIDDLE_RIGHT_OF_BOARD = new Point(4,2);
 
   @Before
   public void initializeBoard() {
     IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
     boardController = new Board(boardGeneratorStub);
-    boardController
-        .createEntity("Pacman", boardController.getBoardWidth() / 2, boardController.getBoardHeight() / 2, true);
-    boardController.createEntity("Ghost1", 0, 0, false);
-    boardController
-        .createEntity("Ghost2", boardController.getBoardWidth() - 1, boardController.getBoardHeight() - 1, false);
+    pacman = (Pacman) boardController.createEntity("Pacman", "Pacman", MIDDLE_MIDDLE);
+    pacmanController = new PacmanController(boardController, pacman);
   }
 
-  private int[] findPacman() {
+  private Point findPacman() {
     IEntityObject entityToFind = boardController.getExistingEntityByName("Pacman");
-    return new int[] {boardController.getExistingEntityPosition(entityToFind).getX(),
-        boardController.getExistingEntityPosition(entityToFind).getY()};
+    return new Point(boardController.getExistingEntityPosition(entityToFind).getX(),
+        boardController.getExistingEntityPosition(entityToFind).getY());
+  }
+
+  private void selectPacmanStartingPoint(Point startPoint){
+    IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
+    boardController = new Board(boardGeneratorStub);
+    pacman = (Pacman) boardController.createEntity("Pacman", "Pacman", startPoint);
+    pacmanController = new PacmanController(boardController, pacman);
   }
 
   @Test
   public void pacmanCanRotateUp() {
-    boardController.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Up);
+    pacman.updateCurrentDirection(Directions.Up);
     Assert.assertEquals(Directions.Up, boardController.getExistingEntityByName("Pacman").getCurrentDirection());
   }
 
   @Test
   public void pacmanCanRotateLeft() {
-    boardController.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Left);
+    pacman.updateCurrentDirection(Directions.Left);
     Assert.assertEquals(Directions.Left, boardController.getExistingEntityByName("Pacman").getCurrentDirection());
   }
 
   @Test
   public void pacmanCanRotateDown() {
-    boardController.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Down);
+    pacman.updateCurrentDirection(Directions.Down);
     Assert.assertEquals(Directions.Down, boardController.getExistingEntityByName("Pacman").getCurrentDirection());
   }
 
   @Test
   public void pacmanCanRotateRight() {
-    boardController.getExistingEntityByName("Pacman").updateCurrentDirection(Directions.Right);
+    pacman.updateCurrentDirection(Directions.Right);
     Assert.assertEquals(Directions.Right, boardController.getExistingEntityByName("Pacman").getCurrentDirection());
   }
 
   @Test
   public void pacmanCanMoveUpOnBoard() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
-    Assert.assertArrayEquals(new int[] {2, 1}, findPacman());
+    pacmanController.move(Directions.Up);
+    Assert.assertEquals(new Point(2, 1), findPacman());
   }
 
   @Test
   public void pacmanCanMoveDownOnBoard() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
-    Assert.assertArrayEquals(new int[] {2, 3}, findPacman());
+    pacmanController.move(Directions.Down);
+    Assert.assertEquals(new Point(2, 3), findPacman());
   }
 
   @Test
   public void pacmanCanMoveLeftOnBoard() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
-    Assert.assertArrayEquals(new int[] {1, 2}, findPacman());
+    pacmanController.move(Directions.Left);
+    Assert.assertEquals(new Point(1, 2), findPacman());
   }
 
   @Test
   public void pacmanCanMoveRightOnBoard() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Right);
-    Assert.assertArrayEquals(new int[] {3, 2}, findPacman());
+    pacmanController.move(Directions.Right);
+    Assert.assertEquals(new Point(3, 2), findPacman());
   }
 
   @Test
   public void pacmanCanWrapUpOnBoard() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
-    Assert.assertArrayEquals(new int[] {2, 4}, findPacman());
+    selectPacmanStartingPoint(MIDDLE_TOP_OF_BOARD);
+    pacmanController.move(Directions.Up);
+    Assert.assertEquals(MIDDLE_BOTTOM_OF_BOARD, findPacman());
   }
 
   @Test
   public void pacmanCanWrapDownOnBoard() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
-    Assert.assertArrayEquals(new int[] {2, 0}, findPacman());
+    selectPacmanStartingPoint(MIDDLE_BOTTOM_OF_BOARD);
+    pacmanController.move(Directions.Down);
+    Assert.assertEquals(MIDDLE_TOP_OF_BOARD, findPacman());
   }
 
   @Test
   public void pacmanCanWrapLeftOnBoard() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
-    Assert.assertArrayEquals(new int[] {4, 2}, findPacman());
+    selectPacmanStartingPoint(MIDDLE_LEFT_OF_BOARD);
+    pacmanController.move(Directions.Left);
+    Assert.assertEquals(MIDDLE_RIGHT_OF_BOARD, findPacman());
   }
 
   @Test
   public void pacmanCanWrapRightOnBoard() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Right);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Right);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Right);
-    Assert.assertArrayEquals(new int[] {0, 2}, findPacman());
+    selectPacmanStartingPoint(MIDDLE_RIGHT_OF_BOARD);
+    pacmanController.move(Directions.Right);
+    Assert.assertEquals(MIDDLE_LEFT_OF_BOARD, findPacman());
   }
 
   @Test
   public void dotBecomesSpaceWhenPacmanMovesOverIt() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Up);
+    pacmanController.move(Directions.Up);
     Assert.assertEquals(" ", boardController.getObjectRepresentationAtPosition(new Point(2, 2)));
   }
 
   @Test
-  public void pacmanDoesNotRotateAndContinuesMovingWhenRotatingIntoWall() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
-    Assert.assertEquals("^", boardController.getObjectRepresentationAtPosition(new Point(2, 0)));
-  }
-
-  @Test
-  public void pacmanDoesNotMoveThroughWallsWhenWalkingIntoThem() {
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Left);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
-    boardController.tryToRotateAndMoveEntity(boardController.getExistingEntityByName("Pacman"), Directions.Down);
-    Assert.assertEquals("^", boardController.getObjectRepresentationAtPosition(new Point(1, 3)));
+  public void pacmanDoesNotRotateIntoOrWalkThroughWalls() {
+    selectPacmanStartingPoint(MIDDLE_BOTTOM_OF_BOARD);
+    pacmanController.move(Directions.Left);
+    Assert.assertEquals("^", boardController.getObjectRepresentationAtPosition(new Point(2, 4)));
   }
 }
