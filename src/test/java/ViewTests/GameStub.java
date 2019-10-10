@@ -1,6 +1,6 @@
 package ViewTests;
 
-import Controller.BoardController;
+import Controller.Board;
 import Controller.IBoardGenerator;
 import Controller.IEnemyController;
 import ControllerTests.BoardGeneratorStub;
@@ -16,7 +16,7 @@ public class GameStub extends Game {
 
   private final ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
   private final IBoardGenerator boardGenerator = new BoardGeneratorStub();
-  private final BoardController boardController = new BoardController(boardGenerator);
+  private final Board boardController = new Board(boardGenerator);
   private IEnemyController enemyController;
   private Pacman pacman;
   private ArrayList<Ghost> ghosts;

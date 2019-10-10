@@ -1,5 +1,7 @@
 package View.Console;
 
+import static Utilities.Constants.TICK_SPEED;
+
 import View.IGameInput;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,9 +12,19 @@ public class ConsoleInput implements IGameInput {
   private final InputStreamReader inputStreamReader = new InputStreamReader(System.in);
   private final BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
+  public ConsoleInput() {
+    Runtime runtime = Runtime.getRuntime();
+    runtime.addShutdownHook(new ConsoleCleanUp());
+    enterRawTerminalMode();
+  }
+
   @Override
   public int getUserInput() {
-    enterRawTerminalMode();
+    try {
+      Thread.sleep(TICK_SPEED);
+    } catch (InterruptedException e) {
+      System.out.println(e.getMessage());
+    }
     try {
       if (bufferedReader.ready()) {
         int currentInput = bufferedReader.read();

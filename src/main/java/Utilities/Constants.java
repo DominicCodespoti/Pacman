@@ -2,7 +2,7 @@ package Utilities;
 
 public final class Constants {
 
-  public static final int UP_INPUT = 119;
+  public static final int UP_INPUT = 119; //move to appropriate spots
   public static final int LEFT_INPUT = 97;
   public static final int DOWN_INPUT = 115;
   public static final int RIGHT_INPUT = 100;

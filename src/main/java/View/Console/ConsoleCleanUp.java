@@ -2,7 +2,7 @@ package View.Console;
 
 import java.io.IOException;
 
-public class ConsoleCleanUp extends Thread { //TODO: STATIC
+public class ConsoleCleanUp extends Thread {
 
   public void run() {
     String[] cmd = {"/bin/sh", "-c", "stty cooked </dev/tty"};

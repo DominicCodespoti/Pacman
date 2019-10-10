@@ -3,7 +3,7 @@ package Model.EntityObjects;
 import Model.Directions;
 import Model.GameObjects.IGameObject;
 
-public interface IEntityObject extends IGameObject {
+public interface IEntityObject {
 
   void increaseScore();
 

@@ -1,6 +1,6 @@
 package ControllerTests;
 
-import Controller.BoardController;
+import Controller.Board;
 import Controller.IBoardGenerator;
 import Model.Directions;
 import Model.EntityObjects.IEntityObject;
@@ -11,12 +11,12 @@ import org.junit.Test;
 
 public class BoardControllerTests {
 
-  private BoardController boardController;
+  private Board boardController;
 
   @Before
   public void initializeBoard() {
     IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
-    boardController = new BoardController(boardGeneratorStub);
+    boardController = new Board(boardGeneratorStub);
     boardController
         .createEntity("Pacman", boardController.getBoardWidth() / 2, boardController.getBoardHeight() / 2, true);
     boardController.createEntity("Ghost1", 0, 0, false);

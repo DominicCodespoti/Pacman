@@ -1,13 +1,13 @@
 package View.Console;
 
-import Controller.BoardController;
+import Controller.Board;
 import Model.Point;
 import View.IGameOutput;
 
 public class ConsoleOutput implements IGameOutput {
 
   @Override
-  public void printBoard(BoardController boardController) {
+  public void printBoard(Board boardController) {
     System.out.print("\033[H\033[2J");
     for (int i = 0; i < boardController.getBoardHeight(); i++) {
       for (int j = 0; j < boardController.getBoardWidth(); j++) {

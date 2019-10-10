@@ -1,8 +1,9 @@
 package Model.EntityObjects;
 
 import Model.Directions;
+import Model.GameObjects.IGameObject;
 
-public class Pacman implements IEntityObject {
+public class Pacman implements IEntityObject , IGameObject {
 
   private Directions currentDirection;
   private final String name;

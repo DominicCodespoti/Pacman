@@ -5,7 +5,7 @@ import static Utilities.Constants.RIGHT_INPUT;
 import static Utilities.Constants.DOWN_INPUT;
 import static Utilities.Constants.UP_INPUT;
 
-import Controller.BoardController;
+import Controller.Board;
 import Model.Point;
 import ControllerTests.BoardGeneratorStub;
 import Model.EntityObjects.Pacman;
@@ -17,12 +17,12 @@ import org.junit.Test;
 
 public class ConsoleInputAdapterTests {
 
-  private BoardController boardController;
+  private Board boardController;
 
   @Before
   public void initializeBoard(){
     IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
-    boardController = new BoardController(boardGeneratorStub);
+    boardController = new Board(boardGeneratorStub);
     boardController.createEntity("Pacman", boardController.getBoardWidth() / 2, boardController.getBoardHeight() / 2, true);
     boardController.createEntity("Ghost1", 0, 0, false);
     boardController.createEntity("Ghost2", boardController.getBoardWidth() - 1, boardController.getBoardHeight() - 1, false);

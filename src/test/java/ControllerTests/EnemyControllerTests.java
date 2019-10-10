@@ -1,6 +1,6 @@
 package ControllerTests;
 
-import Controller.BoardController;
+import Controller.Board;
 import Controller.EnemyController;
 import Controller.IBoardGenerator;
 import Model.EntityObjects.IEntityObject;
@@ -12,11 +12,11 @@ import org.junit.Test;
 public class EnemyControllerTests {
 
   private final IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
-  private BoardController boardController = new BoardController(boardGeneratorStub);
+  private Board boardController = new Board(boardGeneratorStub);
 
   @Before
   public void initializeBoard() {
-    boardController = new BoardController(boardGeneratorStub);
+    boardController = new Board(boardGeneratorStub);
     int width = boardController.getBoardWidth();
     int height = boardController.getBoardHeight();
     boardController
