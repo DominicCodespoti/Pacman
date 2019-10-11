@@ -2,8 +2,8 @@ package View;
 
 import static Utilities.Constants.UP_INPUT;
 
+
 import Controller.Board;
-import Controller.BoardGenerator;
 import Controller.EnemyController;
 import Controller.IBoardGenerator;
 import Controller.PacmanController;
@@ -12,30 +12,30 @@ import Model.EntityObjects.Ghost;
 import Model.EntityObjects.Pacman;
 import Model.Point;
 import Utilities.DistanceCalculator;
-import View.Console.ConsoleInputAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
 
   private final IGameInput consoleInput;
   private final IGameOutput consoleOutput;
-  private final ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
-  private final IBoardGenerator boardGenerator = new BoardGenerator();
-  private final Board board = new Board(boardGenerator);
+  private final IBoardGenerator boardGenerator;
+  private final Board board;
   private int userInputAsByte = UP_INPUT;
-
   private PacmanController pacmanController;
-
   private Pacman pacman;
-  private Ghost ghost;
+  private List<Ghost> ghost = new ArrayList<>();
   private int pacmanScoreToWin;
 
-  public Game(IGameInput consoleInput, IGameOutput consoleOutput) {
+  public Game(IGameInput consoleInput, IGameOutput consoleOutput, IBoardGenerator boardGenerator) {
     this.consoleInput = consoleInput;
     this.consoleOutput = consoleOutput;
+    this.boardGenerator = boardGenerator;
+    board = new Board(boardGenerator);
   }
 
-  public void runGame(int currentLevelIteration) {
-    setupGame();
+  public void runGame(int currentLevelIteration , int ghostAmount) {
+    setupGame(ghostAmount);
     while (isPacmanAliveOrDotsUneaten()) {
       getInput();
       moveEntities(userInputAsByte);
@@ -45,17 +45,19 @@ public class Game {
     endGame(pacman.getCurrentScore() >= pacmanScoreToWin, currentLevelIteration);
   }
 
-  public void setupGame() {
+  private void setupGame(int ghostAmount) {
     Point pacmanInitialPosition = new Point(board.getBoardWidth() / 2, board.getBoardHeight() / 2);
-    pacman = (Pacman) board.createEntity("Pacman", "Pacman", pacmanInitialPosition);
-    Point ghostInitialPosition = new Point(0, 0);
-    ghost = (Ghost) board.createEntity("Ghost", "Ghost", ghostInitialPosition);
+    pacman = board.createPacman("Pacman", pacmanInitialPosition);
+    for (int i = 0; i < ghostAmount; i++) {
+      Point ghostInitialPosition = new Point(i, 0);
+      ghost.add(board.createGhost("Ghost", ghostInitialPosition));
+    }
     pacmanController = new PacmanController(board, pacman);
     pacmanScoreToWin = boardGenerator.scoreAmount();
   }
 
   public boolean isPacmanAliveOrDotsUneaten() {
-    boolean haveAnyGhostsEatenPacman = ghost.getCurrentScore() >= 1;
+    boolean haveAnyGhostsEatenPacman = ghost.stream().anyMatch(x -> x.getCurrentScore() >= 1);
     return pacman.getCurrentScore() < pacmanScoreToWin && !haveAnyGhostsEatenPacman;
   }
 
@@ -69,20 +71,21 @@ public class Game {
   }
 
   private void moveEntities(int userInputAsByte) {
-    pacmanController.move(consoleInputAdapter.translateInputToGameActions(userInputAsByte));
-
-    Point ghostPos = board.getExistingEntityPosition(ghost);
-    Point pacmanPos = board.getExistingEntityPosition(pacman);
-    Directions fastestDirection = DistanceCalculator.findDirectionWithClosestPath(pacmanPos, ghostPos);
-    EnemyController enemyController = new EnemyController(board, ghost); //strat pattern
-    enemyController.move(fastestDirection);
+    pacmanController.move(consoleInput.translateInputToGameActions(userInputAsByte));
+    for (Ghost value : ghost) {
+      Point ghostPos = board.getExistingEntityPosition(value);
+      Point pacmanPos = board.getExistingEntityPosition(pacman);
+      Directions fastestDirection = DistanceCalculator.findDirectionWithClosestPath(pacmanPos, ghostPos);
+      EnemyController enemyController = new EnemyController(board, value);
+      enemyController.move(fastestDirection);
+    }
   }
 
-  public void endGame(Boolean playerWin, int currentLevelIteration) {
+  private void endGame(Boolean playerWin, int currentLevelIteration) {
     if (playerWin) {
       consoleOutput.printVictory();
-      Game newGame = new Game(consoleInput, consoleOutput);
-      newGame.runGame(++currentLevelIteration);
+      Game newGame = new Game(consoleInput, consoleOutput, boardGenerator);
+      newGame.runGame(++currentLevelIteration, ghost.size());
     } else {
       consoleOutput.printLose();
     }

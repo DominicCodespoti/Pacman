@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 
-public class DistanceCalculator { //TODO: SIMPLIFY
+public class DistanceCalculator {
 
   private static int calculatePossibleManhattanDistance(Point entityPositionToTrack, Directions possibleDirection,
       Point currentEntityPosition) {

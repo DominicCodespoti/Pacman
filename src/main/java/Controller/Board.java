@@ -63,15 +63,15 @@ public class Board {
     return gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isSolid();
   }
 
-  public IEntityObject createEntity(String entityType, String entityName, Point position) {
-    if (entityType.equalsIgnoreCase("Pacman")) {
-      Pacman newEntity = new Pacman(entityName);
-      currentEntities.put(newEntity, position);
-      return newEntity;
-    } else { //split into two
-      Ghost newEntity = new Ghost(entityName);
-      currentEntities.put(newEntity, position);
-      return newEntity;
-    }
+  public Pacman createPacman(String entityName, Point position) {
+    Pacman newEntity = new Pacman(entityName);
+    currentEntities.put(newEntity, position);
+    return newEntity;
+  }
+
+  public Ghost createGhost(String entityName, Point position) {
+    Ghost newEntity = new Ghost(entityName);
+    currentEntities.put(newEntity, position);
+    return newEntity;
   }
 }

@@ -1,11 +1,9 @@
 package ControllerTests;
 
 import Controller.Board;
-import Controller.EnemyController;
 import Controller.IBoardGenerator;
 import Controller.PacmanController;
 import Model.Directions;
-import Model.EntityObjects.Ghost;
 import Model.EntityObjects.IEntityObject;
 import Model.EntityObjects.Pacman;
 import Model.Point;
@@ -13,22 +11,24 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BoardControllerTests {
+public class PacmanControllerTests {
 
   private Board boardController;
   private Pacman pacman;
   private PacmanController pacmanController;
-  private final Point MIDDLE_MIDDLE = new Point(2,2);
-  private final Point MIDDLE_TOP_OF_BOARD = new Point(2,0);
-  private final Point MIDDLE_BOTTOM_OF_BOARD = new Point(2,4);
-  private final Point MIDDLE_LEFT_OF_BOARD = new Point(0,2);
-  private final Point MIDDLE_RIGHT_OF_BOARD = new Point(4,2);
+  private final Point MIDDLE_MIDDLE = new Point(2, 2);
+  private final Point MIDDLE_TOP_OF_BOARD = new Point(2, 0);
+  private final Point MIDDLE_BOTTOM_OF_BOARD = new Point(2, 4);
+  private final Point MIDDLE_LEFT_OF_BOARD = new Point(0, 2);
+  private final Point MIDDLE_RIGHT_OF_BOARD = new Point(4, 2);
+  private final Point UP_ONE_FROM_WALL = new Point(0, 3);
+  private final Point UP_TWO_FROM_WALL = new Point(0, 2);
 
   @Before
   public void initializeBoard() {
     IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
     boardController = new Board(boardGeneratorStub);
-    pacman = (Pacman) boardController.createEntity("Pacman", "Pacman", MIDDLE_MIDDLE);
+    pacman = boardController.createPacman("Pacman", MIDDLE_MIDDLE);
     pacmanController = new PacmanController(boardController, pacman);
   }
 
@@ -38,10 +38,10 @@ public class BoardControllerTests {
         boardController.getExistingEntityPosition(entityToFind).getY());
   }
 
-  private void selectPacmanStartingPoint(Point startPoint){
+  private void selectPacmanStartingPoint(Point startPoint) {
     IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
     boardController = new Board(boardGeneratorStub);
-    pacman = (Pacman) boardController.createEntity("Pacman", "Pacman", startPoint);
+    pacman = boardController.createPacman("Pacman", startPoint);
     pacmanController = new PacmanController(boardController, pacman);
   }
 
@@ -122,15 +122,33 @@ public class BoardControllerTests {
   }
 
   @Test
-  public void dotBecomesSpaceWhenPacmanMovesOverIt() {
+  public void pacmanAlternatesMouthWhileMoving() {
+    selectPacmanStartingPoint(MIDDLE_MIDDLE);
     pacmanController.move(Directions.Up);
-    Assert.assertEquals(" ", boardController.getObjectRepresentationAtPosition(new Point(2, 2)));
+    Assert.assertEquals("|", boardController.getObjectRepresentationAtPosition(new Point(2, 1)));
   }
 
   @Test
-  public void pacmanDoesNotRotateIntoOrWalkThroughWalls() {
-    selectPacmanStartingPoint(MIDDLE_BOTTOM_OF_BOARD);
-    pacmanController.move(Directions.Left);
-    Assert.assertEquals("^", boardController.getObjectRepresentationAtPosition(new Point(2, 4)));
+  public void dotBecomesSpaceWhenPacmanMovesOverIt() {
+    pacmanController.move(Directions.Up);
+    Assert.assertEquals(" ", boardController.getObjectRepresentationAtPosition(MIDDLE_MIDDLE));
+  }
+
+  @Test
+  public void pacmanDoesNotWalkThroughWalls() {
+    selectPacmanStartingPoint(UP_TWO_FROM_WALL);
+    pacmanController.move(Directions.Down);
+    pacmanController.move(Directions.Down);
+    Assert.assertEquals("|", boardController.getObjectRepresentationAtPosition(UP_ONE_FROM_WALL));
+  }
+
+  @Test
+  public void pacmanDoesNotRotateIntoWalls() {
+    selectPacmanStartingPoint(UP_TWO_FROM_WALL);
+    pacmanController.move(Directions.Down);
+    pacmanController.move(Directions.Down);
+    pacmanController.move(Directions.Right);
+    pacmanController.move(Directions.Down);
+    Assert.assertEquals("-", boardController.getObjectRepresentationAtPosition(new Point(2,3)));
   }
 }

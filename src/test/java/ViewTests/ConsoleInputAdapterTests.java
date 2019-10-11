@@ -11,7 +11,7 @@ import Controller.PacmanController;
 import ControllerTests.BoardGeneratorStub;
 import Model.EntityObjects.Pacman;
 import Model.Point;
-import View.Console.ConsoleInputAdapter;
+import View.Console.ConsoleInput;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,13 +26,13 @@ public class ConsoleInputAdapterTests {
   public void initializeBoard() {
     IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
     boardController = new Board(boardGeneratorStub);
-    Pacman pacman = (Pacman) boardController.createEntity("Pacman", "Pacman", MIDDLE_MIDDLE);
+    Pacman pacman = boardController.createPacman( "Pacman", MIDDLE_MIDDLE);
     pacmanController = new PacmanController(boardController, pacman);
   }
 
   @Test
   public void wKeyPressMovesPacmanUp() {
-    ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
+    ConsoleInput consoleInputAdapter = new ConsoleInput(1000);
 
     pacmanController.move(consoleInputAdapter.translateInputToGameActions(UP_INPUT));
     Point point = new Point(2, 1);
@@ -42,7 +42,7 @@ public class ConsoleInputAdapterTests {
 
   @Test
   public void aKeyPressMovesPacmanLeft() {
-    ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
+    ConsoleInput consoleInputAdapter = new ConsoleInput(1000);
 
     pacmanController.move(consoleInputAdapter.translateInputToGameActions(LEFT_INPUT));
     Point point = new Point(1, 2);
@@ -52,7 +52,7 @@ public class ConsoleInputAdapterTests {
 
   @Test
   public void dKeyPressMovesPacmanRight() {
-    ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
+    ConsoleInput consoleInputAdapter = new ConsoleInput(1000);
 
     pacmanController.move(consoleInputAdapter.translateInputToGameActions(RIGHT_INPUT));
     Point point = new Point(3, 2);
@@ -62,7 +62,7 @@ public class ConsoleInputAdapterTests {
 
   @Test
   public void sKeyPressMovesPacmanDown() {
-    ConsoleInputAdapter consoleInputAdapter = new ConsoleInputAdapter();
+    ConsoleInput consoleInputAdapter = new ConsoleInput(1000);
 
     pacmanController.move(consoleInputAdapter.translateInputToGameActions(DOWN_INPUT));
     Point point = new Point(2, 3);

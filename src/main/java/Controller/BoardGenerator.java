@@ -31,14 +31,14 @@ public class BoardGenerator implements IBoardGenerator {
 
   @Override
   public int scoreAmount() {
-    int gameBoardScore = 0;
+    int wallAmount = 0;
     for (int i = 0; i < gameBoard.getHeight(); i++) {
       for (int j = 0; j < gameBoard.getWidth(); j++) {
-        if (gameBoard.getValue(new Point(i, j)).isEdible()) {
-          gameBoardScore++;
+        if (!gameBoard.getValue(new Point(i, j)).isEdible()) {
+          wallAmount++;
         }
       }
     }
-    return gameBoardScore;
+    return gameBoard.getHeight() * gameBoard.getWidth() - wallAmount;
   }
 }

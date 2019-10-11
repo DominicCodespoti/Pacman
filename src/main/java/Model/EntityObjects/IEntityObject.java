@@ -1,7 +1,6 @@
 package Model.EntityObjects;
 
 import Model.Directions;
-import Model.GameObjects.IGameObject;
 
 public interface IEntityObject {
 

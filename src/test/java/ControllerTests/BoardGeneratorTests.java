@@ -12,22 +12,13 @@ import org.junit.Test;
 
 public class BoardGeneratorTests {
 
+  private IBoardGenerator boardGenerator;
   private Board boardController;
-  private PacmanController pacmanController;
-  private final Point MIDDLE_MIDDLE = new Point(2, 2);
 
   @Before
   public void initializeBoard() {
-    IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
-    boardController = new Board(boardGeneratorStub);
-    Pacman pacman = (Pacman) boardController.createEntity("Pacman", "Pacman", MIDDLE_MIDDLE);
-    pacmanController = new PacmanController(boardController, pacman);
-  }
-
-  @Test
-  public void wallsDoNotGenerateOnPacman() { //TODO: No stub needed, test makes no sense stubbed
-    boardController = new Board(new BoardGenerator());
-    Assert.assertEquals("V", boardController.getObjectRepresentationAtPosition(MIDDLE_MIDDLE));
+    boardGenerator = new BoardGenerator();
+    boardController = new Board(boardGenerator);
   }
 
   @Test
@@ -37,11 +28,12 @@ public class BoardGeneratorTests {
     int wallAmount = 0;
     for (int i = 0; i < boardHeight; i++) {
       for (int j = 0; j < boardWidth; j++) {
-        if (boardController.getObjectRepresentationAtPosition(new Point(j, i)).equals("=")) {
+        if (boardController.getObjectRepresentationAtPosition(new Point(i, j)).equals("=")) {
           wallAmount++;
         }
       }
     }
-    Assert.assertEquals(new BoardGeneratorStub().scoreAmount(), boardHeight * boardWidth - wallAmount);
+    int actual = boardHeight * boardWidth - wallAmount;
+    Assert.assertEquals(boardGenerator.scoreAmount(), actual);
   }
 }

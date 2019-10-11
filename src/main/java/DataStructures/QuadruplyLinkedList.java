@@ -10,43 +10,43 @@ public class QuadruplyLinkedList {
   private Node rowIteratorNode;
   private final int width, height;
 
-  public QuadruplyLinkedList(int Width, int Height) { //TODO: FIX CASING
-    width = Width;
-    height = Height;
+  public QuadruplyLinkedList(int width, int height) {
+    this.width = width;
+    this.height = height;
     referenceNode = new Node();
     Node columnIteratorNode;
     rowIteratorNode = columnIteratorNode = referenceNode;
 
-    for (int I = 0; I < Height; I++) {
-      for (int J = 0; J < Width; J++) {
+    for (int I = 0; I < height; I++) {
+      for (int J = 0; J < width; J++) {
         if (I == 0) {
-          if (J < Width - 1) {
+          if (J < width - 1) {
             rowIteratorNode.right = new Node();
             rowIteratorNode.right.left = rowIteratorNode;
             rowIteratorNode = rowIteratorNode.right;
           }
         } else {
-          if (J < Width - 1) {
+          if (J < width - 1) {
             rowIteratorNode.right = new Node();
             rowIteratorNode.up.down = rowIteratorNode;
             rowIteratorNode.right.left = rowIteratorNode;
             rowIteratorNode.right.up = rowIteratorNode.up.right;
             rowIteratorNode = rowIteratorNode.right;
           }
-          if (J == Width - 1) {
+          if (J == width - 1) {
             rowIteratorNode.up.down = rowIteratorNode;
           }
         }
       }
-      if (I < Height - 1) {
+      if (I < height - 1) {
         columnIteratorNode.down = new Node();
         columnIteratorNode.down.up = columnIteratorNode;
         rowIteratorNode = columnIteratorNode = columnIteratorNode.down;
       }
     }
 
-    for (int I = 0; I < Height; ++I) {
-      for (int J = 0; J < Width; ++J) {
+    for (int I = 0; I < height; ++I) {
+      for (int J = 0; J < width; ++J) {
         wrapNode(J, I);
         getNode(J, I).position = new Point(J, I);
       }

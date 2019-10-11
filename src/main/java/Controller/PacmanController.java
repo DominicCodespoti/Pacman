@@ -26,7 +26,7 @@ public class PacmanController implements Movement {
       pacman.updateCurrentDirection(oldDirection);
     }
 
-    if (pacman != null && !gameBoard.isPathBlocked(entityPosition, newDirection)) {
+    if (pacman != null && !gameBoard.isPathBlocked(entityPosition, pacman.getCurrentDirection())) {
       Directions entityDirection = gameBoard.getExistingEntityByName(pacman.getName()).getCurrentDirection();
       if (pacman != null) {
         movePositionOnBoard(entityPosition, entityDirection);
