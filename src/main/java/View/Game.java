@@ -2,7 +2,6 @@ package View;
 
 import static Utilities.Constants.UP_INPUT;
 
-
 import Controller.Board;
 import Controller.EnemyController;
 import Controller.IBoardGenerator;
@@ -34,7 +33,7 @@ public class Game {
     board = new Board(boardGenerator);
   }
 
-  public void runGame(int currentLevelIteration , int ghostAmount) {
+  public void runGame(int currentLevelIteration, int ghostAmount) {
     setupGame(ghostAmount);
     while (isPacmanAliveOrDotsUneaten()) {
       getInput();
@@ -50,7 +49,7 @@ public class Game {
     pacman = board.createPacman("Pacman", pacmanInitialPosition);
     for (int i = 0; i < ghostAmount; i++) {
       Point ghostInitialPosition = new Point(i, 0);
-      ghost.add(board.createGhost("Ghost", ghostInitialPosition));
+      ghost.add(board.createGhost("Ghost" + i, ghostInitialPosition));
     }
     pacmanController = new PacmanController(board, pacman);
     pacmanScoreToWin = boardGenerator.scoreAmount();
@@ -73,11 +72,13 @@ public class Game {
   private void moveEntities(int userInputAsByte) {
     pacmanController.move(consoleInput.translateInputToGameActions(userInputAsByte));
     for (Ghost value : ghost) {
-      Point ghostPos = board.getExistingEntityPosition(value);
-      Point pacmanPos = board.getExistingEntityPosition(pacman);
-      Directions fastestDirection = DistanceCalculator.findDirectionWithClosestPath(pacmanPos, ghostPos);
-      EnemyController enemyController = new EnemyController(board, value);
-      enemyController.move(fastestDirection);
+      if (board.getExistingEntityByName(pacman.getName()) != null) {
+        Point ghostPos = board.getExistingEntityPosition(value);
+        Point pacmanPos = board.getExistingEntityPosition(pacman);
+        Directions fastestDirection = DistanceCalculator.findDirectionWithClosestPath(pacmanPos, ghostPos);
+        EnemyController enemyController = new EnemyController(board, value);
+        enemyController.move(fastestDirection);
+      }
     }
   }
 
