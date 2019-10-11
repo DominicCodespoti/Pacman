@@ -1,3 +1,5 @@
+import static Utilities.Constants.GHOST_AMOUNT;
+import static Utilities.Constants.STARTING_LEVEL;
 import static Utilities.Constants.TICK_SPEED;
 
 
@@ -16,6 +18,6 @@ public class Main {
     IGameOutput gameOutput = new ConsoleOutput();
     IBoardGenerator boardGenerator = new BoardGenerator();
     Game game = new Game(gameInput, gameOutput, boardGenerator);
-    game.runGame(1, 2);
+    game.runGame(STARTING_LEVEL, GHOST_AMOUNT);
   }
 }

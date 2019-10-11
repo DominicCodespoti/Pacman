@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 public class Point {
 
   private final int x;
@@ -19,7 +21,18 @@ public class Point {
   }
 
   @Override
+  public final int hashCode(){
+    return Objects.hash(x, y);
+  }
+
+  @Override
   public boolean equals(Object otherPoint){
+    if (otherPoint == null){
+      return false;
+    }
+    if (getClass() != otherPoint.getClass()){
+      return false;
+    }
     final Point other = (Point) otherPoint;
     return (this.x == other.x) && (this.y == other.y);
   }

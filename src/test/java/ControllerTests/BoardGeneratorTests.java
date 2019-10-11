@@ -3,8 +3,6 @@ package ControllerTests;
 import Controller.Board;
 import Controller.BoardGenerator;
 import Controller.IBoardGenerator;
-import Controller.PacmanController;
-import Model.EntityObjects.Pacman;
 import Model.Point;
 import org.junit.Assert;
 import org.junit.Before;

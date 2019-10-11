@@ -6,7 +6,6 @@ import static Utilities.Constants.LEFT_INPUT;
 import static Utilities.Constants.RIGHT_INPUT;
 import static Utilities.Constants.UP_INPUT;
 
-
 import Model.Directions;
 import View.IGameInput;
 import java.io.BufferedReader;

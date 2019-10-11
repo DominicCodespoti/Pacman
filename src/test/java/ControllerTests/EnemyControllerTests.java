@@ -3,11 +3,9 @@ package ControllerTests;
 import Controller.Board;
 import Controller.EnemyController;
 import Controller.IBoardGenerator;
-import Controller.PacmanController;
 import Model.Directions;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.IEntityObject;
-import Model.EntityObjects.Pacman;
 import Model.Point;
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,8 +28,6 @@ public class EnemyControllerTests {
   public void initializeBoard() {
     IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
     boardController = new Board(boardGeneratorStub);
-    Pacman pacman = boardController.createPacman("Pacman", MIDDLE_MIDDLE);
-    PacmanController pacmanController = new PacmanController(boardController, pacman);
     ghost = boardController.createGhost("Ghost", new Point(2, 2));
     enemyController = new EnemyController(boardController, ghost);
   }

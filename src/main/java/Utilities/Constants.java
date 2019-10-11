@@ -9,4 +9,5 @@ public final class Constants {
   public static final int EXIT_INPUT = 3;
   public static final int TICK_SPEED = 1000;
   public static final int GHOST_AMOUNT = 2;
+  public static final int STARTING_LEVEL = 1;
 }
