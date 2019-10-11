@@ -1,7 +1,10 @@
 package ControllerTests;
 
-import Controller.BoardController;
+import Controller.Board;
+import Controller.BoardGenerator;
 import Controller.IBoardGenerator;
+import Controller.PacmanController;
+import Model.EntityObjects.Pacman;
 import Model.Point;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,25 +12,13 @@ import org.junit.Test;
 
 public class BoardGeneratorTests {
 
-  private BoardController boardController;
+  private IBoardGenerator boardGenerator;
+  private Board boardController;
 
   @Before
   public void initializeBoard() {
-    IBoardGenerator boardGeneratorStub = new BoardGeneratorStub();
-    boardController = new BoardController(boardGeneratorStub);
-    boardController
-        .createEntity("Pacman", boardController.getBoardWidth() / 2, boardController.getBoardHeight() / 2, true);
-    boardController.createEntity("Ghost1", 0, 0, false);
-    boardController
-        .createEntity("Ghost2", boardController.getBoardWidth() - 1, boardController.getBoardHeight() - 1, false);
-  }
-
-  @Test
-  public void wallsDoNotGenerateOnPacman() { //TODO: INTRODUCE BEFORE
-    int boardHeight = boardController.getBoardHeight();
-    int boardWidth = boardController.getBoardWidth();
-    Point wherePacmanShouldBe = new Point(boardWidth / 2, boardHeight / 2);
-    Assert.assertEquals("V", boardController.getObjectRepresentationAtPosition(wherePacmanShouldBe));
+    boardGenerator = new BoardGenerator();
+    boardController = new Board(boardGenerator);
   }
 
   @Test
@@ -37,11 +28,12 @@ public class BoardGeneratorTests {
     int wallAmount = 0;
     for (int i = 0; i < boardHeight; i++) {
       for (int j = 0; j < boardWidth; j++) {
-        if (boardController.getObjectRepresentationAtPosition(new Point(j, i)).equals("=")) {
+        if (boardController.getObjectRepresentationAtPosition(new Point(i, j)).equals("=")) {
           wallAmount++;
         }
       }
     }
-    Assert.assertEquals(new BoardGeneratorStub().scoreAmount(), boardHeight * boardWidth - wallAmount);
+    int actual = boardHeight * boardWidth - wallAmount;
+    Assert.assertEquals(boardGenerator.scoreAmount(), actual);
   }
 }

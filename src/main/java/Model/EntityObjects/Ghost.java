@@ -1,8 +1,9 @@
 package Model.EntityObjects;
 
 import Model.Directions;
+import Model.GameObjects.IGameObject;
 
-public class Ghost implements IEntityObject {
+public class Ghost implements IEntityObject , IGameObject {
 
   private Directions currentDirection;
   private final String name;
