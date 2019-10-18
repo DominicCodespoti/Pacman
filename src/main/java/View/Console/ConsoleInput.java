@@ -1,11 +1,5 @@
 package View.Console;
 
-import static Utilities.Constants.DOWN_INPUT;
-import static Utilities.Constants.EXIT_INPUT;
-import static Utilities.Constants.LEFT_INPUT;
-import static Utilities.Constants.RIGHT_INPUT;
-import static Utilities.Constants.UP_INPUT;
-
 import Model.Directions;
 import View.IGameInput;
 import java.io.BufferedReader;
@@ -14,58 +8,61 @@ import java.io.InputStreamReader;
 
 public class ConsoleInput implements IGameInput {
 
+  private static final int LEFT_INPUT = 97;
+  private static final int RIGHT_INPUT = 100;
+  private static final int DOWN_INPUT = 115;
+  private static final int UP_INPUT = 119;
   private final InputStreamReader inputStreamReader = new InputStreamReader(System.in);
   private final BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-  private final int TICK_SPEED;
 
-  public ConsoleInput(int tickSpeed) {
+  public ConsoleInput() {
     Runtime runtime = Runtime.getRuntime();
     runtime.addShutdownHook(new ConsoleCleanUp());
-    TICK_SPEED = tickSpeed;
     enterRawTerminalMode();
   }
 
   @Override
-  public int getUserInput() {
+  public Directions getUserInput(Directions oldDirection) {
+    pause();
     try {
-      Thread.sleep(TICK_SPEED);
-    } catch (InterruptedException e) {
-      System.out.println(e.getMessage());
-    }
-    try {
-      if (bufferedReader.ready()) {
-        int currentInput = bufferedReader.read();
-        if (ConsoleInputValidation.checkInput(currentInput)) {
-          return currentInput;
-        } else {
-          return 0;
-        }
+      Directions selectedDirection = getDirections();
+      if (selectedDirection != null) {
+        return selectedDirection;
       }
     } catch (IOException e) {
       System.out.println(e.getMessage());
     }
-    return 0;
+    return oldDirection;
   }
 
-  @Override
-  public Directions translateInputToGameActions(int userInputAsByte) {
-    switch (userInputAsByte) {
-      case LEFT_INPUT:
-        return Directions.Left;
+  private Directions getDirections() throws IOException {
+    if (bufferedReader.ready()) {
+      switch (bufferedReader.read()) {
+        case LEFT_INPUT:
+          return Directions.Left;
 
-      case RIGHT_INPUT:
-        return Directions.Right;
+        case RIGHT_INPUT:
+          return Directions.Right;
 
-      case DOWN_INPUT:
-        return Directions.Down;
+        case DOWN_INPUT:
+          return Directions.Down;
 
-      case UP_INPUT:
-        return Directions.Up;
-
-      case EXIT_INPUT:
-        System.exit(0);
+        case UP_INPUT:
+          return Directions.Up;
+        case 3:
+          System.exit(0);
+      }
     }
     return null;
+  }
+
+  private void pause() {
+    try {
+      int TICK_SPEED = 1000;
+      Thread.sleep(TICK_SPEED);
+    } catch (InterruptedException e) {
+      System.out.println(e.getMessage());
+    }
   }
 
   private void enterRawTerminalMode() {

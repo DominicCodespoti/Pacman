@@ -4,7 +4,5 @@ import Model.Directions;
 
 public interface IGameInput {
 
-  int getUserInput();
-
-  Directions translateInputToGameActions(int userInputAsByte);
+  Directions getUserInput(Directions oldInput);
 }

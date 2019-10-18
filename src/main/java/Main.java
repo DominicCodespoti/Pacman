@@ -1,23 +1,12 @@
-import static Utilities.Constants.GHOST_AMOUNT;
-import static Utilities.Constants.STARTING_LEVEL;
-import static Utilities.Constants.TICK_SPEED;
-
-
 import Controller.BoardGenerator;
-import Controller.IBoardGenerator;
 import View.Console.ConsoleInput;
 import View.Console.ConsoleOutput;
 import View.Game;
-import View.IGameInput;
-import View.IGameOutput;
 
 public class Main {
 
   public static void main(String[] args) {
-    IGameInput gameInput = new ConsoleInput(TICK_SPEED);
-    IGameOutput gameOutput = new ConsoleOutput();
-    IBoardGenerator boardGenerator = new BoardGenerator();
-    Game game = new Game(gameInput, gameOutput, boardGenerator);
-    game.runGame(STARTING_LEVEL, GHOST_AMOUNT);
+    Game game = new Game(new ConsoleInput(), new ConsoleOutput(), new BoardGenerator());
+    game.runGame();
   }
 }

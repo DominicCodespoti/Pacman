@@ -3,10 +3,10 @@ package Model.EntityObjects;
 import Model.Directions;
 import Model.GameObjects.IGameObject;
 
-public class Pacman implements IEntityObject , IGameObject {
+public class Pacman implements IEntityObject, IGameObject {
 
-  private Directions currentDirection;
   private final String name;
+  private Directions currentDirection;
   private int score = 0;
   private boolean holdingDot = false;
   private boolean isMouthOpen = true;
@@ -18,6 +18,16 @@ public class Pacman implements IEntityObject , IGameObject {
 
   public void setIsMouthOpenToOpposite() {
     this.isMouthOpen = !this.isMouthOpen;
+  }
+
+  @Override
+  public boolean isSolid() {
+    return false;
+  }
+
+  @Override
+  public boolean isEdible() {
+    return true;
   }
 
   @Override
@@ -36,6 +46,11 @@ public class Pacman implements IEntityObject , IGameObject {
   }
 
   @Override
+  public void increaseScore() {
+    score++;
+  }
+
+  @Override
   public boolean isHoldingDot() {
     return holdingDot;
   }
@@ -43,21 +58,6 @@ public class Pacman implements IEntityObject , IGameObject {
   @Override
   public void setHoldingDot(boolean isHolding) {
     holdingDot = isHolding;
-  }
-
-  @Override
-  public boolean isSolid() {
-    return false;
-  }
-
-  @Override
-  public boolean isEdible() {
-    return true;
-  }
-
-  @Override
-  public void increaseScore() {
-    score++;
   }
 
   @Override

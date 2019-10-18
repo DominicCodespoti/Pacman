@@ -21,16 +21,16 @@ public class Point {
   }
 
   @Override
-  public final int hashCode(){
+  public final int hashCode() {
     return Objects.hash(x, y);
   }
 
   @Override
-  public boolean equals(Object otherPoint){
-    if (otherPoint == null){
+  public boolean equals(Object otherPoint) {
+    if (otherPoint == null) {
       return false;
     }
-    if (getClass() != otherPoint.getClass()){
+    if (getClass() != otherPoint.getClass()) {
       return false;
     }
     final Point other = (Point) otherPoint;

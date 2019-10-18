@@ -45,8 +45,7 @@ public class DistanceCalculator {
         calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Up, currentEntityPosition));
     possibleDistances.put(Directions.Down,
         calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Down, currentEntityPosition));
-    Optional<Entry<Directions, Integer>> maxEntry = possibleDistances.entrySet()
-        .stream()
+    Optional<Entry<Directions, Integer>> maxEntry = possibleDistances.entrySet().stream()
         .min(Comparator.comparing(Map.Entry::getValue));
     if (maxEntry.isPresent()) {
       return maxEntry.get().getKey();

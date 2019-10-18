@@ -6,9 +6,9 @@ import Model.Point;
 
 public class Node {
 
-  Node up, down, left, right;
   public Point position;
   public IGameObject value;
+  Node up, down, left, right;
 
   Node() {
     value = new Dot();

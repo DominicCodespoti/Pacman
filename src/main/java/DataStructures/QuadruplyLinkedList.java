@@ -7,8 +7,8 @@ import Model.Point;
 public class QuadruplyLinkedList {
 
   private final Node referenceNode;
-  private Node rowIteratorNode;
   private final int width, height;
+  private Node rowIteratorNode;
 
   public QuadruplyLinkedList(int width, int height) {
     this.width = width;

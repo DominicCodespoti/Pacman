@@ -8,12 +8,12 @@ import Model.GameObjects.Dot;
 import Model.GameObjects.Space;
 import Model.Point;
 
-public class EnemyController implements Movement {
+public class GhostController implements Movement {
 
   private Board gameBoard;
   private Ghost ghost;
 
-  public EnemyController(Board gameBoard, Ghost ghost) {
+  public GhostController(Board gameBoard, Ghost ghost) {
     this.gameBoard = gameBoard;
     this.ghost = ghost;
   }

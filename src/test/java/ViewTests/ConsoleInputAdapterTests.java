@@ -1,14 +1,10 @@
 package ViewTests;
 
-import static Utilities.Constants.DOWN_INPUT;
-import static Utilities.Constants.LEFT_INPUT;
-import static Utilities.Constants.RIGHT_INPUT;
-import static Utilities.Constants.UP_INPUT;
-
 import Controller.Board;
 import Controller.IBoardGenerator;
 import Controller.PacmanController;
 import ControllerTests.BoardGeneratorStub;
+import Model.Directions;
 import Model.EntityObjects.Pacman;
 import Model.Point;
 import View.Console.ConsoleInput;
@@ -32,9 +28,9 @@ public class ConsoleInputAdapterTests {
 
   @Test
   public void wKeyPressMovesPacmanUp() {
-    ConsoleInput consoleInputAdapter = new ConsoleInput(1000);
+    ConsoleInput consoleInputAdapter = new ConsoleInput();
 
-    pacmanController.move(consoleInputAdapter.translateInputToGameActions(UP_INPUT));
+    pacmanController.move(consoleInputAdapter.getUserInput(Directions.Up));
     Point point = new Point(2, 1);
 
     Assert.assertEquals("|", boardController.getObjectRepresentationAtPosition(point));
@@ -42,9 +38,9 @@ public class ConsoleInputAdapterTests {
 
   @Test
   public void aKeyPressMovesPacmanLeft() {
-    ConsoleInput consoleInputAdapter = new ConsoleInput(1000);
+    ConsoleInput consoleInputAdapter = new ConsoleInput();
 
-    pacmanController.move(consoleInputAdapter.translateInputToGameActions(LEFT_INPUT));
+    pacmanController.move(consoleInputAdapter.getUserInput(Directions.Left));
     Point point = new Point(1, 2);
 
     Assert.assertEquals("-", boardController.getObjectRepresentationAtPosition(point));
@@ -52,9 +48,9 @@ public class ConsoleInputAdapterTests {
 
   @Test
   public void dKeyPressMovesPacmanRight() {
-    ConsoleInput consoleInputAdapter = new ConsoleInput(1000);
+    ConsoleInput consoleInputAdapter = new ConsoleInput();
 
-    pacmanController.move(consoleInputAdapter.translateInputToGameActions(RIGHT_INPUT));
+    pacmanController.move(consoleInputAdapter.getUserInput(Directions.Right));
     Point point = new Point(3, 2);
 
     Assert.assertEquals("-", boardController.getObjectRepresentationAtPosition(point));
@@ -62,9 +58,9 @@ public class ConsoleInputAdapterTests {
 
   @Test
   public void sKeyPressMovesPacmanDown() {
-    ConsoleInput consoleInputAdapter = new ConsoleInput(1000);
+    ConsoleInput consoleInputAdapter = new ConsoleInput();
 
-    pacmanController.move(consoleInputAdapter.translateInputToGameActions(DOWN_INPUT));
+    pacmanController.move(consoleInputAdapter.getUserInput(Directions.Down));
     Point point = new Point(2, 3);
 
     Assert.assertEquals("|", boardController.getObjectRepresentationAtPosition(point));
