@@ -27,7 +27,7 @@ public class GameTests {
 
   @Test
   public void doesWinConditionDetectPacmanDying() {
-    Game consoleGame = new Game(new ConsoleInput(), new ConsoleOutput(), new BoardGeneratorStub());
+    Game consoleGame = new Game(new StubInput(), new ConsoleOutput(), new BoardGeneratorStub());
     consoleGame.runGame();
     Assert.assertFalse(consoleGame.isPacmanAliveOrDotsUneaten());
   }
