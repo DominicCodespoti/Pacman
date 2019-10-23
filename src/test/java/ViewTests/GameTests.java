@@ -7,7 +7,6 @@ import ControllerTests.BoardGeneratorStub;
 import Model.Directions;
 import Model.EntityObjects.Pacman;
 import Model.Point;
-import View.Console.ConsoleInput;
 import View.Console.ConsoleOutput;
 import View.Game;
 import org.junit.Assert;
