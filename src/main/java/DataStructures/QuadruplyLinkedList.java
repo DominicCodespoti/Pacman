@@ -63,25 +63,14 @@ public class QuadruplyLinkedList {
   }
 
   public void setValue(Point coordinate, IGameObject Value) {
-    int X = coordinate.getX();
-    int Y = coordinate.getY();
-    rowIteratorNode = referenceNode;
-
-    for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.down;
-    }
-
-    for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.right;
-    }
+    setRowIteratorNode(coordinate);
 
     rowIteratorNode.value = Value;
   }
 
-  public IGameObject getValue(Point coordinate) {
+  private void setRowIteratorNode(Point coordinate) {
     int X = coordinate.getX();
     int Y = coordinate.getY();
-
     rowIteratorNode = referenceNode;
 
     for (int I = 0; I < Y; ++I) {
@@ -91,23 +80,16 @@ public class QuadruplyLinkedList {
     for (int J = 0; J < X; ++J) {
       rowIteratorNode = rowIteratorNode.right;
     }
+  }
+
+  public IGameObject getValue(Point coordinate) {
+    setRowIteratorNode(coordinate);
 
     return rowIteratorNode.value;
   }
 
   public Node nextNodeInDirection(Point coordinate, Directions currentDirection) {
-    int X = coordinate.getX();
-    int Y = coordinate.getY();
-
-    rowIteratorNode = referenceNode;
-
-    for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.down;
-    }
-
-    for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.right;
-    }
+    setRowIteratorNode(coordinate);
 
     switch (currentDirection) {
       case Up:
@@ -123,18 +105,7 @@ public class QuadruplyLinkedList {
   }
 
   public Node oppositeNodeInDirection(Point coordinate, Directions currentDirection) {
-    int X = coordinate.getX();
-    int Y = coordinate.getY();
-
-    rowIteratorNode = referenceNode;
-
-    for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.down;
-    }
-
-    for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.right;
-    }
+    setRowIteratorNode(coordinate);
 
     switch (currentDirection.getOppositeDirection()) {
       case Up:

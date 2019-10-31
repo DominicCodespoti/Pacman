@@ -47,25 +47,25 @@ public class GhostControllerTests {
 
   @Test
   public void enemyCanRotateUp() {
-    ghost.updateCurrentDirection(Directions.Up);
+    ghostController.move(Directions.Up);
     Assert.assertEquals(Directions.Up, boardController.getExistingEntityByName("Ghost").getCurrentDirection());
   }
 
   @Test
   public void enemyCanRotateLeft() {
-    ghost.updateCurrentDirection(Directions.Left);
+    ghostController.move(Directions.Left);
     Assert.assertEquals(Directions.Left, boardController.getExistingEntityByName("Ghost").getCurrentDirection());
   }
 
   @Test
   public void enemyCanRotateDown() {
-    ghost.updateCurrentDirection(Directions.Down);
+    ghostController.move(Directions.Down);
     Assert.assertEquals(Directions.Down, boardController.getExistingEntityByName("Ghost").getCurrentDirection());
   }
 
   @Test
   public void enemyCanRotateRight() {
-    ghost.updateCurrentDirection(Directions.Right);
+    ghostController.move(Directions.Right);
     Assert.assertEquals(Directions.Right, boardController.getExistingEntityByName("Ghost").getCurrentDirection());
   }
 

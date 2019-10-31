@@ -7,8 +7,8 @@ import Model.Point;
 
 public class PacmanController implements Movement {
 
-  private Board gameBoard;
-  private Pacman pacman;
+  private final Board gameBoard;
+  private final Pacman pacman;
 
   public PacmanController(Board gameBoard, Pacman pacman) {
     this.gameBoard = gameBoard;
@@ -22,17 +22,15 @@ public class PacmanController implements Movement {
 
     pacman.updateCurrentDirection(newDirection);
 
-    if (pacman != null && gameBoard.isPathBlocked(entityPosition, newDirection)) {
+    if (gameBoard.isPathBlocked(entityPosition, newDirection)) {
       pacman.updateCurrentDirection(oldDirection);
     }
 
-    if (pacman != null && !gameBoard.isPathBlocked(entityPosition, pacman.getCurrentDirection())) {
+    if (!gameBoard.isPathBlocked(entityPosition, pacman.getCurrentDirection())) {
       Directions entityDirection = gameBoard.getExistingEntityByName(pacman.getName()).getCurrentDirection();
-      if (pacman != null) {
-        movePositionOnBoard(entityPosition, entityDirection);
-        attemptToEatDot(entityDirection);
-        pacman.setIsMouthOpenToOpposite();
-      }
+      movePositionOnBoard(entityPosition, entityDirection);
+      attemptToEatDot(entityDirection);
+      pacman.setIsMouthOpenToOpposite();
     }
   }
 

@@ -10,8 +10,8 @@ import Model.Point;
 
 public class GhostController implements Movement {
 
-  private Board gameBoard;
-  private Ghost ghost;
+  private final Board gameBoard;
+  private final Ghost ghost;
 
   public GhostController(Board gameBoard, Ghost ghost) {
     this.gameBoard = gameBoard;
@@ -22,11 +22,10 @@ public class GhostController implements Movement {
   public void move(Directions newDirection) {
     Point entityPosition = gameBoard.getExistingEntityPosition(ghost);
     if (ghost != null && !gameBoard.isPathBlocked(entityPosition, newDirection)) {
-      if (ghost != null) {
-        attemptToEatEntity(entityPosition, newDirection);
-        movePositionOnBoard(entityPosition, newDirection);
-        attemptToEatDot(newDirection);
-      }
+      ghost.updateCurrentDirection(newDirection);
+      attemptToEatEntity(entityPosition, ghost.getCurrentDirection());
+      movePositionOnBoard(entityPosition, ghost.getCurrentDirection());
+      attemptToEatDot(ghost.getCurrentDirection());
     }
   }
 

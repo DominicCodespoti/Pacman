@@ -2,7 +2,7 @@ package Controller;
 
 import Model.Directions;
 
-public interface Movement {
+interface Movement {
 
   void move(Directions newDirection);
 }

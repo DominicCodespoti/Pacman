@@ -30,29 +30,25 @@ public class Ghost implements IEntityObject, IGameObject {
     return "G";
   }
 
-  @Override
   public void increaseScore() {
     score++;
   }
 
-  @Override
   public boolean isHoldingDot() {
     return holdingDot;
   }
 
-  @Override
   public void setHoldingDot(boolean isHolding) {
     holdingDot = isHolding;
+  }
+
+  public void updateCurrentDirection(Directions newDirection) {
+    currentDirection = newDirection;
   }
 
   @Override
   public int getCurrentScore() {
     return score;
-  }
-
-  @Override
-  public void updateCurrentDirection(Directions newDirection) {
-    this.currentDirection = newDirection;
   }
 
   @Override

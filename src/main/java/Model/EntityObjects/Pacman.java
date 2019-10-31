@@ -45,17 +45,14 @@ public class Pacman implements IEntityObject, IGameObject {
     return "";
   }
 
-  @Override
   public void increaseScore() {
     score++;
   }
 
-  @Override
   public boolean isHoldingDot() {
     return holdingDot;
   }
 
-  @Override
   public void setHoldingDot(boolean isHolding) {
     holdingDot = isHolding;
   }
@@ -65,7 +62,6 @@ public class Pacman implements IEntityObject, IGameObject {
     return score;
   }
 
-  @Override
   public void updateCurrentDirection(Directions newDirection) {
     currentDirection = newDirection;
   }
