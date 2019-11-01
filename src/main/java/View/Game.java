@@ -22,7 +22,7 @@ public class Game {
   private Board board;
   private PacmanController pacmanController;
   private Pacman pacman;
-  private final List<Ghost> ghost = new ArrayList<>();
+  private List<Ghost> ghost = new ArrayList<>();
   private int pacmanScoreToWin;
   private int currentLevelIteration = 1;
   private Directions lastDirection = Directions.Up;
