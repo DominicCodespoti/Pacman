@@ -1,7 +1,7 @@
-import Controller.BoardGenerator;
-import View.Console.ConsoleInput;
-import View.Console.ConsoleOutput;
-import View.Game;
+import controller.BoardGenerator;
+import view.Console.ConsoleInput;
+import view.Console.ConsoleOutput;
+import view.Game;
 
 public class Main {
 
