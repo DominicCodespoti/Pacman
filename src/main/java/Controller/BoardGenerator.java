@@ -1,6 +1,7 @@
 package Controller;
 
 import DataStructures.QuadruplyLinkedList;
+import Model.GameObjects.IGameObject;
 import Model.GameObjects.Wall;
 import Model.Point;
 import java.util.Random;
@@ -34,7 +35,8 @@ public class BoardGenerator implements IBoardGenerator {
     int wallAmount = 0;
     for (int i = 0; i < gameBoard.getHeight(); i++) {
       for (int j = 0; j < gameBoard.getWidth(); j++) {
-        if (!gameBoard.getValue(new Point(i, j)).isEdible()) {
+        IGameObject currentObject = (IGameObject) gameBoard.getValue(new Point(i, j));
+        if (!currentObject.isEdible()) {
           wallAmount++;
         }
       }

@@ -6,6 +6,7 @@ import Model.Directions;
 import Model.EntityObjects.Ghost;
 import Model.EntityObjects.IEntityObject;
 import Model.EntityObjects.Pacman;
+import Model.GameObjects.IGameObject;
 import Model.Point;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +41,8 @@ public class Board {
   }
 
   public String getObjectRepresentationAtPosition(Point positionToGet) {
-    return gameBoard.getValue(positionToGet).getString();
+    IGameObject objectBeingRepresented = (IGameObject) gameBoard.getValue(positionToGet);
+    return objectBeingRepresented.getString();
   }
 
   public int getBoardWidth() {
@@ -55,12 +57,9 @@ public class Board {
     return gameBoard.nextNodeInDirection(entityPosition, entityDirection);
   }
 
-  Node oppositeNodeInDirection(Point entityPosition, Directions entityDirection) {
-    return gameBoard.oppositeNodeInDirection(entityPosition, entityDirection);
-  }
-
   boolean isPathBlocked(Point entityPosition, Directions entityDirection) {
-    return gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isSolid();
+    IGameObject objectInPath = (IGameObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
+    return objectInPath.isSolid();
   }
 
   public Pacman createPacman(String entityName, Point position) {

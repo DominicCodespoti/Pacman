@@ -1,7 +1,7 @@
 package DataStructures;
 
 import Model.Directions;
-import Model.GameObjects.IGameObject;
+import Model.GameObjects.Dot;
 import Model.Point;
 
 public class QuadruplyLinkedList {
@@ -19,38 +19,47 @@ public class QuadruplyLinkedList {
 
     for (int I = 0; I < height; I++) {
       for (int J = 0; J < width; J++) {
-        if (I == 0) {
-          if (J < width - 1) {
-            rowIteratorNode.right = new Node();
-            rowIteratorNode.right.left = rowIteratorNode;
-            rowIteratorNode = rowIteratorNode.right;
-          }
-        } else {
-          if (J < width - 1) {
-            rowIteratorNode.right = new Node();
-            rowIteratorNode.up.down = rowIteratorNode;
-            rowIteratorNode.right.left = rowIteratorNode;
-            rowIteratorNode.right.up = rowIteratorNode.up.right;
-            rowIteratorNode = rowIteratorNode.right;
-          }
-          if (J == width - 1) {
-            rowIteratorNode.up.down = rowIteratorNode;
-          }
-        }
+        createRows(width, I, J);
       }
-      if (I < height - 1) {
-        columnIteratorNode.down = new Node();
-        columnIteratorNode.down.up = columnIteratorNode;
-        rowIteratorNode = columnIteratorNode = columnIteratorNode.down;
-      }
+      columnIteratorNode = createColumns(height, columnIteratorNode, I);
     }
 
     for (int I = 0; I < height; ++I) {
       for (int J = 0; J < width; ++J) {
         wrapNode(J, I);
+        getNode(J, I).value = new Dot();
         getNode(J, I).position = new Point(J, I);
       }
-      System.out.println();
+    }
+  }
+
+  private Node createColumns(int height, Node columnIteratorNode, int i) {
+    if (i < height - 1) {
+      columnIteratorNode.down = new Node();
+      columnIteratorNode.down.up = columnIteratorNode;
+      rowIteratorNode = columnIteratorNode = columnIteratorNode.down;
+    }
+    return columnIteratorNode;
+  }
+
+  private void createRows(int width, int i, int j) {
+    if (i == 0) {
+      if (j < width - 1) {
+        rowIteratorNode.right = new Node();
+        rowIteratorNode.right.left = rowIteratorNode;
+        rowIteratorNode = rowIteratorNode.right;
+      }
+    } else {
+      if (j < width - 1) {
+        rowIteratorNode.right = new Node();
+        rowIteratorNode.up.down = rowIteratorNode;
+        rowIteratorNode.right.left = rowIteratorNode;
+        rowIteratorNode.right.up = rowIteratorNode.up.right;
+        rowIteratorNode = rowIteratorNode.right;
+      }
+      if (j == width - 1) {
+        rowIteratorNode.up.down = rowIteratorNode;
+      }
     }
   }
 
@@ -62,7 +71,7 @@ public class QuadruplyLinkedList {
     return height;
   }
 
-  public void setValue(Point coordinate, IGameObject Value) {
+  private void setRowIteratorNode(Point coordinate) {
     int X = coordinate.getX();
     int Y = coordinate.getY();
     rowIteratorNode = referenceNode;
@@ -74,41 +83,25 @@ public class QuadruplyLinkedList {
     for (int J = 0; J < X; ++J) {
       rowIteratorNode = rowIteratorNode.right;
     }
+  }
 
+  public void setValue(Point coordinate, Object Value) {
+    setRowIteratorNode(coordinate);
     rowIteratorNode.value = Value;
   }
 
-  public IGameObject getValue(Point coordinate) {
-    int X = coordinate.getX();
-    int Y = coordinate.getY();
-
-    rowIteratorNode = referenceNode;
-
-    for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.down;
-    }
-
-    for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.right;
-    }
-
+  public Object getValue(Point coordinate) {
+    setRowIteratorNode(coordinate);
     return rowIteratorNode.value;
   }
 
+  private Node getNode(int X, int Y) {
+    setRowIteratorNode(new Point(X, Y));
+    return rowIteratorNode;
+  }
+
   public Node nextNodeInDirection(Point coordinate, Directions currentDirection) {
-    int X = coordinate.getX();
-    int Y = coordinate.getY();
-
-    rowIteratorNode = referenceNode;
-
-    for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.down;
-    }
-
-    for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.right;
-    }
-
+    setRowIteratorNode(coordinate);
     switch (currentDirection) {
       case Up:
         return rowIteratorNode.up;
@@ -122,48 +115,7 @@ public class QuadruplyLinkedList {
     return null;
   }
 
-  public Node oppositeNodeInDirection(Point coordinate, Directions currentDirection) {
-    int X = coordinate.getX();
-    int Y = coordinate.getY();
-
-    rowIteratorNode = referenceNode;
-
-    for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.down;
-    }
-
-    for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.right;
-    }
-
-    switch (currentDirection.getOppositeDirection()) {
-      case Up:
-        return rowIteratorNode.up;
-      case Down:
-        return rowIteratorNode.down;
-      case Left:
-        return rowIteratorNode.left;
-      case Right:
-        return rowIteratorNode.right;
-    }
-    return null;
-  }
-
-  private Node getNode(int X, int Y) {
-    rowIteratorNode = referenceNode;
-
-    for (int I = 0; I < Y; ++I) {
-      rowIteratorNode = rowIteratorNode.down;
-    }
-
-    for (int J = 0; J < X; ++J) {
-      rowIteratorNode = rowIteratorNode.right;
-    }
-
-    return rowIteratorNode;
-  }
-
-  private void wrapNode(int I, int J) {
+  private void wrapNode(int I, int J) { //TODO: Clean up
     rowIteratorNode = getNode(I, J);
 
     if (I == 0) {

@@ -5,6 +5,7 @@ import Model.EntityObjects.Ghost;
 import Model.EntityObjects.IEntityObject;
 import Model.EntityObjects.Pacman;
 import Model.GameObjects.Dot;
+import Model.GameObjects.IGameObject;
 import Model.GameObjects.Space;
 import Model.Point;
 
@@ -41,15 +42,16 @@ public class GhostController implements Movement {
   private void attemptToEatDot(Directions entityDirection) {
     Point entityPosition = gameBoard.getExistingEntityPosition(ghost);
     if (ghost.isHoldingDot()) {
-      gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).value = new Dot();
+      gameBoard.nextNodeInDirection(entityPosition, entityDirection.getOppositeDirection()).value = new Dot();
       ghost.setHoldingDot(false);
     } else {
-      gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).value = new Space();
+      gameBoard.nextNodeInDirection(entityPosition, entityDirection.getOppositeDirection()).value = new Space();
     }
   }
 
   private void movePositionOnBoard(Point entityPosition, Directions entityDirection) {
-    if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isEdible()) {
+    IGameObject nextObjectInDirection = (IGameObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
+    if (nextObjectInDirection.isEdible()) {
       ghost.setHoldingDot(true);
     }
     Point nextPoint = gameBoard.nextNodeInDirection(entityPosition, entityDirection).position;

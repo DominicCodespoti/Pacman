@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Directions;
 import Model.EntityObjects.Pacman;
+import Model.GameObjects.IGameObject;
 import Model.GameObjects.Space;
 import Model.Point;
 
@@ -42,11 +43,12 @@ public class PacmanController implements Movement {
       pacman.increaseScore();
       pacman.setHoldingDot(false);
     }
-    gameBoard.oppositeNodeInDirection(entityPosition, entityDirection).value = new Space();
+    gameBoard.nextNodeInDirection(entityPosition, entityDirection.getOppositeDirection()).value = new Space();
   }
 
   private void movePositionOnBoard(Point entityPosition, Directions entityDirection) {
-    if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).value.isEdible()) {
+    IGameObject nextObjectInDirection = (IGameObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
+    if (nextObjectInDirection.isEdible()) {
       pacman.setHoldingDot(true);
     }
     Point nextPoint = gameBoard.nextNodeInDirection(entityPosition, entityDirection).position;
