@@ -1,4 +1,4 @@
-package model.EntityObjects;
+package model.entityobjects;
 
 import model.Directions;
 

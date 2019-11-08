@@ -1,15 +1,15 @@
 package controller;
 
 import model.Directions;
-import model.EntityObjects.Ghost;
-import model.EntityObjects.IEntityObject;
-import model.EntityObjects.Pacman;
-import model.GameObjects.Dot;
-import model.GameObjects.IGameObject;
-import model.GameObjects.Space;
+import model.entityobjects.Ghost;
+import model.entityobjects.IEntityObject;
+import model.entityobjects.Pacman;
+import model.gameobjects.Dot;
+import model.gameobjects.IGameObject;
+import model.gameobjects.Space;
 import model.Point;
 
-public class GhostController implements Movement {
+public class GhostController {
 
   private final Board gameBoard;
   private final Ghost ghost;
@@ -19,17 +19,18 @@ public class GhostController implements Movement {
     this.ghost = ghost;
   }
 
-  @Override
   public void move(Directions newDirection) {
     Point entityPosition = gameBoard.getExistingEntityPosition(ghost);
     if (ghost != null && !gameBoard.isPathBlocked(entityPosition, newDirection)) {
-      attemptToEatEntity(entityPosition, newDirection);
-      movePositionOnBoard(entityPosition, newDirection);
-      attemptToEatDot(newDirection);
+      ghost.updateCurrentDirection(newDirection);
+      attemptToEatEntity(entityPosition);
+      movePositionOnBoard(entityPosition);
+      attemptToEatDot();
     }
   }
 
-  private void attemptToEatEntity(Point entityPosition, Directions entityDirection) {
+  private void attemptToEatEntity(Point entityPosition) {
+    Directions entityDirection = ghost.getCurrentDirection();
     if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Pacman) {
       gameBoard.removeEntity((IEntityObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value);
       gameBoard.nextNodeInDirection(entityPosition, entityDirection).value = new Space();
@@ -37,8 +38,9 @@ public class GhostController implements Movement {
     }
   }
 
-  private void attemptToEatDot(Directions entityDirection) {
+  private void attemptToEatDot() {
     Point entityPosition = gameBoard.getExistingEntityPosition(ghost);
+    Directions entityDirection = ghost.getCurrentDirection();
     if (ghost.isHoldingDot()) {
       gameBoard.nextNodeInDirection(entityPosition, entityDirection.getOppositeDirection()).value = new Dot();
       ghost.setHoldingDot(false);
@@ -47,7 +49,8 @@ public class GhostController implements Movement {
     }
   }
 
-  private void movePositionOnBoard(Point entityPosition, Directions entityDirection) {
+  private void movePositionOnBoard(Point entityPosition) {
+    Directions entityDirection = ghost.getCurrentDirection();
     IGameObject nextObjectInDirection = (IGameObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
     if (nextObjectInDirection.isEdible()) {
       ghost.setHoldingDot(true);

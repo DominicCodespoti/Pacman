@@ -2,7 +2,7 @@ package controllertests;
 
 import model.Point;
 import datastructures.QuadruplyLinkedList;
-import model.GameObjects.Wall;
+import model.gameobjects.Wall;
 import controller.IBoardGenerator;
 
 public class BoardGeneratorStub implements IBoardGenerator {

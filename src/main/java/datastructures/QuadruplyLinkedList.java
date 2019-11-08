@@ -1,8 +1,8 @@
 package datastructures;
 
 import model.Directions;
-import model.GameObjects.Dot;
 import model.Point;
+import model.gameobjects.Dot;
 
 public class QuadruplyLinkedList {
 
@@ -72,15 +72,15 @@ public class QuadruplyLinkedList {
   }
 
   private void setRowIteratorNode(Point coordinate) {
-    int X = coordinate.getX();
-    int Y = coordinate.getY();
+    int x = coordinate.getX();
+    int y = coordinate.getY();
     rowIteratorNode = referenceNode;
 
-    for (int I = 0; I < Y; ++I) {
+    for (int i = 0; i < y; ++i) {
       rowIteratorNode = rowIteratorNode.down;
     }
 
-    for (int J = 0; J < X; ++J) {
+    for (int i = 0; i < x; ++i) {
       rowIteratorNode = rowIteratorNode.right;
     }
   }
@@ -95,8 +95,8 @@ public class QuadruplyLinkedList {
     return rowIteratorNode.value;
   }
 
-  private Node getNode(int X, int Y) {
-    setRowIteratorNode(new Point(X, Y));
+  private Node getNode(int x, int y) {
+    setRowIteratorNode(new Point(x, y));
     return rowIteratorNode;
   }
 
@@ -115,31 +115,30 @@ public class QuadruplyLinkedList {
     return null;
   }
 
-  private void wrapNode(int I, int J) { //TODO: Clean up
-    rowIteratorNode = getNode(I, J);
+  private void wrapNode(int x, int y) {
+    Node currentNode = getNode(x, y);
+    rowIteratorNode = currentNode;
 
-    if (I == 0) {
-      Node newNode = getNode(width - 1, J);
-      rowIteratorNode = getNode(I, J);
-      rowIteratorNode.left = newNode;
+    if (x == 0) {
+      rowIteratorNode.left = getNodeAtEdge(y, width - 1, currentNode);
     }
 
-    if (J == 0) {
-      Node newNode = getNode(I, height - 1);
-      rowIteratorNode = getNode(I, J);
-      rowIteratorNode.up = newNode;
+    if (y == 0) {
+      rowIteratorNode.up = getNodeAtEdge(height - 1, x, currentNode);
     }
 
-    if (I == width - 1) {
-      Node newNode = getNode(0, J);
-      rowIteratorNode = getNode(I, J);
-      rowIteratorNode.right = newNode;
+    if (x == width - 1) {
+      rowIteratorNode.right = getNodeAtEdge(y, 0, currentNode);
     }
 
-    if (J == height - 1) {
-      Node newNode = getNode(I, 0);
-      rowIteratorNode = getNode(I, J);
-      rowIteratorNode.down = newNode;
+    if (y == height - 1) {
+      rowIteratorNode.down = getNodeAtEdge(0, x, currentNode);
     }
+  }
+
+  private Node getNodeAtEdge(int y, int x, Node node) {
+    Node nodeAtEdge = getNode(x, y);
+    rowIteratorNode = node;
+    return nodeAtEdge;
   }
 }

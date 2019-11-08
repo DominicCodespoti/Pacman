@@ -1,12 +1,12 @@
-package model.EntityObjects;
+package model.entityobjects;
 
 import model.Directions;
-import model.GameObjects.IGameObject;
+import model.gameobjects.IGameObject;
 
 public class Ghost implements IEntityObject, IGameObject {
 
   private final String name;
-  private final Directions currentDirection;
+  private Directions currentDirection;
   private int score = 0;
   private boolean holdingDot = false;
 
@@ -30,18 +30,6 @@ public class Ghost implements IEntityObject, IGameObject {
     return "G";
   }
 
-  public void increaseScore() {
-    score++;
-  }
-
-  public boolean isHoldingDot() {
-    return holdingDot;
-  }
-
-  public void setHoldingDot(boolean isHolding) {
-    holdingDot = isHolding;
-  }
-
   @Override
   public int getCurrentScore() {
     return score;
@@ -57,4 +45,19 @@ public class Ghost implements IEntityObject, IGameObject {
     return name;
   }
 
+  public void updateCurrentDirection(Directions newDirection) {
+    currentDirection = newDirection;
+  }
+
+  public void increaseScore() {
+    score++;
+  }
+
+  public boolean isHoldingDot() {
+    return holdingDot;
+  }
+
+  public void setHoldingDot(boolean isHolding) {
+    holdingDot = isHolding;
+  }
 }

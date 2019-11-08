@@ -1,6 +1,6 @@
-package model.GameObjects;
+package model.gameobjects;
 
-public class Dot implements IGameObject {
+public class Space implements IGameObject {
 
   @Override
   public boolean isSolid() {
@@ -9,11 +9,11 @@ public class Dot implements IGameObject {
 
   @Override
   public boolean isEdible() {
-    return true;
+    return false;
   }
 
   @Override
   public String getString() {
-    return ".";
+    return " ";
   }
 }

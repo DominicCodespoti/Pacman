@@ -5,7 +5,7 @@ import controller.IBoardGenerator;
 import controller.PacmanController;
 import controllertests.BoardGeneratorStub;
 import model.Directions;
-import model.EntityObjects.Pacman;
+import model.entityobjects.Pacman;
 import model.Point;
 import view.Console.ConsoleOutput;
 import view.Game;

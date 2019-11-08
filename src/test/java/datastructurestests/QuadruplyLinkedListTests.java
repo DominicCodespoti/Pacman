@@ -3,7 +3,7 @@ package datastructurestests;
 import model.Directions;
 import model.Point;
 import datastructures.QuadruplyLinkedList;
-import model.GameObjects.Dot;
+import model.gameobjects.Dot;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,12 +1,12 @@
 package controller;
 
 import model.Directions;
-import model.EntityObjects.Pacman;
-import model.GameObjects.IGameObject;
-import model.GameObjects.Space;
+import model.entityobjects.Pacman;
+import model.gameobjects.IGameObject;
+import model.gameobjects.Space;
 import model.Point;
 
-public class PacmanController implements Movement {
+public class PacmanController {
 
   private final Board gameBoard;
   private final Pacman pacman;
@@ -16,7 +16,6 @@ public class PacmanController implements Movement {
     this.pacman = pacman;
   }
 
-  @Override
   public void move(Directions newDirection) {
     Directions oldDirection = pacman.getCurrentDirection();
     Point entityPosition = gameBoard.getExistingEntityPosition(pacman);
@@ -28,23 +27,24 @@ public class PacmanController implements Movement {
     }
 
     if (!gameBoard.isPathBlocked(entityPosition, pacman.getCurrentDirection())) {
-      Directions entityDirection = gameBoard.getExistingEntityByName(pacman.getName()).getCurrentDirection();
-      movePositionOnBoard(entityPosition, entityDirection);
-      attemptToEatDot(entityDirection);
+      pacman.updateCurrentDirection(gameBoard.getExistingEntityByName(pacman.getName()).getCurrentDirection());
+      movePositionOnBoard(entityPosition);
+      attemptToEatDot();
       pacman.setIsMouthOpenToOpposite();
     }
   }
 
-  private void attemptToEatDot(Directions entityDirection) {
+  private void attemptToEatDot() {
     Point entityPosition = gameBoard.getExistingEntityPosition(pacman);
     if (pacman.isHoldingDot()) {
       pacman.increaseScore();
       pacman.setHoldingDot(false);
     }
-    gameBoard.nextNodeInDirection(entityPosition, entityDirection.getOppositeDirection()).value = new Space();
+    gameBoard.nextNodeInDirection(entityPosition, pacman.getCurrentDirection().getOppositeDirection()).value = new Space();
   }
 
-  private void movePositionOnBoard(Point entityPosition, Directions entityDirection) {
+  private void movePositionOnBoard(Point entityPosition) {
+    Directions entityDirection = pacman.getCurrentDirection();
     IGameObject nextObjectInDirection = (IGameObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
     if (nextObjectInDirection.isEdible()) {
       pacman.setHoldingDot(true);

@@ -1,7 +1,7 @@
-package model.EntityObjects;
+package model.entityobjects;
 
 import model.Directions;
-import model.GameObjects.IGameObject;
+import model.gameobjects.IGameObject;
 
 public class Pacman implements IEntityObject, IGameObject {
 

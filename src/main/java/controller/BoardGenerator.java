@@ -1,8 +1,8 @@
 package controller;
 
 import datastructures.QuadruplyLinkedList;
-import model.GameObjects.IGameObject;
-import model.GameObjects.Wall;
+import model.gameobjects.IGameObject;
+import model.gameobjects.Wall;
 import model.Point;
 import java.util.Random;
 
