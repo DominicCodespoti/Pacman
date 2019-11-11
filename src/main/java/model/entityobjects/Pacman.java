@@ -10,8 +10,8 @@ public class Pacman implements IEntityObject, IGameObject {
 
   private final String name;
   private Direction currentDirection;
-  private int score = 0;
-  private boolean holdingDot = false;
+  private int score;
+  private boolean holdingDot;
   private boolean isMouthOpen = true;
 
   public Pacman(String name) {

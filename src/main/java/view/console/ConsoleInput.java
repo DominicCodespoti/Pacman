@@ -1,13 +1,14 @@
 package view.console;
 
-import model.Direction;
-import view.IGameInput;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import model.Direction;
+import view.IGameInput;
 
 public class ConsoleInput implements IGameInput {
 
+  private static final int TICK_SPEED = 1000;
   private static final int LEFT_INPUT = 97;
   private static final int RIGHT_INPUT = 100;
   private static final int DOWN_INPUT = 115;
@@ -58,7 +59,6 @@ public class ConsoleInput implements IGameInput {
 
   private void pause() {
     try {
-      int TICK_SPEED = 1000;
       Thread.sleep(TICK_SPEED);
     } catch (InterruptedException e) {
       System.out.println(e.getMessage());

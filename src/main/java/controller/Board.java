@@ -2,15 +2,15 @@ package controller;
 
 import datastructures.Node;
 import datastructures.QuadruplyLinkedList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import model.Direction;
+import model.Point;
 import model.entityobjects.Ghost;
 import model.entityobjects.IEntityObject;
 import model.entityobjects.Pacman;
 import model.gameobjects.IGameObject;
-import model.Point;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 
 public class Board {
 
@@ -23,21 +23,26 @@ public class Board {
 
   public Point getPosition(IEntityObject entityToMove) {
     Entry entityEntry = currentEntities.entrySet().stream()
-        .filter(x -> x.getKey().getName().equals(entityToMove.getName())).findFirst().orElse(null);
+        .filter(x -> x.getKey().getName().equals(entityToMove.getName()))
+        .findFirst().orElse(null);
     return (Point) (entityEntry != null ? entityEntry.getValue() : null);
   }
 
   public IEntityObject getExistingEntityByName(String entityName) {
-    return currentEntities.keySet().stream().filter(x -> x.getName().equals(entityName)).findFirst().orElse(null);
+    return currentEntities.keySet().stream()
+        .filter(x -> x.getName().equals(entityName))
+        .findFirst().orElse(null);
   }
 
   public void updateEntityPosition(IEntityObject entityToMove, Point newPosition) {
-    currentEntities.entrySet().stream().filter(x -> x.getKey().getName().equals(entityToMove.getName()))
+    currentEntities.entrySet().stream()
+        .filter(x -> x.getKey().getName().equals(entityToMove.getName()))
         .forEach(x -> x.setValue(newPosition));
   }
 
   public void removeEntity(IEntityObject entityObject) {
-    currentEntities.entrySet().removeIf(x -> x.getKey().getName().equals(entityObject.getName()));
+    currentEntities.entrySet()
+        .removeIf(x -> x.getKey().getName().equals(entityObject.getName()));
   }
 
   public String getObjectRepresentationAtPosition(Point positionToGet) {

@@ -17,18 +17,18 @@ public class QuadruplyLinkedList {
     Node columnIteratorNode;
     rowIteratorNode = columnIteratorNode = referenceNode;
 
-    for (int I = 0; I < height; I++) {
-      for (int J = 0; J < width; J++) {
-        createRows(width, I, J);
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        createRows(width, i, j);
       }
-      columnIteratorNode = createColumns(height, columnIteratorNode, I);
+      columnIteratorNode = createColumns(height, columnIteratorNode, i);
     }
 
-    for (int I = 0; I < height; ++I) {
-      for (int J = 0; J < width; ++J) {
-        wrapNode(J, I);
-        getNode(J, I).value = new Dot();
-        getNode(J, I).position = new Point(J, I);
+    for (int i = 0; i < height; ++i) {
+      for (int j = 0; j < width; ++j) {
+        wrapNode(j, i);
+        getNode(j, i).value = new Dot();
+        getNode(j, i).position = new Point(j, i);
       }
     }
   }
@@ -85,9 +85,9 @@ public class QuadruplyLinkedList {
     }
   }
 
-  public void setValue(Point coordinate, Object Value) {
+  public void setValue(Point coordinate, Object value) {
     setRowIteratorNode(coordinate);
-    rowIteratorNode.value = Value;
+    rowIteratorNode.value = value;
   }
 
   public Object getValue(Point coordinate) {

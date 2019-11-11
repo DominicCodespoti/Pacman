@@ -1,50 +1,50 @@
 package utilities;
 
-import model.Direction;
-import model.Point;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import model.Direction;
+import model.Point;
 
 public class DistanceCalculator {
 
-  private static int calculatePossibleManhattanDistance(Point entityPositionToTrack, Direction possibleDirection,
-      Point currentEntityPosition) {
+  private static int calculateManhattanDistance(Point targetPosition, Direction direction,
+      Point currentPosition) {
     int xDistance;
     int yDistance;
-    switch (possibleDirection) {
+    switch (direction) {
       case Up:
-        xDistance = Math.abs(currentEntityPosition.getX() - entityPositionToTrack.getX());
-        yDistance = Math.abs((currentEntityPosition.getY() - 1) - entityPositionToTrack.getY());
+        xDistance = Math.abs(currentPosition.getX() - targetPosition.getX());
+        yDistance = Math.abs((currentPosition.getY() - 1) - targetPosition.getY());
         return xDistance + yDistance;
       case Down:
-        xDistance = Math.abs(currentEntityPosition.getX() - entityPositionToTrack.getX());
-        yDistance = Math.abs((currentEntityPosition.getY() + 1) - entityPositionToTrack.getY());
+        xDistance = Math.abs(currentPosition.getX() - targetPosition.getX());
+        yDistance = Math.abs((currentPosition.getY() + 1) - targetPosition.getY());
         return xDistance + yDistance;
       case Left:
-        xDistance = Math.abs((currentEntityPosition.getX() - 1) - entityPositionToTrack.getX());
-        yDistance = Math.abs(currentEntityPosition.getY() - entityPositionToTrack.getY());
+        xDistance = Math.abs((currentPosition.getX() - 1) - targetPosition.getX());
+        yDistance = Math.abs(currentPosition.getY() - targetPosition.getY());
         return xDistance + yDistance;
       case Right:
-        xDistance = Math.abs((currentEntityPosition.getX() + 1) - entityPositionToTrack.getX());
-        yDistance = Math.abs(currentEntityPosition.getY() - entityPositionToTrack.getY());
+        xDistance = Math.abs((currentPosition.getX() + 1) - targetPosition.getX());
+        yDistance = Math.abs(currentPosition.getY() - targetPosition.getY());
         return xDistance + yDistance;
     }
     return 0;
   }
 
-  public static Direction findFastestDirection(Point entityPositionToTrack, Point currentEntityPosition) {
+  public static Direction findFastestDirection(Point targetPosition, Point currentPosition) {
     Map<Direction, Integer> possibleDistances = new HashMap<>();
     possibleDistances.put(Direction.Left,
-        calculatePossibleManhattanDistance(entityPositionToTrack, Direction.Left, currentEntityPosition));
+        calculateManhattanDistance(targetPosition, Direction.Left, currentPosition));
     possibleDistances.put(Direction.Right,
-        calculatePossibleManhattanDistance(entityPositionToTrack, Direction.Right, currentEntityPosition));
+        calculateManhattanDistance(targetPosition, Direction.Right, currentPosition));
     possibleDistances.put(Direction.Up,
-        calculatePossibleManhattanDistance(entityPositionToTrack, Direction.Up, currentEntityPosition));
+        calculateManhattanDistance(targetPosition, Direction.Up, currentPosition));
     possibleDistances.put(Direction.Down,
-        calculatePossibleManhattanDistance(entityPositionToTrack, Direction.Down, currentEntityPosition));
+        calculateManhattanDistance(targetPosition, Direction.Down, currentPosition));
     Optional<Entry<Direction, Integer>> maxEntry = possibleDistances.entrySet().stream()
         .min(Comparator.comparing(Map.Entry::getValue));
     if (maxEntry.isPresent()) {

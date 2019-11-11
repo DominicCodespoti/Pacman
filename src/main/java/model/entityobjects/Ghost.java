@@ -11,8 +11,8 @@ public class Ghost implements IEntityObject, IGameObject {
 
   private final String name;
   private Direction currentDirection;
-  private int score = 0;
-  private boolean holdingDot = false;
+  private int score;
+  private boolean holdingDot;
 
   public Ghost(String name) {
     currentDirection = Direction.Up;
@@ -96,7 +96,8 @@ public class Ghost implements IEntityObject, IGameObject {
 
   private void movePositionOnBoard(Point entityPosition, Board gameBoard) {
     Direction entityDirection = getCurrentDirection();
-    IGameObject nextObjectInDirection = (IGameObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
+    IGameObject nextObjectInDirection = (IGameObject) gameBoard
+        .nextNodeInDirection(entityPosition, entityDirection).value;
     if (nextObjectInDirection.isEdible()) {
       setHoldingDot(true);
     }

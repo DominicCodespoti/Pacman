@@ -42,8 +42,8 @@ public class Game {
   private void setupGame() {
     board = new Board(boardGenerator);
 
-    Point pacmanInitialPosition = new Point(board.getBoardWidth() / 2, board.getBoardHeight() / 2);
-    pacman = board.createPacman(PACMAN, pacmanInitialPosition);
+    Point middleOfBoard = new Point(board.getBoardWidth() / 2, board.getBoardHeight() / 2);
+    pacman = board.createPacman(PACMAN, middleOfBoard);
 
     for (int i = 0; i < 2; i++) {
       Point ghostInitialPosition = new Point(i, 0);
