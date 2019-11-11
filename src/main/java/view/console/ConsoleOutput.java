@@ -1,4 +1,4 @@
-package view.Console;
+package view.console;
 
 import controller.Board;
 import model.Point;

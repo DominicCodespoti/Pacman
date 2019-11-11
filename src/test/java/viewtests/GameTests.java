@@ -2,12 +2,11 @@ package viewtests;
 
 import controller.Board;
 import controller.IBoardGenerator;
-import controller.PacmanController;
 import controllertests.BoardGeneratorStub;
-import model.Directions;
+import model.Direction;
 import model.entityobjects.Pacman;
 import model.Point;
-import view.Console.ConsoleOutput;
+import view.console.ConsoleOutput;
 import view.Game;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,12 +15,12 @@ public class GameTests {
 
   private final Point TOP_LEFT = new Point(0, 5);
 
-  private void eatRowHorizontally(PacmanController pacmanController, Directions directions) {
-    pacmanController.move(directions);
-    pacmanController.move(directions);
-    pacmanController.move(directions);
-    pacmanController.move(directions);
-    pacmanController.move(Directions.Down);
+  private void eatRowHorizontally(Pacman pacman, Direction direction, Board board) {
+    pacman.move(direction, board);
+    pacman.move(direction, board);
+    pacman.move(direction, board);
+    pacman.move(direction, board);
+    pacman.move(Direction.Down, board);
   }
 
   @Test
@@ -37,14 +36,16 @@ public class GameTests {
     Board boardController = new Board(boardGenerator);
 
     Pacman pacman = boardController.createPacman("Pacman", TOP_LEFT);
-    PacmanController pacmanController = new PacmanController(boardController, pacman);
 
-    eatRowHorizontally(pacmanController, Directions.Left);
-    eatRowHorizontally(pacmanController, Directions.Right);
-    eatRowHorizontally(pacmanController, Directions.Left);
-    eatRowHorizontally(pacmanController, Directions.Right);
-    eatRowHorizontally(pacmanController, Directions.Left);
-    eatRowHorizontally(pacmanController, Directions.Right);
+    eatRowHorizontally(pacman, Direction.Left, boardController);
+    eatRowHorizontally(pacman, Direction.Right, boardController);
+    eatRowHorizontally(pacman, Direction.Left, boardController);
+    eatRowHorizontally(pacman, Direction.Right, boardController);
+    eatRowHorizontally(pacman, Direction.Left, boardController);
+    eatRowHorizontally(pacman, Direction.Right, boardController);
+    eatRowHorizontally(pacman, Direction.Right, boardController);
+    eatRowHorizontally(pacman, Direction.Left, boardController);
+    eatRowHorizontally(pacman, Direction.Right, boardController);
 
     Assert.assertEquals(22, pacman.getCurrentScore());
   }

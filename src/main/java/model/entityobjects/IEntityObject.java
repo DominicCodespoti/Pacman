@@ -1,12 +1,10 @@
 package model.entityobjects;
 
-import model.Directions;
+import model.Direction;
 
 public interface IEntityObject {
 
-  int getCurrentScore();
-
-  Directions getCurrentDirection();
+  Direction getCurrentDirection();
 
   String getName();
 }

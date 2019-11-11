@@ -1,6 +1,6 @@
 package utilities;
 
-import model.Directions;
+import model.Direction;
 import model.Point;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class DistanceCalculator {
 
-  private static int calculatePossibleManhattanDistance(Point entityPositionToTrack, Directions possibleDirection,
+  private static int calculatePossibleManhattanDistance(Point entityPositionToTrack, Direction possibleDirection,
       Point currentEntityPosition) {
     int xDistance;
     int yDistance;
@@ -35,21 +35,21 @@ public class DistanceCalculator {
     return 0;
   }
 
-  public static Directions findDirectionWithClosestPath(Point entityPositionToTrack, Point currentEntityPosition) {
-    Map<Directions, Integer> possibleDistances = new HashMap<>();
-    possibleDistances.put(Directions.Left,
-        calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Left, currentEntityPosition));
-    possibleDistances.put(Directions.Right,
-        calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Right, currentEntityPosition));
-    possibleDistances.put(Directions.Up,
-        calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Up, currentEntityPosition));
-    possibleDistances.put(Directions.Down,
-        calculatePossibleManhattanDistance(entityPositionToTrack, Directions.Down, currentEntityPosition));
-    Optional<Entry<Directions, Integer>> maxEntry = possibleDistances.entrySet().stream()
+  public static Direction findFastestDirection(Point entityPositionToTrack, Point currentEntityPosition) {
+    Map<Direction, Integer> possibleDistances = new HashMap<>();
+    possibleDistances.put(Direction.Left,
+        calculatePossibleManhattanDistance(entityPositionToTrack, Direction.Left, currentEntityPosition));
+    possibleDistances.put(Direction.Right,
+        calculatePossibleManhattanDistance(entityPositionToTrack, Direction.Right, currentEntityPosition));
+    possibleDistances.put(Direction.Up,
+        calculatePossibleManhattanDistance(entityPositionToTrack, Direction.Up, currentEntityPosition));
+    possibleDistances.put(Direction.Down,
+        calculatePossibleManhattanDistance(entityPositionToTrack, Direction.Down, currentEntityPosition));
+    Optional<Entry<Direction, Integer>> maxEntry = possibleDistances.entrySet().stream()
         .min(Comparator.comparing(Map.Entry::getValue));
     if (maxEntry.isPresent()) {
       return maxEntry.get().getKey();
     }
-    return Directions.Up;
+    return Direction.Up;
   }
 }

@@ -2,7 +2,7 @@ package controller;
 
 import datastructures.Node;
 import datastructures.QuadruplyLinkedList;
-import model.Directions;
+import model.Direction;
 import model.entityobjects.Ghost;
 import model.entityobjects.IEntityObject;
 import model.entityobjects.Pacman;
@@ -21,7 +21,7 @@ public class Board {
     gameBoard = boardGenerator.generateBoard();
   }
 
-  public Point getExistingEntityPosition(IEntityObject entityToMove) {
+  public Point getPosition(IEntityObject entityToMove) {
     Entry entityEntry = currentEntities.entrySet().stream()
         .filter(x -> x.getKey().getName().equals(entityToMove.getName())).findFirst().orElse(null);
     return (Point) (entityEntry != null ? entityEntry.getValue() : null);
@@ -31,12 +31,12 @@ public class Board {
     return currentEntities.keySet().stream().filter(x -> x.getName().equals(entityName)).findFirst().orElse(null);
   }
 
-  void updateEntityPosition(IEntityObject entityToMove, Point newPosition) {
+  public void updateEntityPosition(IEntityObject entityToMove, Point newPosition) {
     currentEntities.entrySet().stream().filter(x -> x.getKey().getName().equals(entityToMove.getName()))
         .forEach(x -> x.setValue(newPosition));
   }
 
-  void removeEntity(IEntityObject entityObject) {
+  public void removeEntity(IEntityObject entityObject) {
     currentEntities.entrySet().removeIf(x -> x.getKey().getName().equals(entityObject.getName()));
   }
 
@@ -53,13 +53,13 @@ public class Board {
     return gameBoard.getHeight();
   }
 
-  Node nextNodeInDirection(Point entityPosition, Directions entityDirection) {
+  public Node nextNodeInDirection(Point entityPosition, Direction entityDirection) {
     return gameBoard.nextNodeInDirection(entityPosition, entityDirection);
   }
 
-  boolean isPathBlocked(Point entityPosition, Directions entityDirection) {
+  public boolean isPathUnblocked(Point entityPosition, Direction entityDirection) {
     IGameObject objectInPath = (IGameObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
-    return objectInPath.isSolid();
+    return !objectInPath.isSolid();
   }
 
   public Pacman createPacman(String entityName, Point position) {

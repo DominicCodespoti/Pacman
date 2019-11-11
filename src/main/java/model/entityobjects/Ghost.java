@@ -1,17 +1,21 @@
 package model.entityobjects;
 
-import model.Directions;
+import controller.Board;
+import model.Direction;
+import model.Point;
+import model.gameobjects.Dot;
 import model.gameobjects.IGameObject;
+import model.gameobjects.Space;
 
 public class Ghost implements IEntityObject, IGameObject {
 
   private final String name;
-  private Directions currentDirection;
+  private Direction currentDirection;
   private int score = 0;
   private boolean holdingDot = false;
 
   public Ghost(String name) {
-    currentDirection = Directions.Up;
+    currentDirection = Direction.Up;
     this.name = name;
   }
 
@@ -30,13 +34,12 @@ public class Ghost implements IEntityObject, IGameObject {
     return "G";
   }
 
-  @Override
   public int getCurrentScore() {
     return score;
   }
 
   @Override
-  public Directions getCurrentDirection() {
+  public Direction getCurrentDirection() {
     return currentDirection;
   }
 
@@ -45,19 +48,61 @@ public class Ghost implements IEntityObject, IGameObject {
     return name;
   }
 
-  public void updateCurrentDirection(Directions newDirection) {
+  private void updateCurrentDirection(Direction newDirection) {
     currentDirection = newDirection;
   }
 
-  public void increaseScore() {
+  private void increaseScore() {
     score++;
   }
 
-  public boolean isHoldingDot() {
+  private boolean isHoldingDot() {
     return holdingDot;
   }
 
-  public void setHoldingDot(boolean isHolding) {
+  private void setHoldingDot(boolean isHolding) {
     holdingDot = isHolding;
   }
+
+  public void move(Direction newDirection, Board gameBoard) {
+    Point entityPosition = gameBoard.getPosition(this);
+    if (gameBoard.isPathUnblocked(entityPosition, newDirection)) {
+      updateCurrentDirection(newDirection);
+      attemptToEatEntity(entityPosition, gameBoard);
+      movePositionOnBoard(entityPosition, gameBoard);
+      attemptToEatDot(gameBoard);
+    }
+  }
+
+  private void attemptToEatEntity(Point entityPosition, Board gameBoard) {
+    Direction entityDirection = getCurrentDirection();
+    if (gameBoard.nextNodeInDirection(entityPosition, entityDirection).value instanceof Pacman) {
+      gameBoard.removeEntity((IEntityObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value);
+      gameBoard.nextNodeInDirection(entityPosition, entityDirection).value = new Space();
+      increaseScore();
+    }
+  }
+
+  private void attemptToEatDot(Board gameBoard) {
+    Point entityPosition = gameBoard.getPosition(this);
+    Direction entityDirection = getCurrentDirection();
+    if (isHoldingDot()) {
+      gameBoard.nextNodeInDirection(entityPosition, entityDirection.getOppositeDirection()).value = new Dot();
+      setHoldingDot(false);
+    } else {
+      gameBoard.nextNodeInDirection(entityPosition, entityDirection.getOppositeDirection()).value = new Space();
+    }
+  }
+
+  private void movePositionOnBoard(Point entityPosition, Board gameBoard) {
+    Direction entityDirection = getCurrentDirection();
+    IGameObject nextObjectInDirection = (IGameObject) gameBoard.nextNodeInDirection(entityPosition, entityDirection).value;
+    if (nextObjectInDirection.isEdible()) {
+      setHoldingDot(true);
+    }
+    Point nextPoint = gameBoard.nextNodeInDirection(entityPosition, entityDirection).position;
+    gameBoard.updateEntityPosition(this, nextPoint);
+    gameBoard.nextNodeInDirection(entityPosition, entityDirection).value = this;
+  }
 }
+

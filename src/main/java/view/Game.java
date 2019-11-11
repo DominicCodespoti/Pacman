@@ -1,16 +1,14 @@
 package view;
 
 import controller.Board;
-import controller.GhostController;
 import controller.IBoardGenerator;
-import controller.PacmanController;
-import model.Directions;
-import model.entityobjects.Ghost;
-import model.entityobjects.Pacman;
-import model.Point;
-import utilities.DistanceCalculator;
 import java.util.ArrayList;
 import java.util.List;
+import model.Direction;
+import model.Point;
+import model.entityobjects.Ghost;
+import model.entityobjects.Pacman;
+import utilities.DistanceCalculator;
 
 public class Game {
 
@@ -20,12 +18,10 @@ public class Game {
   private final IGameOutput consoleOutput;
   private final IBoardGenerator boardGenerator;
   private Board board;
-  private PacmanController pacmanController;
   private Pacman pacman;
-  private final List<Ghost> ghost = new ArrayList<>();
-  private int pacmanScoreToWin;
+  private final List<Ghost> ghosts = new ArrayList<>();
   private int currentLevelIteration = 1;
-  private Directions lastDirection = Directions.Up;
+  private Direction lastDirection = Direction.Up;
 
   public Game(IGameInput consoleInput, IGameOutput consoleOutput, IBoardGenerator boardGenerator) {
     this.consoleInput = consoleInput;
@@ -40,24 +36,24 @@ public class Game {
       moveEntities();
       consoleOutput.printBoard(board, pacman.getCurrentScore(), currentLevelIteration);
     }
-    endGame(pacman.getCurrentScore() >= pacmanScoreToWin);
+    endGame();
   }
 
   private void setupGame() {
     board = new Board(boardGenerator);
+
     Point pacmanInitialPosition = new Point(board.getBoardWidth() / 2, board.getBoardHeight() / 2);
     pacman = board.createPacman(PACMAN, pacmanInitialPosition);
+
     for (int i = 0; i < 2; i++) {
       Point ghostInitialPosition = new Point(i, 0);
-      ghost.add(board.createGhost(GHOST + i, ghostInitialPosition));
+      ghosts.add(board.createGhost(GHOST + i, ghostInitialPosition));
     }
-    pacmanController = new PacmanController(board, pacman);
-    pacmanScoreToWin = boardGenerator.scoreAmount();
   }
 
   public boolean isPacmanAliveOrDotsUneaten() {
-    boolean haveAnyGhostsEatenPacman = ghost.stream().anyMatch(x -> x.getCurrentScore() >= 1);
-    return pacman.getCurrentScore() < pacmanScoreToWin && !haveAnyGhostsEatenPacman;
+    boolean haveAnyGhostsEatenPacman = ghosts.stream().anyMatch(x -> x.getCurrentScore() >= 1);
+    return pacman.getCurrentScore() < boardGenerator.scoreAmount() && !haveAnyGhostsEatenPacman;
   }
 
   private void moveEntities() {
@@ -67,22 +63,20 @@ public class Game {
 
   private void movePacman() {
     lastDirection = consoleInput.getUserInput(lastDirection);
-    pacmanController.move(lastDirection);
+    pacman.move(lastDirection, board);
   }
 
   private void moveGhosts() {
-    for (Ghost value : ghost) {
-      if (board.getExistingEntityByName(pacman.getName()) != null) {
-        Point ghostPos = board.getExistingEntityPosition(value);
-        Point pacmanPos = board.getExistingEntityPosition(pacman);
-        Directions fastestDirection = DistanceCalculator.findDirectionWithClosestPath(pacmanPos, ghostPos);
-        GhostController ghostController = new GhostController(board, value);
-        ghostController.move(fastestDirection);
-      }
+    Point pacmanPos = board.getPosition(pacman);
+    for (Ghost currentGhost : ghosts) {
+      Point ghostPos = board.getPosition(currentGhost);
+      Direction fastestDirection = DistanceCalculator.findFastestDirection(pacmanPos, ghostPos);
+      currentGhost.move(fastestDirection, board);
     }
   }
 
-  private void endGame(Boolean playerWin) {
+  private void endGame() {
+    boolean playerWin = pacman.getCurrentScore() >= boardGenerator.scoreAmount();
     if (playerWin) {
       consoleOutput.printVictory();
       currentLevelIteration++;

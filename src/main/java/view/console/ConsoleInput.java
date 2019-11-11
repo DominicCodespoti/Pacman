@@ -1,6 +1,6 @@
-package view.Console;
+package view.console;
 
-import model.Directions;
+import model.Direction;
 import view.IGameInput;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,10 +22,10 @@ public class ConsoleInput implements IGameInput {
   }
 
   @Override
-  public Directions getUserInput(Directions oldDirection) {
+  public Direction getUserInput(Direction oldDirection) {
     pause();
     try {
-      Directions selectedDirection = getDirections();
+      Direction selectedDirection = getDirections();
       if (selectedDirection != null) {
         return selectedDirection;
       }
@@ -35,20 +35,20 @@ public class ConsoleInput implements IGameInput {
     return oldDirection;
   }
 
-  private Directions getDirections() throws IOException {
+  private Direction getDirections() throws IOException {
     if (bufferedReader.ready()) {
       switch (bufferedReader.read()) {
         case LEFT_INPUT:
-          return Directions.Left;
+          return Direction.Left;
 
         case RIGHT_INPUT:
-          return Directions.Right;
+          return Direction.Right;
 
         case DOWN_INPUT:
-          return Directions.Down;
+          return Direction.Down;
 
         case UP_INPUT:
-          return Directions.Up;
+          return Direction.Up;
         case 3:
           System.exit(0);
       }

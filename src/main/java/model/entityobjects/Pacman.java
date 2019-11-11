@@ -1,22 +1,25 @@
 package model.entityobjects;
 
-import model.Directions;
+import controller.Board;
+import model.Direction;
+import model.Point;
 import model.gameobjects.IGameObject;
+import model.gameobjects.Space;
 
 public class Pacman implements IEntityObject, IGameObject {
 
   private final String name;
-  private Directions currentDirection;
+  private Direction currentDirection;
   private int score = 0;
   private boolean holdingDot = false;
   private boolean isMouthOpen = true;
 
   public Pacman(String name) {
-    currentDirection = Directions.Up;
+    currentDirection = Direction.Up;
     this.name = name;
   }
 
-  public void setIsMouthOpenToOpposite() {
+  private void setIsMouthOpenToOpposite() {
     this.isMouthOpen = !this.isMouthOpen;
   }
 
@@ -45,29 +48,28 @@ public class Pacman implements IEntityObject, IGameObject {
     return "";
   }
 
-  public void increaseScore() {
+  private void increaseScore() {
     score++;
   }
 
-  public boolean isHoldingDot() {
+  private boolean isHoldingDot() {
     return holdingDot;
   }
 
-  public void setHoldingDot(boolean isHolding) {
+  private void setHoldingDot(boolean isHolding) {
     holdingDot = isHolding;
   }
 
-  @Override
   public int getCurrentScore() {
     return score;
   }
 
-  public void updateCurrentDirection(Directions newDirection) {
+  public void updateCurrentDirection(Direction newDirection) {
     currentDirection = newDirection;
   }
 
   @Override
-  public Directions getCurrentDirection() {
+  public Direction getCurrentDirection() {
     return currentDirection;
   }
 
@@ -75,4 +77,36 @@ public class Pacman implements IEntityObject, IGameObject {
   public String getName() {
     return name;
   }
+
+
+  public void move(Direction newDirection, Board gameBoard) {
+    Point entityPosition = gameBoard.getPosition(this);
+    if (gameBoard.isPathUnblocked(entityPosition, newDirection)) {
+      updateCurrentDirection(newDirection);
+      movePositionOnBoard(entityPosition, gameBoard);
+      attemptToEatDot(gameBoard);
+      setIsMouthOpenToOpposite();
+    }
+  }
+
+  private void attemptToEatDot(Board gameBoard) {
+    Point entityPosition = gameBoard.getPosition(this);
+    Direction entityDirection = getCurrentDirection();
+    if (isHoldingDot()) {
+      increaseScore();
+      setHoldingDot(false);
+    }
+    gameBoard.nextNodeInDirection(entityPosition, entityDirection.getOppositeDirection()).value = new Space();
+  }
+
+  private void movePositionOnBoard(Point entityPosition, Board gameBoard) {
+    IGameObject nextObjectInDirection = (IGameObject) gameBoard.nextNodeInDirection(entityPosition, getCurrentDirection()).value;
+    if (nextObjectInDirection.isEdible()) {
+      setHoldingDot(true);
+    }
+    Point nextPosition = gameBoard.nextNodeInDirection(entityPosition, getCurrentDirection()).position;
+    gameBoard.updateEntityPosition(this, nextPosition);
+    gameBoard.nextNodeInDirection(entityPosition, getCurrentDirection()).value = this;
+  }
 }
+

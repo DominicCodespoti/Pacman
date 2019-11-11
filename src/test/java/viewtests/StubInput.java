@@ -1,12 +1,12 @@
 package viewtests;
 
-import model.Directions;
+import model.Direction;
 import view.IGameInput;
 
 public class StubInput implements IGameInput {
 
   @Override
-  public Directions getUserInput(Directions oldDirection) {
+  public Direction getUserInput(Direction oldDirection) {
     return oldDirection;
   }
 

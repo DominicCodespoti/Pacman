@@ -1,8 +1,8 @@
 package view;
 
-import model.Directions;
+import model.Direction;
 
 public interface IGameInput {
 
-  Directions getUserInput(Directions oldInput);
+  Direction getUserInput(Direction oldInput);
 }

@@ -1,6 +1,6 @@
 package datastructurestests;
 
-import model.Directions;
+import model.Direction;
 import model.Point;
 import datastructures.QuadruplyLinkedList;
 import model.gameobjects.Dot;
@@ -16,16 +16,16 @@ public class QuadruplyLinkedListTests {
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 5; j++) {
         Point point = new Point(i, j);
-        if (board.nextNodeInDirection(point, Directions.Up).value == null) {
+        if (board.nextNodeInDirection(point, Direction.Up).value == null) {
           failedNodeAmount++;
         }
-        if (board.nextNodeInDirection(point, Directions.Down).value == null) {
+        if (board.nextNodeInDirection(point, Direction.Down).value == null) {
           failedNodeAmount++;
         }
-        if (board.nextNodeInDirection(point, Directions.Left).value == null) {
+        if (board.nextNodeInDirection(point, Direction.Left).value == null) {
           failedNodeAmount++;
         }
-        if (board.nextNodeInDirection(point, Directions.Right).value == null) {
+        if (board.nextNodeInDirection(point, Direction.Right).value == null) {
           failedNodeAmount++;
         }
       }
@@ -40,7 +40,7 @@ public class QuadruplyLinkedListTests {
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 5; j++) {
         Point point = new Point(i, j);
-        if (board.nextNodeInDirection(point, Directions.Right).value instanceof Dot) {
+        if (board.nextNodeInDirection(point, Direction.Right).value instanceof Dot) {
           dotAmount++;
         }
       }

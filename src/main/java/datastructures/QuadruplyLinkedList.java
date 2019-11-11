@@ -1,6 +1,6 @@
 package datastructures;
 
-import model.Directions;
+import model.Direction;
 import model.Point;
 import model.gameobjects.Dot;
 
@@ -100,7 +100,7 @@ public class QuadruplyLinkedList {
     return rowIteratorNode;
   }
 
-  public Node nextNodeInDirection(Point coordinate, Directions currentDirection) {
+  public Node nextNodeInDirection(Point coordinate, Direction currentDirection) {
     setRowIteratorNode(coordinate);
     switch (currentDirection) {
       case Up:

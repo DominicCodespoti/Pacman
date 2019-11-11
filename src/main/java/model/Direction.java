@@ -1,6 +1,6 @@
 package model;
 
-public enum Directions {
+public enum Direction {
   Down, Up, Left, Right;
 
   static {
@@ -10,9 +10,9 @@ public enum Directions {
     Right.oppositeDirection = Left;
   }
 
-  private Directions oppositeDirection;
+  private Direction oppositeDirection;
 
-  public Directions getOppositeDirection() {
+  public Direction getOppositeDirection() {
     return oppositeDirection;
   }
 }
