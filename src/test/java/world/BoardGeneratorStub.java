@@ -1,7 +1,7 @@
 package world;
 
 import datastructures.QuadruplyLinkedList;
-import entities.Wall;
+import gameobjects.Wall;
 
 public class BoardGeneratorStub implements IBoardGenerator {
 

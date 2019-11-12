@@ -4,7 +4,7 @@ import world.Board;
 import world.IBoardGenerator;
 import world.BoardGeneratorStub;
 import world.Direction;
-import entities.Pacman;
+import gameobjects.Pacman;
 import world.Point;
 import view.console.ConsoleOutput;
 import org.junit.Assert;

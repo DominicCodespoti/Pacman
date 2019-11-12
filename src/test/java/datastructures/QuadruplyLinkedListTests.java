@@ -2,7 +2,7 @@ package datastructures;
 
 import world.Direction;
 import world.Point;
-import entities.Dot;
+import gameobjects.Dot;
 import org.junit.Assert;
 import org.junit.Test;
 

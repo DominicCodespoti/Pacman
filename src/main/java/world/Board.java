@@ -5,10 +5,10 @@ import datastructures.QuadruplyLinkedList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import entities.Ghost;
-import entities.IEntityObject;
-import entities.Pacman;
-import entities.IGameObject;
+import gameobjects.Ghost;
+import gameobjects.IEntityObject;
+import gameobjects.Pacman;
+import gameobjects.IGameObject;
 
 public class Board {
 

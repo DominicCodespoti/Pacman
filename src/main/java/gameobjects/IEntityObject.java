@@ -1,4 +1,4 @@
-package entities;
+package gameobjects;
 
 import world.Direction;
 

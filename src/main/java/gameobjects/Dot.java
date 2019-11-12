@@ -1,4 +1,4 @@
-package entities;
+package gameobjects;
 
 public class Dot implements IGameObject {
 

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import world.Direction;
 import world.Point;
-import entities.Ghost;
-import entities.Pacman;
+import gameobjects.Ghost;
+import gameobjects.Pacman;
 import utilities.DistanceCalculator;
 
 public class Game {

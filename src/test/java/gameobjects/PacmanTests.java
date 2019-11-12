@@ -1,4 +1,4 @@
-package entities;
+package gameobjects;
 
 import org.junit.Assert;
 import org.junit.Before;

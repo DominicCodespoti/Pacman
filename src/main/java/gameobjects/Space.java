@@ -1,10 +1,10 @@
-package entities;
+package gameobjects;
 
-public class Wall implements IGameObject {
+public class Space implements IGameObject {
 
   @Override
   public boolean isSolid() {
-    return true;
+    return false;
   }
 
   @Override
@@ -14,6 +14,6 @@ public class Wall implements IGameObject {
 
   @Override
   public String getString() {
-    return "=";
+    return " ";
   }
 }
