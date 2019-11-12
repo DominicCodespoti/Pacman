@@ -1,10 +1,9 @@
-package controller;
+package world;
 
 import datastructures.QuadruplyLinkedList;
 import java.util.Random;
-import model.Point;
-import model.gameobjects.IGameObject;
-import model.gameobjects.Wall;
+import entities.IGameObject;
+import entities.Wall;
 
 public class BoardGenerator implements IBoardGenerator {
 

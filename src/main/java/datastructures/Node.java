@@ -1,6 +1,6 @@
 package datastructures;
 
-import model.Point;
+import world.Point;
 
 public class Node<T> {
 

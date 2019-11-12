@@ -1,8 +1,8 @@
 package datastructures;
 
-import model.Direction;
-import model.Point;
-import model.gameobjects.Dot;
+import world.Direction;
+import world.Point;
+import entities.Dot;
 
 public class QuadruplyLinkedList {
 

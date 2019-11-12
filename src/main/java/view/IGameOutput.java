@@ -1,10 +1,10 @@
 package view;
 
-import controller.Board;
+import world.Board;
 
 public interface IGameOutput {
 
-  void printBoard(Board boardController, int currentScore, int levelAmount);
+  void printBoard(Board board, int currentScore, int levelAmount);
 
   void printVictory();
 

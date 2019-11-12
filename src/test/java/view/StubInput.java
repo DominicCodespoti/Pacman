@@ -1,7 +1,6 @@
-package viewtests;
+package view;
 
-import model.Direction;
-import view.IGameInput;
+import world.Direction;
 
 public class StubInput implements IGameInput {
 

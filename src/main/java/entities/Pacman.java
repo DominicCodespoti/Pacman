@@ -1,10 +1,8 @@
-package model.entityobjects;
+package entities;
 
-import controller.Board;
-import model.Direction;
-import model.Point;
-import model.gameobjects.IGameObject;
-import model.gameobjects.Space;
+import world.Board;
+import world.Direction;
+import world.Point;
 
 public class Pacman implements IEntityObject, IGameObject {
 

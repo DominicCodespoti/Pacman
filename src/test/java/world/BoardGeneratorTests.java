@@ -1,9 +1,5 @@
-package controllertests;
+package world;
 
-import controller.Board;
-import controller.BoardGenerator;
-import controller.IBoardGenerator;
-import model.Point;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,22 +7,22 @@ import org.junit.Test;
 public class BoardGeneratorTests {
 
   private IBoardGenerator boardGenerator;
-  private Board boardController;
+  private Board board;
 
   @Before
   public void initializeBoard() {
     boardGenerator = new BoardGenerator();
-    boardController = new Board(boardGenerator);
+    board = new Board(boardGenerator);
   }
 
   @Test
   public void correctScoreIsGeneratedOnNewBoard() {
-    int boardHeight = boardController.getBoardHeight();
-    int boardWidth = boardController.getBoardWidth();
+    int boardHeight = board.getBoardHeight();
+    int boardWidth = board.getBoardWidth();
     int wallAmount = 0;
     for (int i = 0; i < boardHeight; i++) {
       for (int j = 0; j < boardWidth; j++) {
-        if (boardController.getObjectRepresentationAtPosition(new Point(i, j)).equals("=")) {
+        if (board.getObjectRepresentationAtPosition(new Point(i, j)).equals("=")) {
           wallAmount++;
         }
       }

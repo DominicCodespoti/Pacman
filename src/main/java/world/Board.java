@@ -1,16 +1,14 @@
-package controller;
+package world;
 
 import datastructures.Node;
 import datastructures.QuadruplyLinkedList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import model.Direction;
-import model.Point;
-import model.entityobjects.Ghost;
-import model.entityobjects.IEntityObject;
-import model.entityobjects.Pacman;
-import model.gameobjects.IGameObject;
+import entities.Ghost;
+import entities.IEntityObject;
+import entities.Pacman;
+import entities.IGameObject;
 
 public class Board {
 

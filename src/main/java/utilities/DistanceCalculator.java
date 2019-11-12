@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
-import model.Direction;
-import model.Point;
+import world.Direction;
+import world.Point;
 
 public class DistanceCalculator {
 

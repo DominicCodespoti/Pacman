@@ -1,4 +1,4 @@
-package model.gameobjects;
+package entities;
 
 public interface IGameObject {
 

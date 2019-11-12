@@ -1,4 +1,4 @@
-package model;
+package world;
 
 public enum Direction {
   Down, Up, Left, Right;

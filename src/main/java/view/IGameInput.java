@@ -1,6 +1,6 @@
 package view;
 
-import model.Direction;
+import world.Direction;
 
 public interface IGameInput {
 

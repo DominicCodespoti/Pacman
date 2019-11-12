@@ -1,9 +1,8 @@
-package datastructurestests;
+package datastructures;
 
-import model.Direction;
-import model.Point;
-import datastructures.QuadruplyLinkedList;
-import model.gameobjects.Dot;
+import world.Direction;
+import world.Point;
+import entities.Dot;
 import org.junit.Assert;
 import org.junit.Test;
 

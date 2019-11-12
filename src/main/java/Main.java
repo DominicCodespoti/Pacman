@@ -1,4 +1,4 @@
-import controller.BoardGenerator;
+import world.BoardGenerator;
 import view.Game;
 import view.console.ConsoleInput;
 import view.console.ConsoleOutput;

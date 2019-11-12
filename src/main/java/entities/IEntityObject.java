@@ -1,6 +1,6 @@
-package model.entityobjects;
+package entities;
 
-import model.Direction;
+import world.Direction;
 
 public interface IEntityObject {
 

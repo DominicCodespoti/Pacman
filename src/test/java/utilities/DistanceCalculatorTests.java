@@ -1,8 +1,7 @@
-package utilitiestests;
+package utilities;
 
-import model.Direction;
-import model.Point;
-import utilities.DistanceCalculator;
+import world.Direction;
+import world.Point;
 import org.junit.Assert;
 import org.junit.Test;
 

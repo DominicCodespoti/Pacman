@@ -1,13 +1,13 @@
 package view;
 
-import controller.Board;
-import controller.IBoardGenerator;
+import world.Board;
+import world.IBoardGenerator;
 import java.util.ArrayList;
 import java.util.List;
-import model.Direction;
-import model.Point;
-import model.entityobjects.Ghost;
-import model.entityobjects.Pacman;
+import world.Direction;
+import world.Point;
+import entities.Ghost;
+import entities.Pacman;
 import utilities.DistanceCalculator;
 
 public class Game {
