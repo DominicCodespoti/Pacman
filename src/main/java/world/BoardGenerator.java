@@ -7,6 +7,7 @@ import gameobjects.Wall;
 
 public class BoardGenerator implements IBoardGenerator {
 
+  // it's strange that BoardGenerator keeps a copy of the last board it generated
   private QuadruplyLinkedList gameBoard;
 
   @Override
@@ -29,6 +30,9 @@ public class BoardGenerator implements IBoardGenerator {
     return gameBoard;
   }
 
+  // Rename: maximumPossibleScore? numberOfDots?
+  // It's unclear that this returns the score of the previously generated board -
+  // I think this should be a method on the Board class.
   @Override
   public int scoreAmount() {
     int wallAmount = 0;

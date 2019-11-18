@@ -26,6 +26,8 @@ public class Game {
   public Game(IGameInput consoleInput, IGameOutput consoleOutput, IBoardGenerator boardGenerator) {
     this.consoleInput = consoleInput;
     this.consoleOutput = consoleOutput;
+    // It's strange that Game holds a reference to the board generator.
+    // If IBoardGenerator.scoreAmount was a method of Board, then you wouldn't need to hang onto boardGenerator.
     this.boardGenerator = boardGenerator;
     board = new Board(boardGenerator);
   }
@@ -53,6 +55,7 @@ public class Game {
 
   public boolean isPacmanAliveOrDotsUneaten() {
     boolean haveAnyGhostsEatenPacman = ghosts.stream().anyMatch(x -> x.getCurrentScore() >= 1);
+
     return pacman.getCurrentScore() < boardGenerator.scoreAmount() && !haveAnyGhostsEatenPacman;
   }
 
@@ -62,6 +65,9 @@ public class Game {
   }
 
   private void movePacman() {
+    // It's strange that lastDirection is only stored to pass back to getUserInput.
+    // Instead, I think getUserInput should be able to return a 'None' result, in which
+    // case lastDirection is used here to move Pacman.
     lastDirection = consoleInput.getUserInput(lastDirection);
     pacman.move(lastDirection, board);
   }
